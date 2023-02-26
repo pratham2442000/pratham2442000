@@ -10,3 +10,4 @@ I am a Full Stack Developer from India studing in TU Delft in BSc. Computer Scie
 ### 🔥 &nbsp; My Stats :
 [![GitHub Streak](https://streak-stats.demolab.com/?user=pratham2442000&theme=onedark&hide_border=true)](https://git.io/streak-stats)
 
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=pratham2442000&layout=compact)](https://github.com/anuraghazra/github-readme-stats)
