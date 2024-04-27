@@ -6,7 +6,7 @@ I am a Full Stack Developer from India studying at TU Delft in BSc. Computer Sci
 
 ---
 ### 🔥 &nbsp; My Stats :
-[![GitHub Streak](https://streak-stats.demolab.com/?user=pratham2442000&theme=onedark&hide_border=true&count_private=true&show_icons=true)](https://git.io/streak-stats)
+[![GitHub Streak][![GitHub Streak](https://streak-stats.demolab.com?user=pratham2442000&theme=onedark&hide_border=true&count_private=true&date_format=j%20M%5B%20Y%5D&mode=weekly)](https://git.io/streak-stats)
 
 <!-- [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=pratham2442000&layout=compact&theme=onedark&hide_border=true&count_private=true&show_icons=true)](https://github.com/anuraghazra/github-readme-stats)
  -->
