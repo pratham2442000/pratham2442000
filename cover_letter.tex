@@ -1,0 +1,157 @@
+%-------------------------
+% Cover Letter in LaTeX
+% Matching style from cv.tex
+% Author: Pratham Johari
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage[english]{babel}
+\usepackage{fontawesome5}
+\usepackage{graphicx}
+\input{glyphtounicode}
+
+\RequirePackage{tikz}
+\RequirePackage{xcolor}
+
+% ---------- COLORS (matching cv.tex) ----------
+\definecolor{cvblue}{HTML}{0E5484}
+\definecolor{black}{HTML}{130810}
+\definecolor{darkcolor}{HTML}{0F4539}
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{666666}
+\definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
+
+% ---------- FONTS (matching cv.tex) ----------
+\usepackage{CormorantGaramond}
+\usepackage{charter}
+
+% ---------- MARGINS (more generous than CV) ----------
+\usepackage[
+  top=1.0in,
+  bottom=1.0in,
+  left=1.0in,
+  right=1.0in
+]{geometry}
+
+\urlstyle{same}
+\raggedright
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{8pt}
+
+% Ensure that generated pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+% ---------- SECTION FORMATTING (matching cv.tex) ----------
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+
+%============================================================
+%  CUSTOMISE THESE FIELDS FOR EACH APPLICATION
+%  Just change the values below — the letter body pulls them in
+%============================================================
+
+% --- Recipient ---
+\newcommand{\recipientName}{}                          % e.g. "Dr.\ Jane Smith"
+\newcommand{\recipientTitle}{}                         % e.g. "Head of AI Research"
+\newcommand{\companyName}{Company Name}                % e.g. "DeepMind"
+\newcommand{\companyAddress}{Company Address}          % e.g. "6 Pancras Square, London N1C 4AG"
+
+% --- Position ---
+\newcommand{\jobTitle}{Position Title}                 % e.g. "Machine Learning Engineer"
+
+% --- Date ---
+\newcommand{\letterDate}{\today}                       % or hardcode: "7 July 2026"
+
+% --- Opening & Closing ---
+\newcommand{\salutation}{Dear \recipientName,}
+\newcommand{\closing}{Kind regards,}
+
+%============================================================
+%  LETTER BODY — swap this block for each role
+%  Aim for 3–4 short paragraphs:
+%    1. Hook  — why this company/role excites you
+%    2. Fit   — your most relevant experience
+%    3. Value — what you bring that others don't
+%    4. Close — call to action
+%============================================================
+\newcommand{\letterBody}{%
+% --- Paragraph 1: Hook ---
+I am writing to express my interest in the \textbf{\jobTitle} position at \textbf{\companyName}. As an MSc graduate in Data Science \& AI from TU Delft, with a BSc in Computer Science from the same university, I bring a strong foundation in machine learning, information retrieval, and scalable system design that aligns closely with your team's work.
+
+% --- Paragraph 2: Fit ---
+During my studies I have built end-to-end ML pipelines — from fine-tuning retrieval models (ColPali, ColBERT, BM25) and deploying RAG systems, to designing computer-vision pipelines with YOLO, MMAction2 and MMPose. My thesis investigated scaling laws for Retrieval-Augmented Generation, giving me deep insight into the interplay between retrieval quality and generative performance. Beyond research, I have hands-on experience with production tooling: Docker, Kubernetes, Helm, CI/CD, and Prometheus-based monitoring.
+
+% --- Paragraph 3: Value ---
+What sets me apart is the breadth of my practical experience. As Head Teaching Assistant for TU Delft's Machine Learning course I mentored 300+ students and built an automated notebook autograder. As an autonomous-driving engineer at Formula Student Team Delft I shipped a real-time LIDAR perception pipeline that helped our car finish 4th in autonomous acceleration at Formula Student Germany. I thrive in cross-functional teams and care deeply about writing clean, well-tested code.
+
+% --- Paragraph 4: Close ---
+I would welcome the opportunity to discuss how my skills in ML engineering, retrieval systems, and computer vision can contribute to the goals of \textbf{\companyName}. Thank you for considering my application — I look forward to hearing from you.
+}
+
+
+%============================================================
+%  DOCUMENT
+%============================================================
+\begin{document}
+
+% ---------- HEADER (matching CV) ----------
+\begin{center}
+  {\huge Pratham Johari} \\[12pt]
+  {+31 680 213135} ~
+  \small{-}~
+  \href{https://github.com/pratham2442000}{\color{blue}{github.com/pratham2442000}} ~
+  \small{-}~
+  \href{mailto:pratham244200@gmail.com}{\color{blue}{pratham244200@gmail.com}} ~
+  \small{-}~
+  \href{https://www.linkedin.com/in/prathamjohari/}{\color{blue}{linkedin.com/in/prathamjohari/}}
+\end{center}
+
+\vspace{4pt}
+{\color{airforceblue}\hrule height 0.8pt}
+\vspace{16pt}
+
+% ---------- DATE ----------
+\letterDate
+
+\vspace{12pt}
+
+% ---------- RECIPIENT BLOCK ----------
+\recipientName \\
+\if\relax\detokenize\expandafter{\recipientTitle}\relax\else\recipientTitle \\\fi
+\companyName \\
+\companyAddress
+\vspace{12pt}
+
+% ---------- SUBJECT LINE ----------
+\textbf{\color{airforceblue}Re: Application for \jobTitle}
+
+\vspace{8pt}
+
+% ---------- SALUTATION ----------
+\salutation
+
+\vspace{4pt}
+
+% ---------- BODY ----------
+\letterBody
+
+\vspace{16pt}
+
+% ---------- CLOSING ----------
+\closing
+
+\vspace{36pt}
+
+% ---------- SIGNATURE ----------
+Pratham Johari
+
+\end{document}
