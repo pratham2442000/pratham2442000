@@ -1,10 +1,4 @@
 
-%-------------------------
-% Resume in Latex
-% Author : Vaishanth
-% License : MIT
-%------------------------
-
 \documentclass[letterpaper,11pt]{article}
 
 \usepackage{latexsym}
@@ -162,7 +156,7 @@
 
 \begin{center}
   % \includegraphics[width=0.10\textwidth]{fish.jpg} \hspace{20pt} 
-  {\huge Pratham Johari}  \\ \vspace{20pt}
+  {\huge Pratham Johari}  \\ \vspace{10pt}
   {+31 680 213135} ~
   \small{-}
   \href{https://github.com/pratham2442000}{\color{blue}{github.com/pratham2442000}} ~
@@ -184,7 +178,7 @@
 \resumeSubHeadingListStart
 \resumeSubheading
 {Delft University of Technology (TU Delft)}{Delft, Netherlands}
-{MSc. Data Science and Artificial Intelligence Technology}{Sep 2024 -- June 2026}
+{MSc. Data Science and Artificial Intelligence Technology \textnormal{\small (Focus: Compound AI \& RAG)}}{Sep 2024 -- June 2026}
 \resumeSubheading
 {Delft University of Technology (TU Delft)}{Delft, Netherlands}
 {BSc. Computer Science and Engineering with Data variant}{Sep 2020 -- May 2024}
@@ -200,17 +194,17 @@
   \small{\item{
                 \textbf{\normalsize{Programming:}}{ \normalsize{Python \textbullet{} Java \textbullet{} SQL \textbullet{} Scala \textbullet{} C++ \textbullet{} Bash}} \\
                 \vspace{1.2pt}
-                \textbf{\normalsize{ML:}}{ \normalsize{PyTorch \textbullet{} TensorFlow \textbullet{} Scikit-Learn \textbullet{} XGBoost \textbullet{} ONNX \textbullet{} W\&B}} \\
+                \textbf{\normalsize{ML \& Deep Learning:}}{ \normalsize{PyTorch \textbullet{} HuggingFace \textbullet{} Sentence-Transformers \textbullet{} Scikit-Learn \textbullet{} XGBoost \textbullet{} ONNX \textbullet{} W\&B}} \\
                 \vspace{1.2pt}
-                \textbf{\normalsize{LLMs \& Retrieval:}}{ \normalsize{LangChain \textbullet{} HuggingFace \textbullet{} PyTerrier \textbullet{} RAG \textbullet{} FAISS \textbullet{} BM25 \textbullet{} ColBERT \textbullet{} vLLM \textbullet{} ColPali}} \\
+                \textbf{\normalsize{LLMs \& Retrieval:}}{ \normalsize{PyTerrier (Adaptive, DR, RAG) \textbullet{} LangChain \textbullet{} LangGraph \textbullet{} FAISS \textbullet{} BM25 \textbullet{} ColBERT \textbullet{} Cross-Encoders \textbullet{} MonoT5 \textbullet{} Rank Fusion (RRF) \textbullet{} vLLM \textbullet{} ColPali}} \\
                 \vspace{1.2pt}
                 \textbf{\normalsize{Computer Vision:}}{ \normalsize{OpenCV \textbullet{} ROS2 \textbullet{} YOLO \textbullet{} MMAction2 \textbullet{} MMPose}} \\
                 \vspace{1.2pt}
                 \textbf{\normalsize{Frameworks:}}{ \normalsize{Django \textbullet{} Vue.js \textbullet{} Flask \textbullet{} Streamlit \textbullet{} Gradio}} \\
                 \vspace{1.2pt}
-                \textbf{\normalsize{Infrastructure:}}{ \normalsize{Docker \textbullet{} Kubernetes \textbullet{} Git \textbullet{} DVC \textbullet{} CI/CD \textbullet{} GCP Cloud SQL}} \\
+                \textbf{\normalsize{Infrastructure \& Compute:}}{ \normalsize{Docker \textbullet{} Kubernetes \textbullet{} SLURM (DelftBlue HPC) \textbullet{} Git \textbullet{} CI/CD \textbullet{} DVC \textbullet{} GCP Cloud SQL}} \\
                 \vspace{1.2pt}
-                \textbf{\normalsize{Data:}}{ \normalsize{Pandas \textbullet{} NumPy \textbullet{} Matplotlib \textbullet{} Seaborn \textbullet{} Jupyter}} \\
+                \textbf{\normalsize{Data \& Evaluation:}}{ \normalsize{ir\_measures \textbullet{} ir\_datasets \textbullet{} LLM-as-a-Judge \textbullet{} Pandas \textbullet{} NumPy \textbullet{} Matplotlib \textbullet{} Seaborn \textbullet{} SciPy}} \\
                 \vspace{1.2pt}
           }}
 \end{itemize}
@@ -265,7 +259,7 @@
 {FN MathLogic Consulting Services, Haryana, Gurugram }{July 2022 - Oct 2022}
 \resumeItemListStart
 \resumeItem{\normalsize{Leveraged unsupervised learning for tabular data classification.}}
-\resumeItem{\normalsize{Conducted comparative analysis of VIME, TabNet, and SubTab algorithms. Demonstrated enhanced model performance through pretraining, surpassing control results.}}
+\resumeItem{\normalsize{Conducted comparative analysis of Self and Semi-supervised models like VIME, TabNet, and SubTab. Demonstrated enhanced model performance through pretraining, surpassing control results.}}
 \resumeItemListEnd
 
 
@@ -277,9 +271,13 @@
 
 
 %-----------PROJECTS-----------
-\section{\color{airforceblue}UNIVERSITY PROJECTS}
+\section{\color{airforceblue}RESEARCH \& UNIVERSITY PROJECTS}
 \resumeItemListStart
 \vspace{0.5pt}
+
+\resumeItem{\normalsize{\textbf{Master's Thesis: Scaling Laws for Compound AI Systems} \href{https://github.com/pratham2442000/MasterThesis}{\color{blue}\underline{GitHub Repository}} \textbar{} \href{https://resolver.tudelft.nl/uuid:f0406b81-8b50-47c9-a44b-5da89c59c916}{\color{blue}\underline{TU Delft Repository}}, Investigated test-time compute allocation and empirical scaling laws in multi-stage Compound AI / RAG pipelines across retrieval depth ($c$), query breadth ($n$ LLM rewrites), and adaptive budget allocation. Built reproducible benchmarking pipelines comparing sparse (BM25) and dense (TCT-ColBERT) retrievers, neural cross-encoders (MiniLM-L6) and generative rerankers (MonoT5), 6 rank fusion algorithms (RRF, Borda, CombMAX, Exp4Fuse), and adaptive graph reranking (ORE, ReformIR) across MS~MARCO (8.8M), DPR-w100 (21M), and 2WikiMultiHopQA on the DelftBlue HPC cluster (NVIDIA V100). Quantified the 15--17\% Oracle Recall gap, evaluated downstream QA generation (Llama 3.2, LLM-as-a-Judge), and open-sourced the experimental framework.\\
+\textbf{Tools \& Frameworks:} PyTerrier (\texttt{dr}, \texttt{adaptive}, \texttt{rag}, \texttt{t5}), FAISS, PyTorch, Hugging Face, Sentence-Transformers, LangChain, LangGraph, vLLM, OpenAI API, ir\_datasets, ir\_measures, SLURM HPC.}}
+\vspace{-5pt}
 
 \resumeItem{\normalsize{\textbf{ML Model Deployment Project} \href{https://github.com/remla2025-team16}{\color{blue}\underline{GitHub Project}}, Collaborated in a multi-repo project with 2 other students to design, train, and deploy a machine learning model as a scalable web service. Developed modular Python components for model training, API integration, and automated CI/CD workflows. Ensured robust model versioning, Dockerized deployments, and seamless integration with front-end and operations pipelines.}}
 \vspace{-5pt}
@@ -315,7 +313,7 @@
 
 \vspace{-5pt}
 
-\resumeItem{\normalsize{\textbf{Scaling Laws for Compound AI Systems: More Compute, More Problems? Rethinking Scaling Laws for Retrieval-Augmented Generation }\href{https://resolver.tudelft.nl/uuid:f0406b81-8b50-47c9-a44b-5da89c59c916}{\color{blue}\underline{Link to Publication}}}}
+\resumeItem{\normalsize{\textbf{Scaling Laws for Compound AI Systems: More Compute, More Problems? Rethinking Scaling Laws for Retrieval-Augmented Generation} \href{https://resolver.tudelft.nl/uuid:f0406b81-8b50-47c9-a44b-5da89c59c916}{\color{blue}\underline{TU Delft Repository}} \textbar{} \href{https://github.com/pratham2442000/MasterThesis}{\color{blue}\underline{GitHub Repository}}}}
 
 \vspace{-5pt}
 
