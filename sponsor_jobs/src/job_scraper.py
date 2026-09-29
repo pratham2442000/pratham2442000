@@ -403,7 +403,7 @@ async def crawl_html_career_page(session: aiohttp.ClientSession, url: str, compa
 
 
 def save_jobs_to_db(jobs: List[Dict[str, Any]], db_path: str = DB_PATH) -> int:
-    """Upsert discovered jobs into the SQLite database."""
+    """Upsert discovered jobs into the SQLite database, tracking newly discovered positions."""
     if not jobs:
         return 0
         
@@ -413,15 +413,22 @@ def save_jobs_to_db(jobs: List[Dict[str, Any]], db_path: str = DB_PATH) -> int:
     
     for j in jobs:
         try:
-            cur.execute("""
-            INSERT INTO jobs (sponsor_id, company_name, title, location, url, source, is_active, last_seen)
-            VALUES (?, ?, ?, ?, ?, ?, 1, CURRENT_TIMESTAMP)
-            ON CONFLICT(url) DO UPDATE SET
-                title = excluded.title,
-                location = excluded.location,
-                is_active = 1,
-                last_seen = CURRENT_TIMESTAMP
-            """, (j.get("sponsor_id"), j["company_name"], j["title"], j.get("location", "Netherlands"), j["url"], j.get("source", "Scraper")))
+            cur.execute("SELECT id FROM jobs WHERE url = ?", (j["url"],))
+            existing = cur.fetchone()
+            if existing:
+                cur.execute("""
+                UPDATE jobs
+                SET title = ?,
+                    location = ?,
+                    is_active = 1,
+                    last_seen = CURRENT_TIMESTAMP
+                WHERE id = ?
+                """, (j["title"], j.get("location", "Netherlands"), existing[0]))
+            else:
+                cur.execute("""
+                INSERT INTO jobs (sponsor_id, company_name, title, location, url, source, is_active, is_new, first_seen, last_seen)
+                VALUES (?, ?, ?, ?, ?, ?, 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+                """, (j.get("sponsor_id"), j["company_name"], j["title"], j.get("location", "Netherlands"), j["url"], j.get("source", "Scraper")))
             saved += 1
         except Exception as e:
             logging.debug(f"Error saving job {j.get('url')}: {e}")

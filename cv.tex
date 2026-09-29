@@ -1,346 +1,215 @@
-
 \documentclass[letterpaper,11pt]{article}
 
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
 \usepackage{latexsym}
 \usepackage[empty]{fullpage}
 \usepackage{titlesec}
-\usepackage{marvosym}
-\usepackage[usenames,dvipsnames]{color}
+\usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{verbatim}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
 \usepackage[english]{babel}
-\usepackage{tabularx}
-\usepackage{fontawesome5}
-\usepackage{multicol}
-\usepackage{graphicx}%\setmainfont{Times New Roman}
-\usepackage{wrapfig}
-\usepackage{adjustbox}
-\setlength{\multicolsep}{-3.0pt}
-\setlength{\columnsep}{-1pt}
+\usepackage{microtype}
+\usepackage{charter}
+
+% Ensure that generated PDF is machine readable / ATS parsable
 \input{glyphtounicode}
+\pdfgentounicode=1
 
-\RequirePackage{tikz}
-\RequirePackage{xcolor}
-
+%---------- COLOR DEFINITIONS ----------
 \definecolor{cvblue}{HTML}{0E5484}
 \definecolor{black}{HTML}{130810}
 \definecolor{darkcolor}{HTML}{0F4539}
-\definecolor{cvgreen}{HTML}{3BD80D}
-\definecolor{taggreen}{HTML}{00E278}
-\definecolor{SlateGrey}{HTML}{2E2E2E}
-\definecolor{LightGrey}{HTML}{666666}
-\colorlet{name}{black}
-\colorlet{tagline}{darkcolor}
-\colorlet{heading}{darkcolor}
-\colorlet{headingrule}{cvblue}
-\colorlet{accent}{darkcolor}
-\colorlet{emphasis}{SlateGrey}
-\colorlet{body}{LightGrey}
+\definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
+\definecolor{linkblue}{HTML}{1A5276}
 
-%----------FONT OPTIONS----------
-% sans-serif
-% \usepackage[sfdefault]{FiraSans}
-% \usepackage[sfdefault]{roboto}
-% \usepackage[sfdefault]{noto-sans}
-% \usepackage[default]{sourcesanspro}
-
-% \usepackage[T1]{fontenc}
-% \usepackage[T1]{fontenc}
-% \usepackage{cochineal}
-% \usepackage{fourier}
-
-% \usepackage{fontspec}
-% \usepackage{polyglossia}
-% \setmainlanguage{german}
-% \setmainfont{Times New Roman}
-
-% serif
-\usepackage{CormorantGaramond}
-\usepackage{charter}
-
-% \pagestyle{fancy}
-% \fancyhf{}  % clear all header and footer fields
-% \fancyfoot{}
-% \renewcommand{\headrulewidth}{0pt}
-% \renewcommand{\footrulewidth}{0pt}
-
-% Adjust margins
+%---------- MARGINS ----------
 \addtolength{\oddsidemargin}{-0.6in}
-\addtolength{\evensidemargin}{-0.5in}
-\addtolength{\textwidth}{1.19in}
+\addtolength{\evensidemargin}{-0.6in}
+\addtolength{\textwidth}{1.2in}
 \addtolength{\topmargin}{-.7in}
 \addtolength{\textheight}{1.4in}
 \urlstyle{same}
 
-\definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
-
 \raggedbottom
 \raggedright
-\setlength{\tabcolsep}{0in}
 
-% Sections formatting
+%---------- SECTION FORMATTING (CLEAN, ATS-SAFE: NO MACROS INSIDE \section) ----------
 \titleformat{\section}{
-  \vspace{-4pt}\scshape\raggedright\large\bfseries
-}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+  \vspace{-3pt}\scshape\raggedright\large\bfseries\color{airforceblue}
+}{}{0em}{}[\color{black}\titlerule \vspace{-3pt}]
 
-% Ensure that generate pdf is machine readable/ATS parsable
-\pdfgentounicode=1
-
-%-------------------------
-% Custom commands
-\newcommand{\resumeItem}[1]{
-  \item\small{
-    {#1 \vspace{-1pt}}
-  }
-}
-
-\newcommand{\classesList}[4]{
-    \item\small{
-        {#1 #2 #3 #4 \vspace{-2pt}}
-  }
-}
-
+%---------- CUSTOM ATS-OPTIMIZED COMMANDS (NO NEGATIVE VSPACE COLLAPSE) ----------
 \newcommand{\resumeSubheading}[4]{
   \vspace{-2pt}\item
-    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{\large#1} & \textbf{\small #2} \\
-      \textit{\large#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-7pt}
+    \textbf{\large#1} \hfill \textbf{\normalsize#2}\\
+    \textit{\normalsize#3} \hfill \textit{\small#4}
+  \vspace{-7pt}
 }
-
-
-\newcommand{\resumeSingleSubheading}[4]{
-  \vspace{-2pt}\item
-    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{\large#1} & \textbf{\small #2} \\
-      
-    \end{tabular*}\vspace{-7pt}
-}
-
-\newcommand{\resumeSubSubheading}[2]{
-    \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \textit{\small#1} & \textit{\small #2} \\
-    \end{tabular*}\vspace{-7pt}
-}
-
 
 \newcommand{\resumeProjectHeading}[2]{
-    \item
-    \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
-      \small#1 & \textbf{\small #2}\\
-    \end{tabular*}\vspace{-7pt}
+  \vspace{-2pt}\item
+    \textbf{\large#1} \hfill \textbf{\normalsize#2}\\
+    \vspace{-7pt}
 }
 
-\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+\newcommand{\resumeItem}[1]{
+  \item\normalsize{#1}
+}
 
-\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
-\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand\labelitemi{\textbullet}
+\renewcommand\labelitemii{\textbullet}
 
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}, topsep=0pt, itemsep=5pt]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.1in]}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.15in, topsep=1.5pt, itemsep=1.5pt, parsep=0pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
 
-\newcommand\sbullet[1][.5]{\mathbin{\vcenter{\hbox{\scalebox{#1}{$\bullet$}}}}}
-
-%-------------------------------------------\usepackage{fontspec}
-%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
+% ==============================================================================
+%                           RESUME STARTS HERE
+% ==============================================================================
 \begin{document}
 
-
-%----------HEADING----------
+%---------- HEADING & CONTACT INFO (BODY-PLACED, LOCATION-ENABLED, 1-LINE CONTACT) ----------
+% TIP: Tailor \targetRole per application to match the exact posting title for the 10.6x callback boost!
+\newcommand{\targetRole}{AI Engineer \textbar{} Machine Learning Engineer}
 
 \begin{center}
-  % \includegraphics[width=0.10\textwidth]{fish.jpg} \hspace{20pt} 
-  {\huge Pratham Johari}  \\ \vspace{10pt}
-  {+31 680 213135} ~
-  \small{-}
-  \href{https://github.com/pratham2442000}{\color{blue}{github.com/pratham2442000}} ~
-  \small{-}
-  \href{mailto:pratham244200@gmail.com}{\color{blue}{pratham244200@gmail.com}} ~
-  \small{-}
-  \href{https://www.linkedin.com/in/prathamjohari/}{ \color{blue}{linkedin.com/in/prathamjohari/}}  ~
-  \\
-  \vspace{7pt}
-  {AI Researcher \textbar{} Machine Learning Engineer \textbar{} Information Retrieval \textbar{} Retrieval-Augmented Generation \textbar{} Computer Vision}
-  \vspace{-7pt}
+  \vspace{-10pt}
+  {\huge{Pratham Johari}} \\[2pt]
+  {\textbf{\color{airforceblue}\targetRole}} \\[3pt]
+  \footnotesize{
+    Delft, Netherlands \ \textbullet \
+    +31 680 213135 \ \textbullet \
+    \href{mailto:pratham244200@gmail.com}{\color{linkblue}pratham244200@gmail.com} \ \textbullet \
+    \href{https://linkedin.com/in/prathamjohari}{\color{linkblue}linkedin.com/in/prathamjohari} \ \textbullet \
+    \href{https://github.com/pratham2442000}{\color{linkblue}github.com/pratham2442000}
+  }
+  \vspace{-8pt}
 \end{center}
 
 
-
-
-%-----------EDUCATION-----------
-\section{\color{airforceblue}EDUCATION}
+%----------- EDUCATION -----------
+\section{Education}
 \resumeSubHeadingListStart
 \resumeSubheading
-{Delft University of Technology (TU Delft)}{Delft, Netherlands}
-{MSc. Data Science and Artificial Intelligence Technology \textnormal{\small (Focus: Compound AI \& RAG)}}{Sep 2024 -- June 2026}
+{Delft University of Technology (TU Delft)}{Sep 2024 -- Jun 2026}
+{MSc. Data Science and Artificial Intelligence Technology (Focus: Compound AI \& RAG)}{Delft, Netherlands}
 \resumeSubheading
-{Delft University of Technology (TU Delft)}{Delft, Netherlands}
-{BSc. Computer Science and Engineering with Data variant}{Sep 2020 -- May 2024}
-% \resumeSubheading
-% {Heritage xperiential learning school }{Gurgaon, India}
-% {CBSE Board(12\textsuperscript{th}); Subject: English, Physics, Chemistry, Math, Computer Sci.}{May 2019 -- March 2020}
+{Delft University of Technology (TU Delft)}{Sep 2020 -- May 2024}
+{BSc. Computer Science and Engineering (Data Variant)}{Delft, Netherlands}
 \resumeSubHeadingListEnd
-\vspace{-10pt}
-
-%-----------PROGRAMMING SKILLS-----------
-\section{\color{airforceblue}TECHNICAL SKILLS}
-\begin{itemize}[leftmargin=0in, label={}]
-  \small{\item{
-                \textbf{\normalsize{Programming:}}{ \normalsize{Python \textbullet{} Java \textbullet{} SQL \textbullet{} Scala \textbullet{} C++ \textbullet{} Bash}} \\
-                \vspace{1.2pt}
-                \textbf{\normalsize{ML \& Deep Learning:}}{ \normalsize{PyTorch \textbullet{} HuggingFace \textbullet{} Sentence-Transformers \textbullet{} Scikit-Learn \textbullet{} XGBoost \textbullet{} ONNX \textbullet{} W\&B}} \\
-                \vspace{1.2pt}
-                \textbf{\normalsize{LLMs \& Retrieval:}}{ \normalsize{PyTerrier (Adaptive, DR, RAG) \textbullet{} LangChain \textbullet{} LangGraph \textbullet{} FAISS \textbullet{} BM25 \textbullet{} ColBERT \textbullet{} Cross-Encoders \textbullet{} MonoT5 \textbullet{} Rank Fusion (RRF) \textbullet{} vLLM \textbullet{} ColPali}} \\
-                \vspace{1.2pt}
-                \textbf{\normalsize{Computer Vision:}}{ \normalsize{OpenCV \textbullet{} ROS2 \textbullet{} YOLO \textbullet{} MMAction2 \textbullet{} MMPose}} \\
-                \vspace{1.2pt}
-                \textbf{\normalsize{Frameworks:}}{ \normalsize{Django \textbullet{} Vue.js \textbullet{} Flask \textbullet{} Streamlit \textbullet{} Gradio}} \\
-                \vspace{1.2pt}
-                \textbf{\normalsize{Infrastructure \& Compute:}}{ \normalsize{Docker \textbullet{} Kubernetes \textbullet{} SLURM (DelftBlue HPC) \textbullet{} Git \textbullet{} CI/CD \textbullet{} DVC \textbullet{} GCP Cloud SQL}} \\
-                \vspace{1.2pt}
-                \textbf{\normalsize{Data \& Evaluation:}}{ \normalsize{ir\_measures \textbullet{} ir\_datasets \textbullet{} LLM-as-a-Judge \textbullet{} Pandas \textbullet{} NumPy \textbullet{} Matplotlib \textbullet{} Seaborn \textbullet{} SciPy}} \\
-                \vspace{1.2pt}
-          }}
-\end{itemize}
-\vspace{-16pt}
-
-
-%-----------EXPERIENCE-----------
-\section{\color{airforceblue}WORK EXPERIENCE}
-\resumeSubHeadingListStart
-
-\resumeSubheading
-{Academic Teaching Roles}{TU Delft, Netherlands}
-{Head Teaching Assistant \& Student Assistant}{May 2024 -- Present}
-\resumeItemListStart
-
-\resumeItem{\normalsize{\textbf{Head Teaching Assistant (TI3145TU - 2025)}: Led the course operations for Machine Learning and AI. Previously (2024 edition) streamlined grading by implementing an automated Python Notebook autograder.}}
-
-\resumeItem{\normalsize{\textbf{Teaching Assistant (DSAIT4090)}: Facilitated Natural Language Processing projects and managed paper reviews}}
-
-\resumeItem{\normalsize{\textbf{EdX Student Assistant}: Managed assignments and GitHub codebase for global AI courses \href{https://www.edx.org/learn/artificial-intelligence/delft-university-of-technology-ai-skills-for-engineers-supervised-machine-learning}{\color{blue}\underline{DelftX AIfE5x}} and \href{https://www.edx.org/learn/artificial-intelligence/delft-university-of-technology-ai-skills-introduction-to-unsupervised-deep-and-reinforcement-learning}{\color{blue}\underline{DelftX AIfE6x}}.}}
-
-\resumeItemListEnd
-
-
-\resumeSubheading
-{Research Assistant}{Part time}
-{TU Delft, Delft, Netherlands }{Feb 2024 -- July 2024}
-\resumeItemListStart
-\resumeItem{\normalsize{Improved data storage solutions and resolving discrepancies within the \href{https://doi.org/10.1007/978-3-031-26419-1_1}{\color{blue}\underline{LCDB}}. Also responsible for data cleaning and preprocessing tasks.}}
-\resumeItemListEnd
-
-
-\resumeSubheading
-{Autonomous Driving Software Engineer}{Part time}
-{Formula Student Team Delft, Delft, Netherlands}{Sep 2022 - Oct 2023}
-\resumeItemListStart
-\resumeItem{\normalsize{\textbf{Enhanced perception capabilities with LIDAR}: Developed and optimised Python pipeline for precise cone detection using Robosense M1 LIDAR, integrated with ROS for seamless operation.}}
-\resumeItem{\normalsize{\textbf{Ensured robustness and precision:} Validated pipeline through extensive real-world testing, manually labelled 5000+ clusters for fine-tuning models, ensuring high precision in detection.}}
-\resumeItem{\normalsize{\textbf{Streamlined development workflows}: Improved code efficiency and reliability, organised codebase on GitHub for accelerated development and collaboration, contributing to 4th place in autonomous acceleration at FSG.}}
-\resumeItemListEnd
-
-\resumeSubheading
-{Software Developer}{Part time}
-{Interko Heat Exchangers \& Ripening Solutions, Delft, Netherlands}{Nov 2022 -- Sep 2023}
-\resumeItemListStart
-\resumeItem{\normalsize{Worked on creating an automated reporting system using Google Cloud and Niagara Framework V4.}}
-\resumeItem{\normalsize{Setup py-latex to generate PDF report and used Cloud SQL to automate data collection from fruit ripening rooms.}}
-\resumeItemListEnd
-
-\resumeSubheading
-{Machine Learning Research Intern}{Intership}
-{FN MathLogic Consulting Services, Haryana, Gurugram }{July 2022 - Oct 2022}
-\resumeItemListStart
-\resumeItem{\normalsize{Leveraged unsupervised learning for tabular data classification.}}
-\resumeItem{\normalsize{Conducted comparative analysis of Self and Semi-supervised models like VIME, TabNet, and SubTab. Demonstrated enhanced model performance through pretraining, surpassing control results.}}
-\resumeItemListEnd
-
-
-% copy and paste above resumeSubheading block to add more 
-\resumeSubHeadingListEnd
-\vspace{-12pt}
-
-
-
-
-%-----------PROJECTS-----------
-\section{\color{airforceblue}RESEARCH \& UNIVERSITY PROJECTS}
-\resumeItemListStart
-\vspace{0.5pt}
-
-\resumeItem{\normalsize{\textbf{Master's Thesis: Scaling Laws for Compound AI Systems} \href{https://github.com/pratham2442000/MasterThesis}{\color{blue}\underline{GitHub Repository}} \textbar{} \href{https://resolver.tudelft.nl/uuid:f0406b81-8b50-47c9-a44b-5da89c59c916}{\color{blue}\underline{TU Delft Repository}}, Investigated test-time compute allocation and empirical scaling laws in multi-stage Compound AI / RAG pipelines across retrieval depth ($c$), query breadth ($n$ LLM rewrites), and adaptive budget allocation. Built reproducible benchmarking pipelines comparing sparse (BM25) and dense (TCT-ColBERT) retrievers, neural cross-encoders (MiniLM-L6) and generative rerankers (MonoT5), 6 rank fusion algorithms (RRF, Borda, CombMAX, Exp4Fuse), and adaptive graph reranking (ORE, ReformIR) across MS~MARCO (8.8M), DPR-w100 (21M), and 2WikiMultiHopQA on the DelftBlue HPC cluster (NVIDIA V100). Quantified the 15--17\% Oracle Recall gap, evaluated downstream QA generation (Llama 3.2, LLM-as-a-Judge), and open-sourced the experimental framework.\\
-\textbf{Tools \& Frameworks:} PyTerrier (\texttt{dr}, \texttt{adaptive}, \texttt{rag}, \texttt{t5}), FAISS, PyTorch, Hugging Face, Sentence-Transformers, LangChain, LangGraph, vLLM, OpenAI API, ir\_datasets, ir\_measures, SLURM HPC.}}
-\vspace{-5pt}
-
-\resumeItem{\normalsize{\textbf{ML Model Deployment Project} \href{https://github.com/remla2025-team16}{\color{blue}\underline{GitHub Project}}, Collaborated in a multi-repo project with 2 other students to design, train, and deploy a machine learning model as a scalable web service. Developed modular Python components for model training, API integration, and automated CI/CD workflows. Ensured robust model versioning, Dockerized deployments, and seamless integration with front-end and operations pipelines.}}
-\vspace{-5pt}
-
-\resumeItem{\normalsize{\textbf{ColPali on CronicalDataset} \href{https://github.com/pratham2442000/dsait4050-ir-project}{\color{blue}\underline{GitHub repository}}, Implemented and evaluated a ColPali-based multimodal retrieval pipeline on the CronicalDataset. Built data preprocessing and indexing, fine-tuned embeddings, and benchmarked retrieval quality (MAP, nDCG, Recall@k) with ablations over prompts/encoders. Delivered reproducible Jupyter workflows, Python modules, and clear documentation while collaborating on model selection, error analysis, and experiment tracking.}}
-% \vspace{-5pt}
-
-\resumeItem{\normalsize{\textbf{Multi-Cow Lameness Detection} \href{https://msmink01.github.io/multi-cow-lameness-detection/}{\color{blue}\underline{Project site}}, Designed and built an end-to-end computer vision pipeline along with 2 other students to automatically detect lameness in complex multi-cow scenes, including multi-object detection and tracking, gait feature extraction, and lameness classification; curated/annotated data, evaluated models.}}
-% \vspace{-5pt}
-
-\resumeItem{\normalsize{\textbf{RAG Group Project for DSAIT4090} \href{https://github.com/pratham2442000/DSAIT4090_RAG_group_project}{\color{blue}\underline{GitHub repository }}, Developed a RAG system for open-domain QA with a Python pipeline for preprocessing, embeddings, and semantic search. Integrated retrieval with generative components, ensuring modularity, reproducibility, and clear documentation while contributing to design, reviews, and evaluation.}}
-% \vspace{-5pt}
-
-
-\resumeItem{\normalsize{\textbf{AIP Project} \href{https://github.com/pratham2442000/dsait4120-AIP-Project}{\color{blue}\underline{GitHub repository }}, Contributed to a machine learning image processing app by developing UI logic, state management, and core features. Implemented a pixel art module, engineered depth estimation for style transfer methods, and ensured modular, high-quality code in a multidisciplinary team.}}
-% \vspace{-5pt}
-
-
-\resumeItem{\normalsize{\textbf{ARTIST Tool for KB, nationale bibliotheek}, Created Text simplification tool for software project (CSE2000 course) with 5 other students; incorporates a client-provided ML model, alongside multiple readability metrics to validate simplification efficacy. Python and Django are chosen for the back-end, providing robustness and scalability, while Vue.js for the front-end for its ease of use and flexibility.}}
-% \vspace{-5pt}
-
-
-\resumeItemListEnd
-
-\vspace{-12pt}
-%
-
-%-----------Publications---------------
-\section{\color{airforceblue}PUBLICATIONS}
-
-\resumeItemListStart
-\resumeItem{\normalsize{\textbf{Learning Curve Extrapolation using Machine Learning: Benefits and Limitations of using LCPFN for Learning Curve Extrapolation }\href{https://resolver.tudelft.nl/uuid:a2c5e474-cd2d-4096-bc2d-5ef2ac76803f}{\color{blue}\underline{Link to Publication}}}}
-
-\vspace{-5pt}
-
-\resumeItem{\normalsize{\textbf{Scaling Laws for Compound AI Systems: More Compute, More Problems? Rethinking Scaling Laws for Retrieval-Augmented Generation} \href{https://resolver.tudelft.nl/uuid:f0406b81-8b50-47c9-a44b-5da89c59c916}{\color{blue}\underline{TU Delft Repository}} \textbar{} \href{https://github.com/pratham2442000/MasterThesis}{\color{blue}\underline{GitHub Repository}}}}
-
-\vspace{-5pt}
-
-
-
-\resumeItemListEnd
-
 \vspace{-8pt}
 
-%-----------EXTRACURRICULAR---------------
-\section{\color{airforceblue}EXTRACURRICULAR ACTIVITIES}
+%----------- SKILLS (CLEAN ATS TOKENIZATION) -----------
+\section{Skills}
+\begin{itemize}[leftmargin=0in, label={}, topsep=0pt, itemsep=1.5pt]
+  \normalsize{\item{
+                \textbf{Programming Languages:}{ Python, C++, Java, SQL, Scala, Bash} \\
+                \textbf{AI/ML \& Deep Learning:}{ PyTorch, Hugging Face Transformers, Scikit-Learn, XGBoost, Weights \& Biases (W\&B)} \\
+                \textbf{LLMs \& Information Retrieval:}{Generative AI, RAG, PyTerrier (Adaptive, DR, T5), LangChain, FAISS, BM25, ColBERT, Cross-Encoders, ColPali, LLM-as-a-Judge} \\
+                \textbf{Computer Vision \& Robotics:}{ OpenCV, ROS 2, YOLO, MMAction2, MMPose, LiDAR Processing} \\
+                \textbf{Backend \& Web Frameworks:}{ FastAPI, Flask, Django, Vue.js, Streamlit, Gradio} \\
+                \textbf{Infrastructure:}{ Docker, Kubernetes, SLURM (DelftBlue HPC), Git, CI/CD, DVC, GCP Cloud SQL, Tailscale} \\
+                \textbf{Data \& Evaluation Tools:}{ ir\_measures, ir\_datasets, Pandas, NumPy, SciPy, Matplotlib, Seaborn, Xarray}
+          }}
+\end{itemize}
+\vspace{-15pt}
+%----------- WORK EXPERIENCE -----------
+\section{Work Experience}
+\resumeSubHeadingListStart
 
+\resumeSubheading
+{Head Teaching Assistant \& Student Assistant}{May 2024 -- Aug 2026}
+{Delft University of Technology (TU Delft)}{Delft, Netherlands}
 \resumeItemListStart
-\resumeItem{\normalsize{\textbf{CERN Master Class} at CMS Collaboration at Geneva, Switzerland. - {June 2019} }}
+\resumeItem{\textbf{ML and AI Minor (TI3145TU):} Led ML and AI course operations for 300+ students. Streamlined grading by engineering an automated Python notebook autograder for deterministic grading.}
+\resumeItem{\textbf{Graduate Natural Language Processing Research Course (DSAIT4090):} Facilitated NLP research projects and led paper reviews for graduate student cohorts.}
+\resumeItem{\textbf{Global AI Courses (EdX):} Maintained GitHub repositories, Graded assignments, and answered queries on EdX forums for global AI courses \href{https://www.edx.org/learn/artificial-intelligence/delft-university-of-technology-ai-skills-for-engineers-supervised-machine-learning}{\color{linkblue}\underline{DelftX AIfE5x (Supervised ML)}} and \href{https://www.edx.org/learn/artificial-intelligence/delft-university-of-technology-ai-skills-introduction-to-unsupervised-deep-and-reinforcement-learning}{\color{linkblue}\underline{DelftX AIfE6x (Deep \& RL)}}.}
+\resumeItemListEnd
+\vspace{-5pt}
+\resumeSubheading
+{Research Assistant}{Feb 2024 -- Jul 2024}
+{Delft University of Technology (TU Delft)}{Delft, Netherlands}
+\resumeItemListStart
+\resumeItem{\textbf{Database Schema Optimization:} Engineered optimized data storage schemas and resolved consistency discrepancies within the Learning Curve Database using Xarray (\href{https://doi.org/10.1007/978-3-031-26419-1_1}{\color{linkblue}\underline{LCDB}}).}
+\resumeItem{\textbf{Automated Preprocessing:} Automated data cleaning, validation, and preprocessing pipelines in Python for downstream analytical benchmarking.}
+\resumeItemListEnd
+\vspace{-5pt}
+\resumeSubheading
+{Autonomous Driving Software Engineer}{Sep 2022 -- Oct 2023}
+{Formula Student Team Delft}{Delft, Netherlands}
+\resumeItemListStart
+\resumeItem{\textbf{Real-Time LiDAR Perception Pipeline:} Designed and optimized real-time Python and C++ cone-detection pipelines using RoboSense M1 LiDAR integrated with ROS 2 under strict latency budgets (<40ms per frame).}
+\resumeItem{\textbf{Dataset Annotation \& Model Precision:} Annotated and validated 5,000+ 3D point-cloud clusters for fine-tuning segmentation models, achieving high precision in dynamic track environments.}
+\resumeItem{\textbf{Streamlined Development:} Standardized CI/CD testing with GitHub Actions pre-commit hooks, contributing to 4th place overall in Autonomous Acceleration at Formula Student Germany (FSG).}
+\resumeItemListEnd
+\vspace{-5pt}
+\resumeSubheading
+{Software Developer Intern}{Nov 2022 -- Sep 2023}
+{Interko Heat Exchangers \& Ripening Solutions}{Delft, Netherlands}
+\resumeItemListStart
+\resumeItem{\textbf{Cloud Telemetry \& Ingestion:} Engineered an automated telemetry ingestion and reporting service using Google Cloud SQL and the Niagara Framework V4.}
+\resumeItem{\textbf{Automated Reporting Pipelines:} Developed end-to-end PDF reporting pipelines with \texttt{PyLaTeX}, automating real-time sensor data collection across fruit ripening facilities.}
+\resumeItemListEnd
 \vspace{-5pt}
 
-\resumeItem{\normalsize{Worked on the farewell team to create the video using Adobe Premiere Pro and Adobe After Effects at Heritage Xperiential Learning School - {December 2018} }}
+\resumeSubheading
+{Machine Learning Research Intern}{Jul 2022 -- Oct 2022}
+{FN MathLogic Consulting Services}{Gurugram, India}
+\resumeItemListStart
+\resumeItem{\textbf{Self-Supervised Comparative Model Benchmarking:} Researched unsupervised and semi-supervised representation learning for complex tabular classification tasks. Conducted comparative benchmarks of self-supervised tabular models (VIME, TabNet, SubTab), demonstrating significant downstream accuracy gains through pretraining over standard baselines.}
+\resumeItemListEnd
 \vspace{-5pt}
+\resumeSubHeadingListEnd
+\vspace{-8pt}
+%----------- PROJECTS -----------
+\section{Projects}
+\resumeItemListStart
 
-\resumeItem{\normalsize{\textbf{Bitcoin and Blockchain Workshop(Excellence in School Education)} at Indian Institute of Technology, Delhi - {December 2017} }}
-\vspace{-5pt}
+\resumeItem{\textbf{Master's Thesis: Scaling Laws for Compound AI Systems} [\href{https://github.com/pratham2442000/MasterThesis}{\color{linkblue}\underline{GitHub}}] [\href{https://resolver.tudelft.nl/uuid:f0406b81-8b50-47c9-a44b-5da89c59c916}{\color{linkblue}\underline{TU Delft Repository}}]\\
+  Investigated test-time compute allocation and empirical scaling laws in multi-stage Compound AI / RAG pipelines across candidate retrieval depth and query breadth. Built reproducible benchmarking pipelines comparing sparse and dense retrievers, cross-encoders, generative rerankers, and rank fusion algorithms across 30M documents (MS~MARCO, DPR-w100) on the DelftBlue HPC cluster. Quantified the 15--17\% Oracle Recall gap, evaluated downstream QA generation with Llama 3.2 and LLM-as-a-Judge, and open-sourced the experimental framework.}
+\vspace{2pt}
+\resumeItem{\textbf{Microservice ML Deployment Pipeline} [\href{https://github.com/remla2025-team16}{\color{linkblue}\underline{GitHub}}]\\
+  Architected and deployed a multi-repository production ML application featuring decoupled microservices. Implemented automated CI/CD pipelines with GitHub Actions for linting, testing, and Docker containerization, deploying services onto Kubernetes with Istio routing and Prometheus monitoring.}
+\vspace{2pt}
+\resumeItem{\textbf{Multimodal Retrieval with ColPali} [\href{https://github.com/pratham2442000/dsait4050-ir-project}{\color{linkblue}\underline{GitHub}}]
 
+  Engineered a ColPali-based multimodal Information Retrieval pipeline on historical document corpora. Built document image preprocessing, indexing, and embedding fine-tuning. Benchmarked retrieval quality (MAP, nDCG, Recall@k) against BM25 lexical baselines and evaluated downstream generative synthesis using Llama.}
+\vspace{2pt}
+\resumeItem{\textbf{End-to-End Multi-Cow Lameness Detection (Computer Vision)} [\href{https://msmink01.github.io/multi-cow-lameness-detection/}{\color{linkblue}\underline{Project Site}}]
+  \vspace{2pt}
+  Developed a 2-stage spatiotemporal CV pipeline in collaboration with UW-Madison School of Veterinary Medicine across 6+ hours of GoPro footage (9,000 cows). Trained YOLOv8L-Pose to detect hoof keypoints under severe occlusion, integrated BoT-SORT multi-object tracking, and classified clinical vs. subclinical lameness across 7,897 keypoint sequences using GRU and BiLSTM models with weighted loss.}
+\vspace{2pt}
+\resumeItem{\textbf{Multi-Hop RAG System for Open-Domain QA} [\href{https://github.com/pratham2442000/DSAIT4090_RAG_group_project}{\color{linkblue}\underline{GitHub}}]\\
+  Built a modular RAG pipeline on the Wiki-MuSiQue multi-hop question answering corpus for compositional and bridge-comparison queries. Integrated dense passage embeddings, FAISS vector search, and the Dexter evaluation framework to track retrieval quality and context selection against gold reasoning chains.}
+\vspace{2pt}
+\resumeItem{\textbf{Neural Style Transfer \& Computer Vision Suite} [\href{https://github.com/pratham2442000/dsait4120-AIP-Project}{\color{linkblue}\underline{GitHub}}]\\
+  Developed an interactive PyTorch and Gradio application featuring zero-shot text-prompted mask extraction using Grounding DINO (Swin-T) and Segment Anything (SAM ViT-B). Implemented monocular depth-aware style transfer, channel attention style mixing, and a dynamic color palette pixel art quantization module.}
+\vspace{2pt}
+\resumeItem{\textbf{ARTIST: Text Simplification Platform (KB National Library of the Netherlands)}\\
+  Engineered a full-stack text simplification platform using Django REST Framework and Vue.js for the National Library of the Netherlands. Integrated client machine learning models alongside multiple readability metrics (Flesch-Kincaid, automated linguistic metrics) to validate simplification effectiveness in production.}
+\vspace{2pt}
+\resumeItem{\textbf{Bare-Metal Linux Homelab \& Self-Hosted Infrastructure} [\href{https://github.com/pratham2442000}{\color{linkblue}\underline{GitHub}}]\\
+  Administer a dedicated headless Ubuntu home server running containerized workloads via Docker Compose. Deployed \textbf{Pi-hole} paired with Unbound recursive DNS for network-wide ad-blocking and DNS sinkholing, self-hosts \textbf{Immich} for high-performance automated photo/video backup, and configured a zero-trust \textbf{Tailscale} mesh VPN for secure remote SSH administration.}
+\resumeItemListEnd
+\vspace{-8pt}
 
-% copy and paste above resumeItem block to add more 
+%----------- PUBLICATIONS -----------
+\section{Publications}
+\resumeItemListStart
+\resumeItem{\textbf{Scaling Laws for Compound AI Systems: More Compute, More Problems? Rethinking Scaling Laws for Retrieval-Augmented Generation} [\href{https://resolver.tudelft.nl/uuid:f0406b81-8b50-47c9-a44b-5da89c59c916}{\color{linkblue}\underline{TU Delft Repository}}] [\href{https://github.com/pratham2442000/MasterThesis}{\color{linkblue}\underline{GitHub Repository}}]}
+\resumeItem{\textbf{Learning Curve Extrapolation using Machine Learning: Benefits and Limitations of using LCPFN for Learning Curve Extrapolation} [\href{https://resolver.tudelft.nl/uuid:a2c5e474-cd2d-4096-bc2d-5ef2ac76803f}{\color{linkblue}\underline{Publication Link}}]}
+\resumeItemListEnd
+\vspace{-8pt}
+
+%----------- EXTRACURRICULAR ACTIVITIES -----------
+\section{Extracurricular Activities}
+\resumeItemListStart
+\resumeItem{\textbf{CERN Master Class} at CMS Collaboration at Geneva, Switzerland -- Jun 2019}
+\resumeItem{\textbf{Multimedia Production Team:} Produced the graduation farewell video using Adobe Premiere Pro and Adobe After Effects at Heritage Xperiential Learning School -- Dec 2018}
+\resumeItem{\textbf{Bitcoin and Blockchain Workshop (Excellence in School Education)} at Indian Institute of Technology (IIT) Delhi -- Dec 2017}
 \resumeItemListEnd
 
-\vspace{-12pt}
-
 \end{document}
-

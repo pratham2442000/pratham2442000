@@ -63,21 +63,44 @@ python sponsor_jobs/cli.py open 7
 # View all submitted applications
 python sponsor_jobs/cli.py applied
 
-# Update status (e.g. interviewing, offered, rejected)
+# Update status (e.g. interviewing, offered)
 python sponsor_jobs/cli.py status 7 interviewing --notes "Round 1 scheduled"
+
+# Mark a job as rejected (automatically hides it from recommendations & active views)
+python sponsor_jobs/cli.py reject 7 --notes "Position closed"
+python sponsor_jobs/cli.py reject "Anaplan"
+python sponsor_jobs/cli.py reject --list
 
 # Revert back to unapplied
 python sponsor_jobs/cli.py unapply 7
+
+# Manually add an external role (e.g. from LinkedIn, referral, or company website)
+python sponsor_jobs/cli.py add "Stripe" "Software Engineer - AI" --url "https://linkedin.com/jobs/view/..." --location "Amsterdam, Netherlands" --notes "Applied via referral"
+
+# Extract keywords, match score & cover letter recommendation from a full JD
+python sponsor_jobs/cli.py extract "Paste any job description text here..."
+python sponsor_jobs/cli.py extract --file sample_jd.txt
 ```
 
-### 4. Verify If Any Company Sponsors Visas
+### 4. Paste Full Job Descriptions in Web Dashboard
+1. Open the dashboard with `python sponsor_jobs/cli.py web`.
+2. Click **`📋 Paste JD & Add Role`**.
+3. Paste the entire job description directly into the textarea (Ctrl+V / Cmd+V).
+4. **Instantly view**:
+   - All technical keywords categorized into **Languages**, **AI/ML**, **GenAI & RAG**, **Data Engineering**, **Cloud & MLOps**, **Perception & Robotics**, and **Architecture**.
+   - Profile match score % against your background.
+   - Exact recommended Cover Letter Body from `letter_bodies.tex`.
+   - 1-Click **`📋 Copy All Keywords`** button to paste directly into your CV or notes.
+   - 1-Click **`⚡ Auto-Fill Form Fields`** to populate Title, Company, Location, and top skills.
+
+### 5. Verify If Any Company Sponsors Visas
 ```bash
 python sponsor_jobs/cli.py check "ASML"
 python sponsor_jobs/cli.py check "Databricks"
 python sponsor_jobs/cli.py check "TomTom"
 ```
 
-### 5. Run the Complete Daily Update
+### 6. Run the Complete Daily Update
 ```bash
 python sponsor_jobs/cli.py update-daily
 ```

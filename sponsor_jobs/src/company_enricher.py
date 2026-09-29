@@ -17,7 +17,7 @@ DB_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "data", 
 
 # Format: keyword: (clean_name, domain, careers_url, ats_type, ats_slug)
 CURATED_SPONSORS_CONFIG = {
-    # --- Greenhouse ---
+    # --- Greenhouse: Global & EU Tech / AI / Infrastructure ---
     "databricks": ("Databricks", "https://www.databricks.com", "https://www.databricks.com/company/careers", "greenhouse", "databricks"),
     "messagebird": ("Bird (MessageBird)", "https://bird.com", "https://bird.com/careers", "greenhouse", "bird"),
     "gitlab": ("GitLab", "https://about.gitlab.com", "https://about.gitlab.com/jobs", "greenhouse", "gitlab"),
@@ -29,24 +29,85 @@ CURATED_SPONSORS_CONFIG = {
     "nebius": ("Nebius AI", "https://nebius.com", "https://nebius.com/careers", "greenhouse", "nebius"),
     "canonical": ("Canonical", "https://canonical.com", "https://canonical.com/careers", "greenhouse", "canonical"),
     "figma": ("Figma", "https://www.figma.com", "https://www.figma.com/careers", "greenhouse", "figma"),
-    "imc": ("IMC Trading", "https://www.imc.com", "https://careers.imc.com", "greenhouse", "imc"),
     "adyen": ("Adyen", "https://www.adyen.com", "https://careers.adyen.com/vacancies", "greenhouse", "adyen"),
-    "flow traders": ("Flow Traders", "https://www.flowtraders.com", "https://www.flowtraders.com/careers", "greenhouse", "flowtraders"),
     "jetbrains": ("JetBrains", "https://www.jetbrains.com", "https://www.jetbrains.com/careers", "greenhouse", "jetbrains"),
     "braze": ("Braze", "https://www.braze.com", "https://www.braze.com/company/careers", "greenhouse", "braze"),
     "crunchyroll": ("Crunchyroll", "https://www.crunchyroll.com", "https://www.crunchyroll.com/careers", "greenhouse", "crunchyroll"),
     "anthropic": ("Anthropic", "https://www.anthropic.com", "https://www.anthropic.com/careers", "greenhouse", "anthropic"),
     "scaleai": ("Scale AI", "https://scale.com", "https://scale.com/careers", "greenhouse", "scaleai"),
+    "wandb": ("Weights & Biases", "https://wandb.ai", "https://boards.greenhouse.io/wandb", "greenhouse", "wandb"),
+    "pinecone": ("Pinecone", "https://www.pinecone.io", "https://boards.greenhouse.io/pinecone", "greenhouse", "pinecone"),
+    "snowflake": ("Snowflake", "https://www.snowflake.com", "https://boards.greenhouse.io/snowflake", "greenhouse", "snowflake"),
+    "clickhouse": ("ClickHouse", "https://clickhouse.com", "https://boards.greenhouse.io/clickhouse", "greenhouse", "clickhouse"),
+    "docker": ("Docker", "https://www.docker.com", "https://boards.greenhouse.io/docker", "greenhouse", "docker"),
+    "hashicorp": ("HashiCorp", "https://www.hashicorp.com", "https://boards.greenhouse.io/hashicorp", "greenhouse", "hashicorp"),
+    "grafanalabs": ("Grafana Labs", "https://grafana.com", "https://boards.greenhouse.io/grafanalabs", "greenhouse", "grafanalabs"),
+    "temporal": ("Temporal", "https://temporal.io", "https://boards.greenhouse.io/temporal", "greenhouse", "temporal"),
+    "redis": ("Redis", "https://redis.io", "https://boards.greenhouse.io/redis", "greenhouse", "redis"),
+    "neo4j": ("Neo4j", "https://neo4j.com", "https://boards.greenhouse.io/neo4j", "greenhouse", "neo4j"),
+    "github": ("GitHub", "https://github.com", "https://boards.greenhouse.io/github", "greenhouse", "github"),
+    "miro": ("Miro", "https://miro.com", "https://boards.greenhouse.io/miro", "greenhouse", "miro"),
+    "picnic": ("Picnic Technologies", "https://picnic.app", "https://boards.greenhouse.io/picnic", "greenhouse", "picnic"),
 
-    # --- Lever ---
+    # --- Greenhouse: Australia Tech Leaders ---
+    "canva": ("Canva", "https://www.canva.com", "https://boards.greenhouse.io/canva", "greenhouse", "canva"),
+    "safetyculture": ("SafetyCulture", "https://safetyculture.com", "https://boards.greenhouse.io/safetyculture", "greenhouse", "safetyculture"),
+    "cultureamp": ("Culture Amp", "https://www.cultureamp.com", "https://boards.greenhouse.io/cultureamp", "greenhouse", "cultureamp"),
+    "employmenthero": ("Employment Hero", "https://employmenthero.com", "https://boards.greenhouse.io/employmenthero", "greenhouse", "employmenthero"),
+
+    # --- Greenhouse: United Kingdom Scaleups & Tech ---
+    "wayve": ("Wayve (Autonomous AI)", "https://wayve.ai", "https://boards.greenhouse.io/wayve", "greenhouse", "wayve"),
+    "oxa": ("Oxa Autonomy", "https://oxa.tech", "https://boards.greenhouse.io/oxa", "greenhouse", "oxa"),
+    "revolut": ("Revolut", "https://www.revolut.com", "https://boards.greenhouse.io/revolut", "greenhouse", "revolut"),
+    "monzo": ("Monzo", "https://monzo.com", "https://boards.greenhouse.io/monzo", "greenhouse", "monzo"),
+    "wise": ("Wise", "https://wise.com", "https://boards.greenhouse.io/wise", "greenhouse", "wise"),
+    "deliveroo": ("Deliveroo", "https://deliveroo.co.uk", "https://boards.greenhouse.io/deliveroo", "greenhouse", "deliveroo"),
+    "starling": ("Starling Bank", "https://www.starlingbank.com", "https://boards.greenhouse.io/starlingbank", "greenhouse", "starlingbank"),
+    "checkout": ("Checkout.com", "https://www.checkout.com", "https://boards.greenhouse.io/checkout", "greenhouse", "checkout"),
+    "gocardless": ("GoCardless", "https://gocardless.com", "https://boards.greenhouse.io/gocardless", "greenhouse", "gocardless"),
+    "deepmind": ("Google DeepMind", "https://deepmind.google", "https://boards.greenhouse.io/deepmind", "greenhouse", "deepmind"),
+    "improbable": ("Improbable", "https://improbable.io", "https://boards.greenhouse.io/improbable", "greenhouse", "improbable"),
+
+    # --- Greenhouse: Quant, HFT & Market Making (Amsterdam, London, Sydney) ---
+    "imc": ("IMC Trading", "https://www.imc.com", "https://careers.imc.com", "greenhouse", "imc"),
+    "flow traders": ("Flow Traders", "https://www.flowtraders.com", "https://www.flowtraders.com/careers", "greenhouse", "flowtraders"),
+    "optiver": ("Optiver", "https://www.optiver.com", "https://boards.greenhouse.io/optiver", "greenhouse", "optiver"),
+    "jumptrading": ("Jump Trading", "https://www.jumptrading.com", "https://boards.greenhouse.io/jumptrading", "greenhouse", "jumptrading"),
+    "janestreet": ("Jane Street", "https://www.janestreet.com", "https://boards.greenhouse.io/janestreet", "greenhouse", "janestreet"),
+    "citadel": ("Citadel", "https://www.citadel.com", "https://boards.greenhouse.io/citadel", "greenhouse", "citadel"),
+    "mavensecurities": ("Maven Securities", "https://www.mavensecurities.com", "https://boards.greenhouse.io/mavensecurities", "greenhouse", "mavensecurities"),
+    "sig": ("Susquehanna (SIG)", "https://sig.com", "https://boards.greenhouse.io/sig", "greenhouse", "sig"),
+    "squarepoint": ("Squarepoint Capital", "https://www.squarepoint-capital.com", "https://boards.greenhouse.io/squarepointcapital", "greenhouse", "squarepointcapital"),
+    "drw": ("DRW", "https://drw.com", "https://boards.greenhouse.io/drw", "greenhouse", "drw"),
+
+    # --- Greenhouse: Autonomous Vehicles, Robotics & Motorsport ---
+    "rimac": ("Rimac Technology", "https://www.rimac-technology.com", "https://boards.greenhouse.io/rimacautomobili", "greenhouse", "rimacautomobili"),
+    "appliedintuition": ("Applied Intuition", "https://www.appliedintuition.com", "https://boards.greenhouse.io/appliedintuition", "greenhouse", "appliedintuition"),
+    "skydio": ("Skydio", "https://www.skydio.com", "https://boards.greenhouse.io/skydio", "greenhouse", "skydio"),
+    "torc": ("Torc Robotics", "https://torc.ai", "https://boards.greenhouse.io/torcrobotics", "greenhouse", "torcrobotics"),
+    "redbullracing": ("Red Bull Technology / Racing", "https://www.redbullracing.com", "https://boards.greenhouse.io/redbullracing", "greenhouse", "redbullracing"),
+    "mercedesf1": ("Mercedes-AMG Petronas F1 Team", "https://www.mercedesamgf1.com", "https://boards.greenhouse.io/mercedesamgpetronasf1", "greenhouse", "mercedesamgpetronasf1"),
+    "mclaren": ("McLaren Racing", "https://www.mclaren.com", "https://boards.greenhouse.io/mclaren", "greenhouse", "mclaren"),
+    "williamsf1": ("Williams Racing", "https://www.williamsf1.com", "https://boards.greenhouse.io/williamsracing", "greenhouse", "williamsracing"),
+
+    # --- Lever: Global, UK & EU ---
     "mollie": ("Mollie", "https://www.mollie.com", "https://jobs.mollie.com", "lever", "mollie"),
     "palantir": ("Palantir Technologies", "https://www.palantir.com", "https://www.palantir.com/careers", "lever", "palantir"),
     "spotify": ("Spotify", "https://www.spotify.com", "https://www.lifeatspotify.com", "lever", "spotify"),
+    "atlassian": ("Atlassian", "https://www.atlassian.com", "https://jobs.lever.co/atlassian", "lever", "atlassian"),
+    "deepl": ("DeepL", "https://www.deepl.com", "https://jobs.lever.co/deepl", "lever", "deepl"),
+    "mistral": ("Mistral AI", "https://mistral.ai", "https://jobs.lever.co/mistral", "lever", "mistral"),
+    "einride": ("Einride", "https://www.einride.tech", "https://jobs.lever.co/einride", "lever", "einride"),
+    "wintermute": ("Wintermute", "https://www.wintermute.com", "https://jobs.lever.co/wintermute-trading", "lever", "wintermute-trading"),
+    "wetransfer": ("WeTransfer", "https://wetransfer.com", "https://jobs.lever.co/wetransfer", "lever", "wetransfer"),
+    "swapfiets": ("Swapfiets", "https://swapfiets.com", "https://jobs.lever.co/swapfiets", "lever", "swapfiets"),
+    "vandebron": ("Vandebron", "https://vandebron.nl", "https://jobs.lever.co/vandebron", "lever", "vandebron"),
 
-    # --- Ashby ---
+    # --- Ashby: AI, DevTools & Modern SaaS ---
     "openai": ("OpenAI", "https://openai.com", "https://openai.com/careers", "ashby", "openai"),
     "cohere": ("Cohere", "https://cohere.com", "https://cohere.com/careers", "ashby", "cohere"),
     "perplexity": ("Perplexity AI", "https://www.perplexity.ai", "https://www.perplexity.ai/careers", "ashby", "perplexity"),
+    "elevenlabs": ("ElevenLabs", "https://elevenlabs.io", "https://jobs.ashbyhq.com/elevenlabs", "ashby", "elevenlabs"),
     "notion": ("Notion", "https://www.notion.so", "https://www.notion.so/careers", "ashby", "notion"),
     "cursor": ("Cursor / Anysphere", "https://www.cursor.com", "https://www.cursor.com/careers", "ashby", "cursor"),
     "ramp": ("Ramp", "https://ramp.com", "https://ramp.com/careers", "ashby", "ramp"),
@@ -54,6 +115,13 @@ CURATED_SPONSORS_CONFIG = {
     "sentry": ("Sentry", "https://sentry.io", "https://sentry.io/careers", "ashby", "sentry"),
     "linear": ("Linear", "https://linear.app", "https://linear.app/careers", "ashby", "linear"),
     "weaviate": ("Weaviate", "https://weaviate.io", "https://weaviate.io/company/careers", "ashby", "weaviate"),
+    "qdrant": ("Qdrant", "https://qdrant.tech", "https://jobs.ashbyhq.com/qdrant", "ashby", "qdrant"),
+    "langchain": ("LangChain", "https://www.langchain.com", "https://jobs.ashbyhq.com/langchain", "ashby", "langchain"),
+    "posthog": ("PostHog", "https://posthog.com", "https://jobs.ashbyhq.com/posthog", "ashby", "posthog"),
+    "vercel": ("Vercel", "https://vercel.com", "https://jobs.ashbyhq.com/vercel", "ashby", "vercel"),
+    "supabase": ("Supabase", "https://supabase.com", "https://jobs.ashbyhq.com/supabase", "ashby", "supabase"),
+    "runway": ("Runway", "https://runwayml.com", "https://jobs.ashbyhq.com/runwayml", "ashby", "runwayml"),
+    "synthesia": ("Synthesia", "https://www.synthesia.io", "https://jobs.ashbyhq.com/synthesia", "ashby", "synthesia"),
 
     # --- Recruitee ---
     "bunq": ("bunq", "https://www.bunq.com", "https://www.bunq.com/jobs", "recruitee", "bunq"),
@@ -61,11 +129,13 @@ CURATED_SPONSORS_CONFIG = {
     "channelengine": ("ChannelEngine", "https://www.channelengine.com", "https://www.channelengine.com/careers", "recruitee", "channelengine"),
     "da vinci": ("Da Vinci Derivatives", "https://davinciderivatives.com", "https://davinciderivatives.com/careers", "recruitee", "davinci-derivatives"),
     "helloprint": ("HelloPrint", "https://www.helloprint.com", "https://jobs.helloprint.com", "recruitee", "helloprint"),
+    "fairphone": ("Fairphone", "https://www.fairphone.com", "https://fairphone.recruitee.com", "recruitee", "fairphone"),
 
     # --- Personio ---
     "pair finance": ("PAIR Finance", "https://www.pairfinance.com", "https://www.pairfinance.com/careers", "personio", "pair"),
     "lepaya": ("Lepaya", "https://www.lepaya.com", "https://www.lepaya.com/careers", "personio", "lepaya"),
     "personio": ("Personio", "https://www.personio.com", "https://www.personio.com/careers", "personio", "personio"),
+    "embotech": ("Embotech", "https://www.embotech.com", "https://embotech.jobs.personio.de", "personio", "embotech"),
 
     # --- Workable ---
     "huggingface": ("Hugging Face", "https://huggingface.co", "https://apply.workable.com/huggingface", "workable", "huggingface"),

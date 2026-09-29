@@ -112,6 +112,17 @@ def init_db(db_path: str = DB_PATH) -> None:
     )
     """)
     
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS sync_runs (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        run_type TEXT DEFAULT 'daily',
+        started_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        completed_at TIMESTAMP,
+        new_jobs_count INTEGER DEFAULT 0,
+        total_jobs_count INTEGER DEFAULT 0
+    )
+    """)
+    
     # Safe migration for existing databases
     cur.execute("PRAGMA table_info(jobs)")
     existing_cols = {row[1] for row in cur.fetchall()}
@@ -123,12 +134,18 @@ def init_db(db_path: str = DB_PATH) -> None:
         cur.execute("ALTER TABLE jobs ADD COLUMN status TEXT DEFAULT 'unapplied'")
     if "notes" not in existing_cols:
         cur.execute("ALTER TABLE jobs ADD COLUMN notes TEXT")
+    if "is_new" not in existing_cols:
+        cur.execute("ALTER TABLE jobs ADD COLUMN is_new INTEGER DEFAULT 1")
+    if "is_senior" not in existing_cols:
+        cur.execute("ALTER TABLE jobs ADD COLUMN is_senior INTEGER DEFAULT 0")
     
     cur.execute("CREATE INDEX IF NOT EXISTS idx_sponsor_clean ON sponsors(clean_name)")
     cur.execute("CREATE INDEX IF NOT EXISTS idx_sponsor_target ON sponsors(is_target_sector)")
     cur.execute("CREATE INDEX IF NOT EXISTS idx_jobs_score ON jobs(match_score DESC)")
     cur.execute("CREATE INDEX IF NOT EXISTS idx_jobs_active ON jobs(is_active)")
     cur.execute("CREATE INDEX IF NOT EXISTS idx_jobs_applied ON jobs(applied)")
+    cur.execute("CREATE INDEX IF NOT EXISTS idx_jobs_is_new ON jobs(is_new)")
+    cur.execute("CREATE INDEX IF NOT EXISTS idx_jobs_is_senior ON jobs(is_senior)")
     
     conn.commit()
     conn.close()

@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  backtester:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: alphadca-backtester
+    restart: unless-stopped
+    ports:
+      # Exposes port 8000 on the Ubuntu server host.
+      # To access over Tailscale: navigate to http://<your-tailscale-ip>:8000
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
