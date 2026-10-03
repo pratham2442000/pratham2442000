@@ -65,13 +65,13 @@ async def fetch_greenhouse_jobs(session: aiohttp.ClientSession, slug: str, compa
     url = f"https://boards-api.greenhouse.io/v1/boards/{slug}/jobs?content=false"
     jobs = []
     try:
-        async with session.get(url, timeout=aiohttp.ClientTimeout(total=8)) as resp:
+        async with session.get(url, timeout=aiohttp.ClientTimeout(total=20)) as resp:
             if resp.status != 200:
                 return []
             data = await resp.json()
             for r in data.get("jobs", []):
                 title = r.get("title", "").strip()
-                loc = r.get("location", {}).get("name", "Netherlands")
+                loc = (r.get("location", {}) or {}).get("name") or "Remote"
                 job_url = r.get("absolute_url", "")
                 
                 if is_tech_job(title) and is_eu_location(loc):
@@ -96,7 +96,7 @@ async def fetch_lever_jobs(session: aiohttp.ClientSession, slug: str, company_na
     url = f"https://api.lever.co/v0/postings/{slug}?mode=json"
     jobs = []
     try:
-        async with session.get(url, timeout=aiohttp.ClientTimeout(total=8)) as resp:
+        async with session.get(url, timeout=aiohttp.ClientTimeout(total=20)) as resp:
             if resp.status != 200:
                 return []
             data = await resp.json()
@@ -104,7 +104,7 @@ async def fetch_lever_jobs(session: aiohttp.ClientSession, slug: str, company_na
                 return []
             for r in data:
                 title = r.get("text", "").strip()
-                loc = r.get("categories", {}).get("location", "Netherlands")
+                loc = (r.get("categories", {}) or {}).get("location") or "Remote"
                 job_url = r.get("hostedUrl", "")
                 workplace = r.get("workplaceType", "")
                 if workplace and "remote" in workplace.lower() and "remote" not in loc.lower():
@@ -132,7 +132,7 @@ async def fetch_ashby_jobs(session: aiohttp.ClientSession, slug: str, company_na
     url = f"https://api.ashbyhq.com/posting-api/job-board/{slug}"
     jobs = []
     try:
-        async with session.get(url, timeout=aiohttp.ClientTimeout(total=8)) as resp:
+        async with session.get(url, timeout=aiohttp.ClientTimeout(total=20)) as resp:
             if resp.status != 200:
                 return []
             data = await resp.json()
@@ -141,7 +141,7 @@ async def fetch_ashby_jobs(session: aiohttp.ClientSession, slug: str, company_na
                 primary_loc = r.get("location", "")
                 secondary = [s.get("location", "") for s in r.get("secondaryLocations", [])]
                 all_locs = [primary_loc] + secondary if primary_loc else secondary
-                loc_str = ", ".join(filter(None, all_locs)) or "Netherlands"
+                loc_str = ", ".join(filter(None, all_locs)) or "Remote"
                 job_url = r.get("jobUrl") or r.get("applyUrl") or ""
 
                 if is_tech_job(title) and is_eu_location(loc_str):
@@ -366,33 +366,94 @@ async def fetch_bamboohr_jobs(session: aiohttp.ClientSession, slug: str, company
     return jobs
 
 
+REJECT_URL_PATTERNS = [
+    r"/blog", r"/product", r"/solution", r"/service", r"/feature", r"/topic",
+    r"/technolog", r"/event", r"/investor", r"/insight", r"/success-stori",
+    r"/resource", r"/oplossing", r"/assessment", r"/market", r"/competence",
+    r"/job-area", r"/why-", r"/engage", r"/category", r"/partner", r"/customer",
+    r"/whitepaper", r"/pricing", r"/contact", r"/about", r"/news", r"/press",
+    r"/docs", r"/community", r"/privacy", r"/terms", r"/cookie", r"/legal",
+    r"linkedin\.com/company", r"/division", r"/tools", r"\.pdf$", r"\.png$", r"\.jpg$", r"#"
+]
+
+JOB_URL_HINTS = [
+    r"/job[s]?", r"/career", r"/position", r"/opening", r"/vacatur",
+    r"/work-at", r"/join", r"boards\.", r"greenhouse", r"lever\.co"
+]
+
+ROLE_TITLE_PATTERNS = [
+    r"\bengineer\b", r"\bdeveloper\b", r"\barchitect\b", r"\bscientist\b",
+    r"\bspecialist\b", r"\blead\b", r"\bmanager\b", r"\bintern\b",
+    r"\bresearcher\b", r"\bconsultant\b", r"\boperator\b", r"\banalyst\b",
+    r"\bdesigner\b", r"\btechnician\b", r"\bprogrammer\b"
+]
+
+NON_JOB_TITLE_WORDS = [
+    "resources", "tools", "platform", "solutions", "whitepaper", "data sheets", 
+    "ai topics", "overview", "ecosystem", "program", "services"
+]
+
+
 # ==============================================================================
 # 10. DIRECT CAREER WEB PAGE CRAWLER (HTML fallback)
 # ==============================================================================
 async def crawl_html_career_page(session: aiohttp.ClientSession, url: str, company_name: str, sponsor_id: int) -> List[Dict[str, Any]]:
     jobs = []
     try:
-        async with session.get(url, timeout=aiohttp.ClientTimeout(total=6), headers=HEADERS) as resp:
+        async with session.get(url, timeout=aiohttp.ClientTimeout(total=8), headers=HEADERS) as resp:
             if resp.status != 200 or "text/html" not in resp.headers.get("Content-Type", ""):
                 return []
             html_text = await resp.text()
             soup = BeautifulSoup(html_text, "html.parser")
             
             for a in soup.find_all("a", href=True):
-                text = a.get_text().strip()
-                href = a["href"].strip()
-                
-                if href.startswith(("mailto:", "tel:", "javascript:", "#")):
+                raw_href = a["href"].strip()
+                if not raw_href or raw_href.startswith(("#", "javascript:", "mailto:", "tel:")):
                     continue
-                if not text or not is_tech_job(text):
+
+                full_url = raw_href if raw_href.startswith("http") else urljoin(url, raw_href)
+
+                # Skip obvious non-job URLs (products, blogs, solutions, marketing landing pages)
+                lower_url = full_url.lower().strip()
+                if any(re.search(pat, lower_url) for pat in REJECT_URL_PATTERNS):
                     continue
-                    
-                full_url = href if href.startswith("http") else f"{url.rstrip('/')}/{href.lstrip('/')}"
+
+                if "zoekterm=" in lower_url or "search=" in lower_url or lower_url.rstrip("/").endswith(("/careers", "/jobs", "/vacatures")):
+                    continue
+
+                raw_title = a.get_text()
+                # Ignore multi-line marketing cards / navigation menus
+                if "\n\n" in raw_title or len(raw_title.splitlines()) > 2:
+                    continue
+
+                title = " ".join(raw_title.split()).strip()
+                lower_title = title.lower()
+
+                if not (8 < len(title) < 100 and is_tech_job(title)):
+                    continue
+
+                if any(bw in lower_title for bw in NON_JOB_TITLE_WORDS) and not any(re.search(p, lower_title) for p in ROLE_TITLE_PATTERNS):
+                    continue
+
+                # Ensure title contains concrete role words or specific vacancy pattern in URL
+                has_role_title_hint = any(re.search(pat, lower_title) for pat in ROLE_TITLE_PATTERNS)
+                has_specific_job_url = any(re.search(pat, lower_url) for pat in [
+                    r"/vacanc", r"/vacatur", r"/o/[a-z0-9\-]+", r"gh_jid=", r"/all-jobs/[a-z0-9\-]+",
+                    r"/position/[a-z0-9\-]+", r"/careers/[a-z0-9\-]+-(engineer|developer|scientist|specialist|lead|architect|manager)"
+                ])
+
+                if not (has_role_title_hint or has_specific_job_url):
+                    continue
+
+                # Exclude non-target geographies mentioned in job titles
+                if any(loc in lower_title for loc in ["pune", "india", "bangalore", "chennai", "mumbai"]):
+                    continue
+
                 if is_eu_location("Netherlands"):
                     jobs.append({
                         "sponsor_id": sponsor_id,
                         "company_name": company_name,
-                        "title": text,
+                        "title": title,
                         "location": "Netherlands",
                         "url": full_url,
                         "source": "Web Career Page"

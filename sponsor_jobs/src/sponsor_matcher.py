@@ -44,18 +44,19 @@ class SponsorMatcher:
             return
         conn = sqlite3.connect(self.db_path)
         cur = conn.cursor()
-        cur.execute("SELECT id, name, clean_name, kvk, is_target_sector, sector_tags FROM sponsors")
+        cur.execute("SELECT id, name, clean_name, kvk, is_target_sector, sector_tags, ats_type FROM sponsors")
         rows = cur.fetchall()
         conn.close()
 
-        for sp_id, full_name, clean_name, kvk, is_target, tags in rows:
+        for sp_id, full_name, clean_name, kvk, is_target, tags, ats_t in rows:
             entry = {
                 "id": sp_id,
                 "name": full_name,
                 "clean_name": clean_name,
                 "kvk": kvk,
                 "is_target_sector": bool(is_target),
-                "sector_tags": tags
+                "sector_tags": tags,
+                "ats_type": ats_t
             }
             # 1. Exact lowercase
             self._exact_cache[full_name.lower().strip()] = entry

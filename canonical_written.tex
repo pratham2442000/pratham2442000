@@ -1,0 +1,305 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage[english]{babel}
+\usepackage{fontawesome5}
+\usepackage{graphicx}
+\input{glyphtounicode}
+
+\RequirePackage{tikz}
+\RequirePackage{xcolor}
+
+% ---------- COLORS (matching cv.tex & cover_letter.tex) ----------
+\definecolor{cvblue}{HTML}{0E5484}
+\definecolor{black}{HTML}{130810}
+\definecolor{darkcolor}{HTML}{0F4539}
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{666666}
+\definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
+
+% ---------- FONTS (matching cv.tex & cover_letter.tex) ----------
+\usepackage{CormorantGaramond}
+\usepackage{charter}
+
+% ---------- MARGINS (matching cover_letter.tex) ----------
+\usepackage[
+  top=1.0in,
+  bottom=1.0in,
+  left=1.0in,
+  right=1.0in
+]{geometry}
+
+\urlstyle{same}
+\raggedright
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{8pt}
+
+% Ensure that generated pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+% ---------- SECTION FORMATTING (matching cv.tex & cover_letter.tex) ----------
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% ---------- QUESTION FORMATTING ----------
+\newcommand{\interviewQuestion}[1]{%
+  \vspace{8pt}%
+  \textbf{\color{airforceblue}#1}\par%
+}
+
+\begin{document}
+
+% ============================================================
+%  HEADER / TITLE BLOCK (matching cover_letter.tex style)
+% ============================================================
+\begin{center}
+    {\huge\scshape Written Interview Submission} \\[8pt]
+    {\large\textbf{\color{airforceblue}Role: Python Software Engineer, Commercial Systems \textbar{} Canonical}}
+\end{center}
+
+\vspace{4pt}
+{\color{airforceblue}\hrule height 0.8pt}
+\vspace{16pt}
+
+
+% ============================================================
+%  SECTION 1: ENGINEERING EXPERIENCE
+% ============================================================
+\section*{1. Engineering Experience}
+
+\interviewQuestion{What kinds of software projects have you worked on before? Which operating systems, development environments, languages, databases?}
+
+Most of my work sits at the intersection of backend data pipelines, robotics, and Linux infrastructure.
+
+\begin{itemize}[leftmargin=0.2in, itemsep=3pt]
+    \item \textbf{Operating Systems:} Ubuntu (Desktop and Server) has been my daily driver for four years. My workstation runs WSL2 and native Ubuntu (Dual Boot); my home server runs headless Ubuntu Server; our race car ran an onboard Ubuntu box for ROS 2 nodes; and my thesis experiments ran on the RHEL-based DelftBlue HPC supercomputer.
+    \item \textbf{Tooling \& Dev Environments:} Linux CLI, Bash, VS Code, Git/GitHub, Docker, Docker Compose, Kubernetes (Helm, Istio), CI/CD (GitHub Actions), DVC (Data Version Control), SLURM batch scheduler (DelftBlue HPC cluster), ROS 2, and Weights \& Biases (W\&B).
+    \item \textbf{Languages:} Python is my primary language for production backend services, distributed pipelines, and automation. I write modern C++ for latency-critical LiDAR perception in ROS 2, Java and Scala for concurrent algorithms and compiler coursework, SQL for relational schema design and query optimization, and rely heavily on Bash for systems automation.
+    \item \textbf{Frameworks \& Libraries:} FastAPI, Flask, Django, and Vue.js for web services and microservices; PyTorch, Hugging Face, FAISS, PyTerrier, and vLLM for ML and search infrastructure; OpenCV for vision processing.
+    \item \textbf{Databases \& Storage:} PostgreSQL and Google Cloud SQL for relational transactional data; SQLite for local scripts and embedded stores; Redis for caching; FAISS and PyTerrier for high-dimensional vector and inverted indices.
+    \item \textbf{Projects:}
+          \begin{itemize}[leftmargin=0.15in, itemsep=2pt]
+              \item \textit{Distributed IR Benchmarks (MSc Thesis):} Built a pipeline indexing and querying a 30-million passage corpus (MS MARCO and DPR-w100 Wikipedia) on our SLURM cluster using PyTorch, FAISS, and PyTerrier.
+              \item \textit{Race Car LiDAR Perception (Formula Student Team Delft):} Wrote real-time 3D point-cloud segmentation and track cone classification in Python and C++ running on ROS 2. We took 4th in Autonomous Acceleration at Formula Student Germany.
+              \item \textit{Industrial Sensor Telemetry (Interko):} Built an automated ingestion pipeline pulling readings from banana ripening rooms via Niagara, storing them in Google Cloud SQL, and generating automated client PDFs with \texttt{PyLaTeX}.
+              \item \textit{ML Serving Stack (TU Delft):} Deployed a sentiment analysis pipeline with FastAPI, packaged in Docker, running on Kubernetes with Istio for routing and Prometheus/Grafana for monitoring.
+              \item \textit{Bare-Metal Homelab:} Run a dedicated local server with Docker Compose hosting Immich, Pi-hole paired with an Unbound recursive DNS resolver, and a Tailscale mesh network for remote SSH access.
+          \end{itemize}
+\end{itemize}
+
+\interviewQuestion{Describe your experience building large systems with many services - web front ends, REST APIs, data stores, event processing and other kinds of integration between components. What are the key things to think about in regard to architecture, maintainability, and reliability in these large systems?}
+
+
+On our bachelor's project (ARTIST, a text-simplification platform built with Django REST Framework and Vue.js), we encountered silent frontend bugs because two backend endpoints serialized timestamps inconsistently—one returned ISO-formatted strings with timezone offsets, while the other returned raw datetime objects. The frontend failed quietly on edge cases instead of raising explicit errors. That experience made me obsessive about explicit, typed contracts. If two services communicate over an API or a message queue, payloads must be validated by strict schemas (such as Pydantic) right at the ingress boundary. If a payload is malformed, reject it loudly and early rather than letting corrupted state pollute downstream datastores.
+
+Reliability comes down to handling ugly network and hardware realities. For example, while testing our autonomous race car, extreme cockpit temperatures caused our cellular telemetry modem to disconnect mid-run; we could not rely on network connectivity to remain stable for even 30~seconds. We designed a store-and-forward architecture with a local circular write-ahead disk buffer on the vehicle's compute node that flushed sensor packets to disk whenever socket writes timed out, followed by an idempotent backfill via batch ingestion once the car reconnected over Ethernet in the workshop. This taught me that reliability means designing for failure, because distributed systems inevitably break.
+
+Maintainability is the simplest of the three, and yet often ignored: automate the boring checks so engineers don't have to argue about them. On Formula Student, we deployed self-hosted GitHub Actions runners with strict pre-commit hooks for \texttt{mypy}, \texttt{flake8}, and automated unit test suites. If a pull request broke types or failed a test, it could not be merged into \texttt{main}. Pair that with pinned Docker container tags and you eliminate 90\% of onboarding friction. We also built automated Bash provisioning scripts that configured a new developer's workstation automatically. The script installed all the required system packages, set up virtual environments, and verified that linting and testing functioned out of the box and testing functioned out of the box.
+
+\interviewQuestion{Describe your experience with Go. Outline the applications that you have worked on in Go and your takeaways from that experience.}
+
+I have not written commercial production applications in Go yet; my primary production work has centered on Python for backend systems and distributed data pipelines, alongside modern C++ for latency-critical robotics.
+
+However, I understand Go's architectural role across modern infrastructure—especially within Canonical's stack (such as Snapd, LXD, and Juju). I appreciate Go's design philosophy: fast compilation to a single static binary, low memory footprint, and its lightweight Communicating Sequential Processes (CSP) concurrency model using goroutines and channels rather than wrestling with runtime GILs or complex thread synchronization primitives.
+
+
+\interviewQuestion{Describe your experience with Python. Outline the applications that you have worked on in Python and your takeaways from that experience.}
+
+Python is the language I think in. I've used it daily for six years across very different domains:
+
+\begin{itemize}[leftmargin=0.2in, itemsep=3pt]
+    \item \textbf{Formula Student Team Delft:} Wrote real-time point-cloud spatial filtering algorithms. Because we had to process incoming LiDAR frames in under 40ms, pure Python loops were out of the question.
+    \item \textbf{TU Delft MSc Thesis:} Built the orchestration scripts and evaluation code that ran distributed retrieval benchmarks across a 30-million passage corpus (MS MARCO and DPR-w100) on multi-GPU cluster nodes using PyTorch, Hugging Face and PyTerrier.
+    \item \textbf{Interko:} Wrote an automated data ingestion and report generation pipeline for industrial ripening chambers, handling retries, loading rows into Cloud SQL, and compiling PDF reports with \texttt{PyLaTeX}.
+    \item \textbf{Teaching Assistant Automation:} Built an autograder for python notebooks for our 300-student Machine Learning course to execute student code in isolated subprocesses, catch infinite loops, and score models deterministically.
+\end{itemize}
+
+My biggest takeaway is that Python makes prototyping deceptively easy, but writing reliable Python in production takes deliberate engineering discipline. Because the interpreter does not enforce type safety at compile time, codebases rot quickly without strict static typing (\texttt{mypy}), automated formatting and linting (\texttt{ruff}), and comprehensive test suites (\texttt{pytest}).
+
+Performance and concurrency are the other primary considerations. For I/O-bound tasks like polling APIs, asynchronous event processing, or coordinating autograders, Python's \texttt{asyncio} works exceptionally well. Historically, Python's GIL has capped compute-bound parallelism, requiring multiprocessing, process pools, or offloading numerical crunching to contiguous C/C++ extensions like NumPy and PyTorch; however, the ongoing rollout of free-threaded execution (PEP 703) in Python 3.13 and 3.14 is bring exciting development in this area.
+
+\interviewQuestion{How comprehensive would you say your knowledge of a Linux distribution is? How have you gained this knowledge?}
+
+I know Linux well because I spend my working days inside the terminal, and I've broken (and fixed) enough systems to understand how the kernel, userland, and system services interact.
+
+My home server is an older laptop (2nd-gen Intel Core i5) running headless Ubuntu Server. I provisioned it from bare metal: partitioned the storage, configured static DHCP leases, enforced SSH key authentication, configured firewall rules (\texttt{ufw}), and wrote custom \texttt{systemd} unit files to ensure Docker Compose stacks start reliably on reboot. It self-hosts Immich for photo backups, Pi-hole paired with Unbound for local recursive DNS and ad-blocking, and Tailscale to provide a secure mesh VPN without exposing open ports on my router.
+
+On our autonomous race car, troubleshooting Linux was a daily task. When the LiDAR node suddenly stopped publishing, I diagnosed the issue using \texttt{lsusb} to identify intermittent USB bus resets, which was likely caused by a degraded USB cable used between the LiDAR and the compute unit. This also taught me the importance of hardware selection and testing in embedded systems.
+
+During my Master's thesis, working on the DelftBlue HPC cluster meant managing storage quotas on a shared Lustre parallel filesystem, submitting SLURM batch jobs, and isolating multi-GPU CUDA runtime versions via environment modules.
+
+I am fluent with core Unix paradigms—process scheduling, signals, file permissions, and the foundational abstraction that ``everything is a file''. I regularly inspect process hierarchies and resource bottlenecks with \texttt{htop} and \texttt{ncdu}. Furthermore, working with containerized services has given me a solid working understanding of the Linux kernel.
+
+\interviewQuestion{What is your proudest success as an engineer?}
+
+Two different moments stand out.
+
+The first was standing on the track at Hockenheim for Formula Student Germany. I had spent months collecting raw point-cloud data, hand-labeling cone clusters, and rewriting our perception code so it wouldn't drop frames. Seeing the car launch off the line in the Autonomous Acceleration event, track cleanly between the cones without hesitating, and take 4th place against top engineering universities was incredible. When software controls physical hardware at speed, there's zero room for excuses.
+
+The second was wrapping up my Master's thesis at TU Delft. I ran massive distributed benchmarks evaluating compound AI and retrieval architectures across 30 million documents on our HPC cluster. The work showed that popular generative rerankers fall apart under noisy retrieval while distilled cross-encoders scale far more reliably. Translating an open-ended research question into thousands of lines of reproducible code, dealing with cluster crashes, and earning an 8.5/10 distinction felt like a genuine technical milestone.
+
+\interviewQuestion{Would you describe yourself as a strong engineer? Why?}
+
+Yes. Not because I know every single command by heart, but because I have solid engineering instincts, I can diagnose complex bugs without guessing, and I take pride in building things that don't fall apart.
+
+I'm naturally curious. When something fails, I don't slap a try-catch block on it and walk away; I want to understand what the runtime is doing under the hood. When debugging cluster jobs for my thesis, I dug into SLURM exit codes and CUDA memory allocation behavior to figure out why specific worker nodes were running out of memory. When tracking down latency spikes on our race car, I profiled the Python runtime down to the microsecond to see which algorithm was causing the worst latency spikes.
+
+I also write code for the person who has to maintain it after I'm gone. I document system architecture, pin dependency versions, write comprehensive tests, and set up CI pipelines so that future engineers don't have to guess how to run the project. At Formula Student Team Delft, I was responsible for provisioning self-hosted GitHub Actions runners and writing YAML workflows for our CI/CD pipelines, enforcing automated testing and linting before code could land on \texttt{main}.
+
+Finally, I automate friction away. If I have to do something manually three times, I write a script for it, whether that is provisioning cluster environments, generating customer reports at Interko, or automating backup routines on my home server. It saves time, eliminates human error, and ensures repeatable results.
+
+% ============================================================
+%  SECTION 2: EDUCATION
+% ============================================================
+\vspace{10pt}
+\section*{2. Education}
+
+\interviewQuestion{How did you rank in your final year of high school in mathematics? Were you a top student? On what basis would you say that?}
+
+\begin{itemize}[leftmargin=0.2in, itemsep=3pt]
+    \item \textbf{Score:} 95/100 in Mathematics in the CBSE Class 12 Board Examinations.
+    \item \textbf{Standing:} Placed in the top $\sim$3\% nationwide out of roughly 1.2 million students who sat the exam across India.
+    \item \textbf{Material:} Rigorous national syllabus covering single-variable and multivariable calculus, differential equations, linear algebra, vector geometry, and probability.
+\end{itemize}
+
+\interviewQuestion{How did you rank in your final year of high school, in your home language? Were you a top student? On what basis would you say that?}
+
+\begin{itemize}[leftmargin=0.2in, itemsep=3pt]
+    \item \textbf{Score:} 92/100 in English Core in the CBSE Class 12 Board Examinations.
+    \item \textbf{Standing:} Placed in roughly the top 3\% nationwide.
+    \item \textbf{Context:} English has been my primary language of instruction and examination for all my schooling and both university degrees.
+\end{itemize}
+
+\interviewQuestion{Please state your high school graduation results or university entrance results, and explain the grading system used. For example, in the US, you might give your SAT or ACT scores. In Germany, you might give your scores out of a grading system of 1-5, with 1 being the best.}
+
+I scored an overall aggregate of 94.4\% across all subjects in my final CBSE Class 12 examinations.
+
+\textbf{Grading System:} The Central Board of Secondary Education (CBSE) is India's primary national education board. Final examinations are standardized across the country and marked externally by anonymous examiners on a strict 0--100 percentage scale per subject. There is no curving or artificial grade inflation. An aggregate of 94.4\% put me around the 97th percentile nationally out of 1.2 million candidates. In parallel, I prepared for the national engineering entrance exam (JEE Main) in 2020 through multiple pandemic lockdowns before choosing to move to the Netherlands for university.
+
+\interviewQuestion{Can you make a case that you are in the top 5\% in your academic year, or top 1\%, or even higher? If so please outline that case. Make reference where possible to standardised testing results at regional or national level, or university entrance results. Please explain any specific grading system used.}
+
+Yes, based on two clear objective benchmarks:
+\begin{itemize}[leftmargin=0.2in, itemsep=3pt]
+    \item \textbf{Standardized National Board Examinations (Top 3\% / 97th Percentile):} My 94.4\% aggregate across all subjects in the CBSE Class 12 Board Examinations (including 95/100 in Mathematics and 92/100 in English) placed me firmly in the top 3\% nationwide out of more than 1.2~million graduating candidates across India.
+    \item \textbf{MSc Thesis Distinction (Top 5--10\%):} I was awarded an 8.5/10 for my Master's Thesis defense at TU Delft. Dutch universities grade on an absolute, non-inflated 1.0--10.0 scale where 6.0 is a pass and 8.0 represents ``Very Good''; thesis grades of 8.5 or above are reserved for exceptional, publication-ready research, typically representing the top 5--10\% of the graduating cohort.
+\end{itemize}
+
+\interviewQuestion{What sort of high school student were you? Outside of class, what were your interests and hobbies? What would your high school peers remember you for?}
+
+I was the kid who was always building hardware projects in the back of the class or fixing someone's computer (including being summoned to other classrooms to fix projectors and audio gear).
+
+I was in the school coding club from 8th grade onward and spent afternoons in the maker space building balsa wood gliders and model aircraft powered by single-cylinder two-stroke engines. In my senior year, I wired a Raspberry Pi to a microphone array and speakers, writing a Python interface using the Google Assistant SDK to build a voice-activated room automation assistant. For my final computer science project, I trained an object detection model with TensorFlow on custom labeled images and integrated it with OpenCV for real-time webcam inference.
+
+I was also selected for a student physics delegation to CERN in Geneva, where we toured the LHC control facilities and met the engineers building large-scale data acquisition hardware. That trip cemented my desire to build high-scale computing systems.
+
+\interviewQuestion{Which university and degree did you choose? What other universities did you consider, and why did you select that one?}
+
+\textbf{Chosen:} BSc in Computer Science and Engineering, followed by an MSc in Data Science and Artificial Intelligence Technology, both at Delft University of Technology (TU Delft) in the Netherlands.
+
+\textbf{Considered:} I held direct admission offers for Computer Science from UK universities, including Manchester, Bristol, Leeds, Durham, and Cardiff, as well as TU Eindhoven in the Netherlands.
+
+\textbf{Why TU Delft:} I picked TU Delft because it focuses on practical, hard engineering rather than pure theory. It has world-famous student Dream Teams (like Formula Student Team Delft) and gives students access to serious compute infrastructure like the DelftBlue supercomputer. I wanted to build real systems, and Delft was the best place to do that.
+
+\interviewQuestion{Overall, what was your degree result and how did that reflect on your ability? Please help us understand the grading system for your results.}
+
+\begin{itemize}[leftmargin=0.2in, itemsep=3pt]
+    \item \textbf{BSc Computer Science and Engineering:} Cumulative grade of 7.0/10.0, with a 9.0/10.0 for my Bachelor's Thesis.
+    \item \textbf{MSc Data Science and Artificial Intelligence Technology:} Cumulative grade of 7.5/10.0, with an 8.5/10.0 for my Master's Thesis.
+\end{itemize}
+
+\textbf{Dutch Grading System:} Dutch universities grade on a strict 1.0 to 10.0 scale. A 6.0 is a pass, 7.0 means above average mastery (``ruim voldoende''), and an 8.0 is ``Very Good''. Grades of 9.0 or 10.0 are practically never awarded for course averages. My overall averages (7.0 and 7.5) show solid consistency through an intense engineering curriculum, but my thesis grades (9.0 and 8.5) reflect where I do my best work: given a hard, messy problem with no obvious solution, I can take end-to-end ownership and engineer a rigorous result.
+
+\interviewQuestion{During all of your education years, from high school to university, can you describe any achievements that were truly exceptional?}
+
+Three things I'm genuinely proud of:
+\begin{itemize}[leftmargin=0.2in, itemsep=3pt]
+    \item \textbf{Formula Student Germany (4th Place Autonomous Acceleration):} Owned the LiDAR cone perception pipeline for our driverless electric race car, getting processing times down under latency budgets and placing 4th against top universities at Hockenheim.
+    \item \textbf{Master's Thesis Research on DelftBlue HPC:} Built and ran distributed retrieval benchmarks across a 30-million passage corpus (MS MARCO and DPR-w100) on our supercomputer cluster, proving that rank fusion algorithms bottleneck compound AI scaling. Received an 8.5/10.
+    \item \textbf{Head TA for Machine Learning Minor (TI3145TU):} Ran course operations for 300+ students, managed a team of TAs, and designed an automated Python testing script to evaluate student code submissions securely.
+\end{itemize}
+
+\interviewQuestion{What leadership roles did you take on during your education? Did you conceive of, and drive to completion, any initiatives outside of your required classwork?}
+
+\begin{itemize}[leftmargin=0.2in, itemsep=3pt]
+    \item \textbf{Head Teaching Assistant (TU Delft):} Led logistical operations for our 300-student Machine Learning and AI course. Grading student Jupyter notebooks manually was inconsistent and took weeks, so on my own initiative, I built an automated Python autograder that executed student code in isolated subprocesses and scored submissions deterministically. As Head TA, I redesigned the course programming assignments to be fully autogradable, onboarded and mentored a team of 6 TAs, and established standardized grading rubrics.
+    \item \textbf{Autonomous Driving Software Engineer / LiDAR Lead (Formula Student Team Delft):} Took full ownership of the vehicle's LiDAR perception pipeline. Outside of standard design meetings, I spent late nights hand-annotating over 5,000 point-cloud clusters from track recordings and led trackside sensor calibration in varying weather conditions to ensure real-time cone detection under strict latency constraints.
+\end{itemize}
+
+% ============================================================
+%  SECTION 3: CONTEXT
+% ============================================================
+\vspace{10pt}
+\section*{3. Context (Canonical Strategy \& Commercial Systems Fit)}
+
+\interviewQuestion{Outline your thoughts on the mission of Canonical. What is it about the company's purpose and goals which is most appealing to you?}
+
+Canonical's mission is making stable, secure open-source software available to everyone from independent hackers to global enterprise fleets.
+
+What appeals to me most:
+\begin{itemize}[leftmargin=0.2in, itemsep=3pt]
+    \item \textbf{Ubuntu is my working habitat:} It's not just a brand to me; it's the OS running on my laptop, the image that was booted on our Formula Student autonomous race car, and the operating system running on my home server right now.
+    \item \textbf{Proving open source can pay its own bills:} A lot of open-source companies rely on precarious venture capital subsidies or eventually pivot to hostile, bait-and-switch licenses. Canonical has shown that you can build a sustainable, profitable engineering business around open code without walling users out.
+\end{itemize}
+
+\interviewQuestion{What do you see as risky or mistaken in our offering, positioning or strategy?}
+
+The biggest immediate risk is alienating developer goodwill through aggressive desktop defaults, while the structural commercial risk is becoming an invisible, commoditized layer underneath the public cloud.
+
+The developer friction around Snaps is real and persistent. In engineering and tech communities I follow daily (such as Hacker News, Reddit, and developer podcasts), developers continue to push back on sandboxing quirks and the centralized, closed nature of the Snap Store backend. While transactional, auto-updating Snaps make immense operational sense, they create friction with power users who expect standard \texttt{.deb} behavior. Because developer advocacy has historically been Ubuntu's greatest distribution engine, alienating vocal early adopters risks steering them toward Fedora, containerized developer environments or even WSL (though Windows has its own set of problems).
+
+
+\interviewQuestion{How should Canonical set about winning, commercially?}
+
+Win where enterprises are bleeding money and compliance hours:
+
+\begin{itemize}[leftmargin=0.2in, itemsep=3pt]
+    \item \textbf{Be the unbranded antidote to cloud lock-in:} Cloud data platforms (Snowflake, Databricks, BigQuery) are becoming ruinously expensive. Canonical should position its open-source data substrate using Charmed operators for Trino, Kafka, PostgreSQL, and OpenSearch. It should be the obvious way to run high-throughput data platforms on bare metal or neutral cloud VMs at a fraction of the licensing cost.
+    \item \textbf{Lock down the intelligent edge:} Autonomous systems, factory robotics, and industrial controllers can't tolerate corrupted OS updates or manual patching. Pushing Ubuntu Core and MicroK8s into automotive and industrial IoT gives Canonical a long-term enterprise footprint that AWS or Red Hat can't easily displace.
+    \item \textbf{Linux Gaming as a Strategic Catalyst:} While it's hard to tell from the outside how directly profitable desktop gaming is for Canonical, the company has an established foothold in the Linux gaming space. Continuing to invest here is a smart move, as gaming is a key driver for personal desktop adoption. A prominent example is Valve with its Steam Deck and SteamOS, which proved that a polished, proton-backed Linux gaming ecosystem can win mainstream users.
+\end{itemize}
+
+\interviewQuestion{How should Canonical amplify its impact in open source?}
+
+\begin{itemize}[leftmargin=0.2in, itemsep=3pt]
+    \item \textbf{Bridge the Snap divide:} Open up or federate parts of the Snap Store backend protocol. Giving the community the ability to audit the backend code and self-host custom repositories would take the wind out of 90\% of the bad-faith criticism Canonical receives online, although federating store infrastructure introduces architectural and governance challenges of its own.
+    \item \textbf{Become core contributors to the modern data ecosystem:} Upstream contributions buy massive credibility. By actively maintaining and contributing code upstream to projects, Canonical can be seen not just as a Linux vendor, but as a primary architect of modern open-source data tooling.
+    \item \textbf{Standardize the open AI/ML developer runtime:} Machine learning setups on Linux are still messy, juggling conflicting CUDA driver versions, PyTorch wheels, and GPU passthrough configs breaks regularly. If Ubuntu continues to ship clean, reproducible, out-of-the-box local runtime tools for ML practitioners, it will cement its spot as the default AI development platform.
+\end{itemize}
+
+\interviewQuestion{Why do you most want to work for Canonical?}
+
+Two practical reasons:
+
+First, it's building the tools I actually use and care about. I spend my entire working life inside an Ubuntu terminal. Writing software for the company that shapes that ecosystem means my work connects directly to things I use every single day.
+
+Second, the engineering culture fits how I operate. Canonical's emphasis on written communication, deep work, and asynchronous accountability means problems get solved through reasoned design documents and solid code rather than endless Zoom meetings. I do my best work when given a clear problem, the trust to investigate it, and the responsibility to deliver.
+
+\interviewQuestion{What gives you the most satisfaction at work?}
+
+Two things give me a real kick:
+
+The first is taking a clunky, manual workflow that wastes hours of people's time and replacing it with an automated script that just works quietly in the background. Seeing a pipeline run end-to-end without anyone needing to intervene or worry about it is deeply satisfying.
+
+The second is hunting down weird, reproducible bugs in production systems. Fixing the underlying root cause and putting a regression test in place so it never happens again is the best part of the job. I also enjoy code optimization; getting an algorithm to run even noticeably faster is a great feeling
+
+\interviewQuestion{What would you most want to change about Canonical?}
+
+I'd focus on how Canonical communicates with the broader open-source community.
+
+There is often a defensive PR reaction when the community pushes back against technical decisions (such as telemetry collection or desktop Snap defaults). Canonical builds phenomenal infrastructure, but sometimes comes across as aloof or unresponsive to technical feedback from its most passionate users. Being more transparent about architectural tradeoffs early in the process, and actively engaging with constructive community criticism would go a long way toward turning skeptics back into vocal advocates. An easy way to do that is to join community forums that that are not strictly about Linux (such as collaborating with prominent tech communicators and engaging in broader developer forums).
+
+\interviewQuestion{What gets you most excited about this role (Python Software Engineer - Commercial Systems / Integrations)?}
+
+
+Commercial systems are essentially the plumbing that keeps a company running, and that kind of foundational engineering is what I enjoy most.
+
+A lot of engineers avoid integration work because third-party APIs are unpredictable, schemas change without warning, and edge cases are everywhere. But I actually enjoy that challenge. When billing, licensing, or subscription data falls out of sync, it directly impacts revenue and customer trust. Getting those pipelines right requires real engineering discipline—things like making sure webhooks can safely retry without duplicating records, validating data strictly at the boundaries, and ensuring failures are caught cleanly instead of silently corrupting state.
+
+I also appreciate that this role treats internal business tooling with the exact same engineering seriousness as customer-facing infrastructure. Working with modern Python alongside distributed tools means building systems that are resilient, maintainable, and quiet in production. For me, taking chaotic, disparate data feeds and turning them into reliable, automated background workflows is genuinely satisfying work.
+\end{document}

@@ -1,0 +1,252 @@
+schema_version: "2.0.0"
+profile_id: "candidate_template"
+created_at: "YYYY-MM-DD"
+updated_at: "YYYY-MM-DD"
+
+# ============================================================================
+# 1. CANDIDATE BACKGROUND (Extracted from CV / Resume / LinkedIn)
+# ============================================================================
+candidate_background:
+  personal_info:
+    name: "Full Name"
+    email: "user@example.com"
+    phone: "+1234567890"               # Optional
+    location: "City, Country"
+    linkedin: "https://www.linkedin.com/in/username"
+    github: "https://github.com/username"
+    portfolio: "https://myportfolio.dev"
+    tagline: "Primary Professional Title | Specialization"
+    career_objective: "Clear statement of candidate's career focus, target impact, and direction."
+    agent_tone_instructions: >
+      Guidelines for how an AI agent should write cover letters or pitches for this candidate.
+      E.g., Confident, impact-driven, hands-on tinkerer, concise.
+
+  education:
+    - institution: "University or Institution Name"
+      degree: "Degree Name (e.g. MSc, BSc, PhD)"
+      field_of_study: "Field / Major (e.g. Computer Science)"
+      location: "City, Country"
+      start_date: "YYYY-MM"
+      end_date: "YYYY-MM"
+      gpa: "3.8/4.0 (Optional)"
+      thesis_title: "Thesis Title (Optional)"
+      thesis_url: "https://doi.org/... (Optional)"
+      thesis_abstract: "Brief summary of thesis research (Optional)"
+      highlights:
+        - "Relevant coursework, honors, or distinctions"
+
+  verified_technical_skills:
+    - category: "Primary Language / Skill Group"
+      weight: 18.0                     # Relative weight in match scoring
+      skills:
+        - "Skill 1"
+        - "Skill 2"
+      patterns:
+        - "\\b(skill1|skill2)\\b"
+      aliases:
+        "Skill 1": ["alt_name1", "alt_name2"]
+
+    - category: "Frameworks / Domain Stack"
+      weight: 15.0
+      skills:
+        - "Tool A"
+        - "Library B"
+      patterns:
+        - "\\b(toola|libraryb)\\b"
+
+  experience_summaries:
+    - company: "Company Name"
+      title: "Job Title"
+      location: "City, Country"
+      start_date: "YYYY-MM"
+      end_date: "YYYY-MM or Present"
+      is_current: false
+      role_type: "full-time"            # full-time, part-time, internship, research, contractor
+      technologies: ["Tech1", "Tech2"]
+      key_achievements:
+        - "Quantifiable achievement using Action Verb + Task + Metric"
+        - "Second major contribution or delivered project"
+
+  project_highlights:
+    - name: "Key Project Title"
+      category: "Domain / Category"
+      description: "Concrete description of the project architecture, problem solved, and implementation."
+      technologies: ["Tech1", "Tech2"]
+      url: "https://demo.example.com"
+      repo_url: "https://github.com/..."
+      impact_metrics:
+        - "Key metric (e.g. 99.9% uptime, 10x throughput, 500+ stars)"
+
+  infrastructure_and_homelab: []       # Optional list of homelab/systems highlights
+
+
+# ============================================================================
+# 2. CANDIDATE PREFERENCES & CONSTRAINTS
+# ============================================================================
+candidate_preferences:
+  target_roles:
+    - title: "Primary Target Role Title"
+      weight: 45.0
+      patterns:
+        - "\\b(primary\\s+role\\s+title)\\b"
+      is_primary: true
+
+    - title: "Secondary Target Role Title"
+      weight: 35.0
+      patterns:
+        - "\\b(secondary\\s+role\\s+title)\\b"
+
+  seniority:
+    accepted_levels:
+      - "junior"
+      - "mid"
+      - "associate"
+      - "entry-level"
+      - "intern"
+    disallowed_levels:
+      - "senior"
+      - "lead"
+      - "principal"
+      - "staff"
+      - "director"
+      - "manager"
+      - "vp"
+      - "head of"
+    strict_exclusion: true             # Set to false to allow senior roles
+    senior_exclusion_pattern: "\\b(senior|sr\\.?|lead|principal|staff|director|head\\s+of|vp|chief|manager)\\b"
+    max_experience_years: 3            # Flag or exclude roles requiring > N years
+    entry_level_bonus: 20.0
+    entry_level_patterns:
+      - "\\b(intern|internship|trainee|working\\s+student|junior|graduate|entry\\s+level|associate)\\b"
+
+  locations:
+    tiers:
+      - name: "Tier 1 Region"
+        weight: 25.0
+        patterns:
+          - "\\b(country1|city1|city2)\\b"
+
+      - name: "Tier 2 Region"
+        weight: 20.0
+        patterns:
+          - "\\b(country2|city3|city4)\\b"
+
+    remote:
+      allow_remote: true
+      bonus_points: 15.0
+      remote_only: false
+      remote_patterns:
+        - "\\bremote\\b"
+        - "\\bwfh\\b"
+        - "\\banywhere\\b"
+
+    us_target_hubs: []                 # Optional accepted US metros
+    us_hub_patterns: []
+    excluded_locations: []             # Regex patterns for non-target locations
+
+  sponsorship:
+    requires_sponsorship: true
+    current_status: "Work Permit / Visa Status Description"
+    target_sponsor_registers:
+      - "Official Registry Name (e.g. IND Recognised Sponsor, UK Home Office)"
+    strict_sponsorship_only: false
+    sponsor_match_bonus: 15.0
+
+  work_setup:
+    work_modes:
+      - "hybrid"
+      - "remote"
+      - "onsite"
+    employment_types:
+      - "full-time"
+
+
+# ============================================================================
+# 3. TARGET COMPANIES & DOMAINS
+# ============================================================================
+target_companies_and_domains:
+  company_tiers:
+    tier_1_dream:
+      - name: "Dream Company A"
+        domain: "https://example.com"
+        ats_type: "greenhouse"         # greenhouse, lever, ashby, workday, etc.
+        ats_slug: "company-slug"
+        multiplier: 1.25
+        bonus_points: 15.0
+        reason: "Why candidate dreams of working here"
+
+    tier_2_high_priority: []
+    tier_3_neutral: []
+    excluded_companies: []             # Blacklist of companies to ignore
+
+  industry_preferences:
+    preferred_domains:
+      - name: "Target Domain Name"
+        weight: 15.0
+        patterns:
+          - "\\b(domain_keyword1|domain_keyword2)\\b"
+
+    excluded_domains:
+      - name: "Disliked Domain Name"
+        weight: -30.0
+        patterns:
+          - "\\b(unwanted_domain_keyword)\\b"
+
+  company_size_preference:
+    - "scaleup"
+    - "enterprise"
+    - "startup"
+
+  tech_stack_alignment:
+    preferred_stacks:
+      - "Stack A"
+      - "Stack B"
+    anti_patterns:
+      - "Legacy Stack"
+    anti_pattern_penalty: -20.0
+    anti_pattern_regexes:
+      - "\\b(legacy_keyword)\\b"
+
+
+# ============================================================================
+# 4. EVALUATION & SCORING RUBRIC
+# ============================================================================
+evaluation_and_scoring_rubric:
+  base_score: 15.0
+  min_match_threshold: 40.0
+  max_score: 99.0
+
+  component_weights:
+    role_title_match: 0.35
+    skills_match: 0.30
+    location_match: 0.20
+    company_and_domain: 0.15
+
+  penalties:
+    - name: "Unwanted Specialization"
+      deduction: -25.0
+      pattern: "\\b(unwanted_role_keyword)\\b"
+      reason: "Domain mismatch penalty"
+
+  cover_letter_templates:
+    - template_id: "specialized_template_1"
+      title: "1. SPECIALIZED PROFILE A"
+      priority: 100
+      trigger_patterns:
+        - "\\b(trigger_keyword_1|trigger_keyword_2)\\b"
+      letter_file_reference: "templates/letter_specialized.tex"
+      talking_points:
+        - "Highlight 1"
+        - "Highlight 2"
+
+  default_cover_letter: "GENERIC / OPEN APPLICATION"
+
+
+# ============================================================================
+# 5. LOCAL OUTPUT SETTINGS
+# ============================================================================
+output_settings:
+  reports_dir: "v2/reports"
+  markdown_filename: "recommended_jobs.md"
+  json_filename: "recommended_jobs.json"
+  sqlite_db_path: "v2/data/sponsors.db"

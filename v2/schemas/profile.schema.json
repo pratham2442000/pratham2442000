@@ -1,0 +1,1509 @@
+{
+  "$defs": {
+    "CandidateBackground": {
+      "description": "Complete candidate background extracted from CV/resume and portfolio.",
+      "properties": {
+        "personal_info": {
+          "$ref": "#/$defs/PersonalInfo"
+        },
+        "education": {
+          "items": {
+            "$ref": "#/$defs/EducationEntry"
+          },
+          "title": "Education",
+          "type": "array"
+        },
+        "verified_technical_skills": {
+          "items": {
+            "$ref": "#/$defs/SkillCategory"
+          },
+          "title": "Verified Technical Skills",
+          "type": "array"
+        },
+        "experience_summaries": {
+          "items": {
+            "$ref": "#/$defs/ExperienceEntry"
+          },
+          "title": "Experience Summaries",
+          "type": "array"
+        },
+        "project_highlights": {
+          "items": {
+            "$ref": "#/$defs/ProjectEntry"
+          },
+          "title": "Project Highlights",
+          "type": "array"
+        },
+        "infrastructure_and_homelab": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/InfrastructureEntry"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Infrastructure And Homelab"
+        }
+      },
+      "required": [
+        "personal_info"
+      ],
+      "title": "CandidateBackground",
+      "type": "object"
+    },
+    "CandidatePreferences": {
+      "description": "Unified candidate preferences and hard constraints.",
+      "properties": {
+        "target_roles": {
+          "items": {
+            "$ref": "#/$defs/TargetRole"
+          },
+          "title": "Target Roles",
+          "type": "array"
+        },
+        "seniority": {
+          "$ref": "#/$defs/SeniorityPreferences"
+        },
+        "locations": {
+          "$ref": "#/$defs/LocationPreferences"
+        },
+        "sponsorship": {
+          "$ref": "#/$defs/SponsorshipPreferences"
+        },
+        "work_setup": {
+          "$ref": "#/$defs/WorkSetupPreferences"
+        }
+      },
+      "title": "CandidatePreferences",
+      "type": "object"
+    },
+    "CompanyTierItem": {
+      "description": "Company specification within a preference tier.",
+      "properties": {
+        "name": {
+          "description": "Clean company name",
+          "title": "Name",
+          "type": "string"
+        },
+        "keyword": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Lookup keyword or identifier",
+          "title": "Keyword"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Primary company website domain",
+          "title": "Domain"
+        },
+        "careers_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Direct careers or jobs portal URL",
+          "title": "Careers Url"
+        },
+        "ats_slug": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "ATS slug (for Greenhouse, Lever, etc.)",
+          "title": "Ats Slug"
+        },
+        "ats_type": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "ATS platform name",
+          "title": "Ats Type"
+        },
+        "multiplier": {
+          "default": 1.0,
+          "description": "Match score multiplier",
+          "maximum": 5.0,
+          "minimum": 0.0,
+          "title": "Multiplier",
+          "type": "number"
+        },
+        "bonus_points": {
+          "default": 0.0,
+          "description": "Flat bonus points added for this company",
+          "title": "Bonus Points",
+          "type": "number"
+        },
+        "tier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": "Curated Sponsor",
+          "description": "Tier category",
+          "title": "Tier"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Why this company is in this tier",
+          "title": "Reason"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "CompanyTierItem",
+      "type": "object"
+    },
+    "CompanyTiers": {
+      "description": "Ranked company tier lists.",
+      "properties": {
+        "tier_1_dream": {
+          "description": "Tier 1 dream companies (highest priority)",
+          "items": {
+            "$ref": "#/$defs/CompanyTierItem"
+          },
+          "title": "Tier 1 Dream",
+          "type": "array"
+        },
+        "tier_2_high_priority": {
+          "description": "Tier 2 high-priority companies",
+          "items": {
+            "$ref": "#/$defs/CompanyTierItem"
+          },
+          "title": "Tier 2 High Priority",
+          "type": "array"
+        },
+        "tier_3_neutral": {
+          "description": "Tier 3 acceptable / standard companies",
+          "items": {
+            "$ref": "#/$defs/CompanyTierItem"
+          },
+          "title": "Tier 3 Neutral",
+          "type": "array"
+        },
+        "curated_sponsors": {
+          "description": "Comprehensive catalog of curated sponsor endpoints across all ATS platforms",
+          "items": {
+            "$ref": "#/$defs/CompanyTierItem"
+          },
+          "title": "Curated Sponsors",
+          "type": "array"
+        },
+        "excluded_companies": {
+          "description": "Company names or patterns to strictly ignore / blacklist",
+          "items": {
+            "type": "string"
+          },
+          "title": "Excluded Companies",
+          "type": "array"
+        }
+      },
+      "title": "CompanyTiers",
+      "type": "object"
+    },
+    "CompensationPreference": {
+      "description": "Salary and compensation expectations.",
+      "properties": {
+        "minimum_amount": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Minimum acceptable base salary",
+          "title": "Minimum Amount"
+        },
+        "target_amount": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Target base salary",
+          "title": "Target Amount"
+        },
+        "currency": {
+          "default": "EUR",
+          "description": "ISO 4217 Currency code (EUR, USD, GBP, etc.)",
+          "title": "Currency",
+          "type": "string"
+        },
+        "period": {
+          "default": "yearly",
+          "description": "Compensation period: yearly, monthly, hourly",
+          "title": "Period",
+          "type": "string"
+        }
+      },
+      "title": "CompensationPreference",
+      "type": "object"
+    },
+    "ComponentWeights": {
+      "description": "Relative importance weights for major scoring dimensions (should sum close to 1.0).",
+      "properties": {
+        "role_title_match": {
+          "default": 0.35,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Role Title Match",
+          "type": "number"
+        },
+        "skills_match": {
+          "default": 0.3,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Skills Match",
+          "type": "number"
+        },
+        "location_match": {
+          "default": 0.2,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Location Match",
+          "type": "number"
+        },
+        "company_and_domain": {
+          "default": 0.15,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Company And Domain",
+          "type": "number"
+        }
+      },
+      "title": "ComponentWeights",
+      "type": "object"
+    },
+    "CoverLetterTemplate": {
+      "description": "A personalized cover letter body template matched dynamically to jobs.",
+      "properties": {
+        "template_id": {
+          "description": "Unique slug (e.g. 'formula1_motorsport')",
+          "title": "Template Id",
+          "type": "string"
+        },
+        "title": {
+          "description": "Display title (e.g. '10. FORMULA 1 & MOTORSPORT')",
+          "title": "Title",
+          "type": "string"
+        },
+        "priority": {
+          "default": 50,
+          "description": "Evaluation priority (higher checked first)",
+          "title": "Priority",
+          "type": "integer"
+        },
+        "trigger_patterns": {
+          "description": "Regex patterns in job title or description that trigger this recommendation",
+          "items": {
+            "type": "string"
+          },
+          "title": "Trigger Patterns",
+          "type": "array"
+        },
+        "letter_file_reference": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Path or anchor in letter_bodies.tex or templates directory",
+          "title": "Letter File Reference"
+        },
+        "body_snippet": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Raw text or LaTeX snippet of the cover letter core body",
+          "title": "Body Snippet"
+        },
+        "talking_points": {
+          "description": "Key candidate projects/experiences to highlight in this letter",
+          "items": {
+            "type": "string"
+          },
+          "title": "Talking Points",
+          "type": "array"
+        }
+      },
+      "required": [
+        "template_id",
+        "title"
+      ],
+      "title": "CoverLetterTemplate",
+      "type": "object"
+    },
+    "DomainItem": {
+      "description": "Industry sector or technical domain.",
+      "properties": {
+        "name": {
+          "description": "Domain name (e.g. Autonomous Vehicles, FinTech, Foundation Models)",
+          "title": "Name",
+          "type": "string"
+        },
+        "weight": {
+          "default": 10.0,
+          "description": "Score impact (positive bonus or negative penalty)",
+          "title": "Weight",
+          "type": "number"
+        },
+        "patterns": {
+          "description": "Regex patterns identifying this domain",
+          "items": {
+            "type": "string"
+          },
+          "title": "Patterns",
+          "type": "array"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "DomainItem",
+      "type": "object"
+    },
+    "EducationEntry": {
+      "description": "Educational degree or qualification.",
+      "properties": {
+        "institution": {
+          "description": "University, college, or school name",
+          "title": "Institution",
+          "type": "string"
+        },
+        "degree": {
+          "description": "Degree type (e.g. MSc, BSc, PhD, BootCamp)",
+          "title": "Degree",
+          "type": "string"
+        },
+        "field_of_study": {
+          "description": "Major or area of specialization",
+          "title": "Field Of Study",
+          "type": "string"
+        },
+        "location": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "City, Country of institution",
+          "title": "Location"
+        },
+        "start_date": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Start date (YYYY-MM or Year)",
+          "title": "Start Date"
+        },
+        "end_date": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "End or graduation date (YYYY-MM or Year)",
+          "title": "End Date"
+        },
+        "gpa": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "GPA or grade classification if relevant",
+          "title": "Gpa"
+        },
+        "thesis_title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Master's or doctoral thesis title",
+          "title": "Thesis Title"
+        },
+        "thesis_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Public repository or DOI URL for thesis",
+          "title": "Thesis Url"
+        },
+        "thesis_abstract": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Brief summary of thesis research",
+          "title": "Thesis Abstract"
+        },
+        "highlights": {
+          "description": "Key courses, awards, or distinctions",
+          "items": {
+            "type": "string"
+          },
+          "title": "Highlights",
+          "type": "array"
+        }
+      },
+      "required": [
+        "institution",
+        "degree",
+        "field_of_study"
+      ],
+      "title": "EducationEntry",
+      "type": "object"
+    },
+    "EvaluationAndScoringRubric": {
+      "description": "Custom weights, thresholds, penalties, and cover letter mapping rules.",
+      "properties": {
+        "base_score": {
+          "default": 15.0,
+          "description": "Baseline starting score for any evaluated job",
+          "maximum": 50.0,
+          "minimum": 0.0,
+          "title": "Base Score",
+          "type": "number"
+        },
+        "min_match_threshold": {
+          "default": 40.0,
+          "description": "Minimum score to be considered a match",
+          "maximum": 100.0,
+          "minimum": 0.0,
+          "title": "Min Match Threshold",
+          "type": "number"
+        },
+        "max_score": {
+          "default": 99.0,
+          "description": "Ceiling cap for match scores",
+          "maximum": 100.0,
+          "minimum": 50.0,
+          "title": "Max Score",
+          "type": "number"
+        },
+        "component_weights": {
+          "$ref": "#/$defs/ComponentWeights"
+        },
+        "enable_company_multipliers": {
+          "default": false,
+          "description": "Whether to apply employer tier multipliers and bonuses",
+          "title": "Enable Company Multipliers",
+          "type": "boolean"
+        },
+        "enable_domain_bonuses": {
+          "default": false,
+          "description": "Whether to award additional industry domain bonuses",
+          "title": "Enable Domain Bonuses",
+          "type": "boolean"
+        },
+        "penalties": {
+          "items": {
+            "$ref": "#/$defs/PenaltyItem"
+          },
+          "title": "Penalties",
+          "type": "array"
+        },
+        "cover_letter_templates": {
+          "items": {
+            "$ref": "#/$defs/CoverLetterTemplate"
+          },
+          "title": "Cover Letter Templates",
+          "type": "array"
+        },
+        "default_cover_letter": {
+          "default": "1. GENERIC / OPEN APPLICATION",
+          "description": "Fallback cover letter when no specialized trigger matches",
+          "title": "Default Cover Letter",
+          "type": "string"
+        }
+      },
+      "title": "EvaluationAndScoringRubric",
+      "type": "object"
+    },
+    "ExperienceEntry": {
+      "description": "Work, internship, or research experience.",
+      "properties": {
+        "company": {
+          "description": "Employer or organization name",
+          "title": "Company",
+          "type": "string"
+        },
+        "title": {
+          "description": "Job title held",
+          "title": "Title",
+          "type": "string"
+        },
+        "location": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Location of work",
+          "title": "Location"
+        },
+        "start_date": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Start date (YYYY-MM or Year)",
+          "title": "Start Date"
+        },
+        "end_date": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "End date (YYYY-MM or 'Present')",
+          "title": "End Date"
+        },
+        "is_current": {
+          "default": false,
+          "description": "Whether the candidate currently works here",
+          "title": "Is Current",
+          "type": "boolean"
+        },
+        "role_type": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": "full-time",
+          "description": "Type of role: full-time, part-time, internship, research, contractor",
+          "title": "Role Type"
+        },
+        "technologies": {
+          "description": "Tech stack utilized in this role",
+          "items": {
+            "type": "string"
+          },
+          "title": "Technologies",
+          "type": "array"
+        },
+        "key_achievements": {
+          "description": "Bullet points describing concrete achievements and metrics",
+          "items": {
+            "type": "string"
+          },
+          "title": "Key Achievements",
+          "type": "array"
+        }
+      },
+      "required": [
+        "company",
+        "title"
+      ],
+      "title": "ExperienceEntry",
+      "type": "object"
+    },
+    "IndustryPreferences": {
+      "description": "Preferred and anti-pattern industry domains.",
+      "properties": {
+        "preferred_domains": {
+          "items": {
+            "$ref": "#/$defs/DomainItem"
+          },
+          "title": "Preferred Domains",
+          "type": "array"
+        },
+        "excluded_domains": {
+          "items": {
+            "$ref": "#/$defs/DomainItem"
+          },
+          "title": "Excluded Domains",
+          "type": "array"
+        }
+      },
+      "title": "IndustryPreferences",
+      "type": "object"
+    },
+    "InfrastructureEntry": {
+      "description": "Hands-on homelab, self-hosting, or infrastructure highlights.",
+      "properties": {
+        "title": {
+          "description": "Infrastructure component (e.g. Bare-Metal Server, Mesh VPN)",
+          "title": "Title",
+          "type": "string"
+        },
+        "description": {
+          "description": "Technical implementation details",
+          "title": "Description",
+          "type": "string"
+        },
+        "tools": {
+          "description": "Tools/services (e.g. Docker, Tailscale, Pi-hole)",
+          "items": {
+            "type": "string"
+          },
+          "title": "Tools",
+          "type": "array"
+        }
+      },
+      "required": [
+        "title",
+        "description"
+      ],
+      "title": "InfrastructureEntry",
+      "type": "object"
+    },
+    "LocationPreferences": {
+      "description": "Geographic preferences, regional tiers, and explicit exclusions.",
+      "properties": {
+        "tiers": {
+          "description": "Ordered location preference tiers",
+          "items": {
+            "$ref": "#/$defs/LocationTier"
+          },
+          "title": "Tiers",
+          "type": "array"
+        },
+        "remote": {
+          "$ref": "#/$defs/RemotePreference"
+        },
+        "us_target_hubs": {
+          "description": "Specific US metro areas accepted even if broader US is excluded",
+          "items": {
+            "type": "string"
+          },
+          "title": "Us Target Hubs",
+          "type": "array"
+        },
+        "us_hub_patterns": {
+          "description": "Regex patterns identifying target US metropolitan hubs",
+          "items": {
+            "type": "string"
+          },
+          "title": "Us Hub Patterns",
+          "type": "array"
+        },
+        "excluded_locations": {
+          "description": "Regex patterns of regions to filter out unless explicitly remote or in target hubs",
+          "items": {
+            "type": "string"
+          },
+          "title": "Excluded Locations",
+          "type": "array"
+        }
+      },
+      "title": "LocationPreferences",
+      "type": "object"
+    },
+    "LocationTier": {
+      "description": "A geographic target tier with associated bonus points and matching regex patterns.",
+      "properties": {
+        "name": {
+          "description": "Tier or region name (e.g. Netherlands, United Kingdom, US Tech Hubs)",
+          "title": "Name",
+          "type": "string"
+        },
+        "weight": {
+          "default": 20.0,
+          "description": "Bonus points for matching this location",
+          "maximum": 100.0,
+          "minimum": 0.0,
+          "title": "Weight",
+          "type": "number"
+        },
+        "patterns": {
+          "description": "Regex patterns matching cities/countries in this tier",
+          "items": {
+            "type": "string"
+          },
+          "title": "Patterns",
+          "type": "array"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "LocationTier",
+      "type": "object"
+    },
+    "OutputSettings": {
+      "description": "Customizable paths and reporting options.",
+      "properties": {
+        "reports_dir": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Directory where reports are saved",
+          "title": "Reports Dir"
+        },
+        "markdown_filename": {
+          "default": "recommended_jobs.md",
+          "description": "Markdown report filename",
+          "title": "Markdown Filename",
+          "type": "string"
+        },
+        "json_filename": {
+          "default": "recommended_jobs.json",
+          "description": "JSON export filename",
+          "title": "Json Filename",
+          "type": "string"
+        },
+        "sqlite_db_path": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": "v2/data/sponsors.db",
+          "description": "Custom SQLite database path",
+          "title": "Sqlite Db Path"
+        }
+      },
+      "title": "OutputSettings",
+      "type": "object"
+    },
+    "PenaltyItem": {
+      "description": "A deduction rule applied when specific anti-patterns are found.",
+      "properties": {
+        "name": {
+          "description": "Penalty name (e.g. Non-technical, Frontend, Sales)",
+          "title": "Name",
+          "type": "string"
+        },
+        "deduction": {
+          "description": "Points to subtract (negative value or positive deduction amount)",
+          "title": "Deduction",
+          "type": "number"
+        },
+        "pattern": {
+          "description": "Regex pattern triggering this penalty",
+          "title": "Pattern",
+          "type": "string"
+        },
+        "reason": {
+          "description": "Explanation displayed in match rationale",
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "deduction",
+        "pattern",
+        "reason"
+      ],
+      "title": "PenaltyItem",
+      "type": "object"
+    },
+    "PersonalInfo": {
+      "description": "Personal and contact information for the candidate.",
+      "properties": {
+        "name": {
+          "description": "Full legal or professional name of the candidate",
+          "title": "Name",
+          "type": "string"
+        },
+        "email": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Contact email address",
+          "title": "Email"
+        },
+        "phone": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Contact phone number (optional)",
+          "title": "Phone"
+        },
+        "location": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Current physical residence (City, Country)",
+          "title": "Location"
+        },
+        "linkedin": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Full LinkedIn profile URL",
+          "title": "Linkedin"
+        },
+        "github": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Full GitHub profile URL",
+          "title": "Github"
+        },
+        "portfolio": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Personal website or portfolio URL",
+          "title": "Portfolio"
+        },
+        "tagline": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "1-line professional title or summary",
+          "title": "Tagline"
+        },
+        "career_objective": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Primary career goal and high-level focus",
+          "title": "Career Objective"
+        },
+        "agent_tone_instructions": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Guidelines for how an AI agent should write cover letters or pitches for this candidate",
+          "title": "Agent Tone Instructions"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "PersonalInfo",
+      "type": "object"
+    },
+    "ProjectEntry": {
+      "description": "A technical project, open-source repository, or key capability.",
+      "properties": {
+        "name": {
+          "description": "Project title",
+          "title": "Name",
+          "type": "string"
+        },
+        "category": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Project domain (e.g. RAG, Perception, Homelab)",
+          "title": "Category"
+        },
+        "description": {
+          "description": "Detailed description of the project and methodology",
+          "title": "Description",
+          "type": "string"
+        },
+        "technologies": {
+          "description": "Technologies and libraries used",
+          "items": {
+            "type": "string"
+          },
+          "title": "Technologies",
+          "type": "array"
+        },
+        "url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Live demo or website URL",
+          "title": "Url"
+        },
+        "repo_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "GitHub or source repository URL",
+          "title": "Repo Url"
+        },
+        "impact_metrics": {
+          "description": "Quantitative benchmarks, stars, throughput, or accuracy results",
+          "items": {
+            "type": "string"
+          },
+          "title": "Impact Metrics",
+          "type": "array"
+        }
+      },
+      "required": [
+        "name",
+        "description"
+      ],
+      "title": "ProjectEntry",
+      "type": "object"
+    },
+    "RemotePreference": {
+      "description": "Remote work settings and scoring.",
+      "properties": {
+        "allow_remote": {
+          "default": true,
+          "description": "Whether remote jobs are acceptable",
+          "title": "Allow Remote",
+          "type": "boolean"
+        },
+        "bonus_points": {
+          "default": 15.0,
+          "description": "Points awarded for remote postings",
+          "title": "Bonus Points",
+          "type": "number"
+        },
+        "remote_only": {
+          "default": false,
+          "description": "If True, strictly exclude non-remote jobs",
+          "title": "Remote Only",
+          "type": "boolean"
+        },
+        "remote_patterns": {
+          "description": "Regex patterns detecting remote availability",
+          "items": {
+            "type": "string"
+          },
+          "title": "Remote Patterns",
+          "type": "array"
+        }
+      },
+      "title": "RemotePreference",
+      "type": "object"
+    },
+    "SeniorityPreferences": {
+      "description": "Seniority filtering, preferences, and strict exclusions.",
+      "properties": {
+        "accepted_levels": {
+          "description": "List of accepted seniority levels",
+          "items": {
+            "type": "string"
+          },
+          "title": "Accepted Levels",
+          "type": "array"
+        },
+        "disallowed_levels": {
+          "description": "Seniority designations to exclude",
+          "items": {
+            "type": "string"
+          },
+          "title": "Disallowed Levels",
+          "type": "array"
+        },
+        "strict_exclusion": {
+          "default": true,
+          "description": "If True, any job with a disallowed seniority term receives 0 match score",
+          "title": "Strict Exclusion",
+          "type": "boolean"
+        },
+        "senior_exclusion_pattern": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": "\\b(senior|sr\\.?|sr\\s+|lead|principal|staff|director|head\\s+of|vp|vice\\s+president|chief|manager|management|architect|distinguished|founding\\s+engineer)\\b",
+          "description": "Regex pattern used to detect disallowed senior roles",
+          "title": "Senior Exclusion Pattern"
+        },
+        "max_experience_years": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": 3,
+          "description": "Maximum required years of experience accepted before issuing a warning or exclusion",
+          "title": "Max Experience Years"
+        },
+        "entry_level_bonus": {
+          "default": 20.0,
+          "description": "Bonus points awarded to graduate, entry-level, or junior-friendly postings",
+          "title": "Entry Level Bonus",
+          "type": "number"
+        },
+        "entry_level_patterns": {
+          "description": "Regex patterns identifying entry-friendly roles",
+          "items": {
+            "type": "string"
+          },
+          "title": "Entry Level Patterns",
+          "type": "array"
+        }
+      },
+      "title": "SeniorityPreferences",
+      "type": "object"
+    },
+    "SkillCategory": {
+      "description": "A verified category of technical skills with regex matching patterns.",
+      "properties": {
+        "category": {
+          "description": "Category name (e.g. Python Mastery, Deep Learning, MLOps)",
+          "title": "Category",
+          "type": "string"
+        },
+        "weight": {
+          "default": 10.0,
+          "description": "Match score points awarded if found",
+          "maximum": 100.0,
+          "minimum": 0.0,
+          "title": "Weight",
+          "type": "number"
+        },
+        "skills": {
+          "description": "Canonical skill names (e.g. ['PyTorch', 'ONNX'])",
+          "items": {
+            "type": "string"
+          },
+          "title": "Skills",
+          "type": "array"
+        },
+        "patterns": {
+          "description": "Regex patterns to match this skill category in job postings (case-insensitive)",
+          "items": {
+            "type": "string"
+          },
+          "title": "Patterns",
+          "type": "array"
+        },
+        "aliases": {
+          "additionalProperties": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "description": "Skill aliases mapping canonical names to synonyms",
+          "title": "Aliases",
+          "type": "object"
+        }
+      },
+      "required": [
+        "category"
+      ],
+      "title": "SkillCategory",
+      "type": "object"
+    },
+    "SponsorshipPreferences": {
+      "description": "Visa, work authorization, and sponsorship requirements.",
+      "properties": {
+        "requires_sponsorship": {
+          "default": true,
+          "description": "Whether candidate requires visa sponsorship",
+          "title": "Requires Sponsorship",
+          "type": "boolean"
+        },
+        "current_status": {
+          "default": "Needs Sponsorship",
+          "description": "Current visa/authorization status (e.g. Student Visa, Search Year, Citizen)",
+          "title": "Current Status",
+          "type": "string"
+        },
+        "target_sponsor_registers": {
+          "description": "Government registries of verified sponsors to check",
+          "items": {
+            "type": "string"
+          },
+          "title": "Target Sponsor Registers",
+          "type": "array"
+        },
+        "strict_sponsorship_only": {
+          "default": false,
+          "description": "If True, filter out any employer not verified in a sponsor registry",
+          "title": "Strict Sponsorship Only",
+          "type": "boolean"
+        },
+        "sponsor_match_bonus": {
+          "default": 15.0,
+          "description": "Bonus points awarded if the employer is a verified sponsor",
+          "title": "Sponsor Match Bonus",
+          "type": "number"
+        }
+      },
+      "title": "SponsorshipPreferences",
+      "type": "object"
+    },
+    "TargetCompaniesAndDomains": {
+      "description": "Target employers, company tiers, and industry preferences.",
+      "properties": {
+        "company_tiers": {
+          "$ref": "#/$defs/CompanyTiers"
+        },
+        "industry_preferences": {
+          "$ref": "#/$defs/IndustryPreferences"
+        },
+        "company_size_preference": {
+          "description": "Preferred organization sizes",
+          "items": {
+            "type": "string"
+          },
+          "title": "Company Size Preference",
+          "type": "array"
+        },
+        "tech_stack_alignment": {
+          "$ref": "#/$defs/TechStackAlignment"
+        }
+      },
+      "title": "TargetCompaniesAndDomains",
+      "type": "object"
+    },
+    "TargetRole": {
+      "description": "A target job title or role archetype with custom scoring priority.",
+      "properties": {
+        "title": {
+          "description": "Role title (e.g. 'Machine Learning Engineer', 'Python Specialist')",
+          "title": "Title",
+          "type": "string"
+        },
+        "weight": {
+          "default": 35.0,
+          "description": "Match score bonus awarded for this role",
+          "maximum": 100.0,
+          "minimum": 0.0,
+          "title": "Weight",
+          "type": "number"
+        },
+        "patterns": {
+          "description": "Regex patterns to match this role in job titles",
+          "items": {
+            "type": "string"
+          },
+          "title": "Patterns",
+          "type": "array"
+        },
+        "is_primary": {
+          "default": false,
+          "description": "Flag indicating if this is a top-priority role",
+          "title": "Is Primary",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "title"
+      ],
+      "title": "TargetRole",
+      "type": "object"
+    },
+    "TechStackAlignment": {
+      "description": "Technical stack alignment and anti-patterns.",
+      "properties": {
+        "preferred_stacks": {
+          "description": "Stacks candidate wants to work with",
+          "items": {
+            "type": "string"
+          },
+          "title": "Preferred Stacks",
+          "type": "array"
+        },
+        "anti_patterns": {
+          "description": "Stacks candidate wants to avoid (e.g. PHP, legacy monolithic Java)",
+          "items": {
+            "type": "string"
+          },
+          "title": "Anti Patterns",
+          "type": "array"
+        },
+        "anti_pattern_penalty": {
+          "default": -20.0,
+          "description": "Penalty points for anti-pattern tech stacks",
+          "title": "Anti Pattern Penalty",
+          "type": "number"
+        },
+        "anti_pattern_regexes": {
+          "description": "Regex patterns for detecting anti-pattern tech stacks",
+          "items": {
+            "type": "string"
+          },
+          "title": "Anti Pattern Regexes",
+          "type": "array"
+        }
+      },
+      "title": "TechStackAlignment",
+      "type": "object"
+    },
+    "WorkSetupPreferences": {
+      "description": "Workplace environment preferences.",
+      "properties": {
+        "work_modes": {
+          "description": "Accepted work modes: remote, hybrid, onsite",
+          "items": {
+            "type": "string"
+          },
+          "title": "Work Modes",
+          "type": "array"
+        },
+        "employment_types": {
+          "description": "Accepted contract types: full-time, contract, internship",
+          "items": {
+            "type": "string"
+          },
+          "title": "Employment Types",
+          "type": "array"
+        },
+        "compensation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CompensationPreference"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "title": "WorkSetupPreferences",
+      "type": "object"
+    }
+  },
+  "description": "Standardized Personalization Profile (v2).\n\nThis is the Single Source of Truth for candidate personalization,\npreferences, company tier lists, and scoring heuristics.",
+  "properties": {
+    "schema_version": {
+      "default": "2.0.0",
+      "description": "Profile schema version (semver)",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "profile_id": {
+      "description": "Unique machine identifier for this profile (e.g. 'pratham_johari')",
+      "title": "Profile Id",
+      "type": "string"
+    },
+    "created_at": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Created At"
+    },
+    "updated_at": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Updated At"
+    },
+    "candidate_background": {
+      "$ref": "#/$defs/CandidateBackground"
+    },
+    "candidate_preferences": {
+      "$ref": "#/$defs/CandidatePreferences"
+    },
+    "target_companies_and_domains": {
+      "$ref": "#/$defs/TargetCompaniesAndDomains"
+    },
+    "evaluation_and_scoring_rubric": {
+      "$ref": "#/$defs/EvaluationAndScoringRubric"
+    },
+    "output_settings": {
+      "$ref": "#/$defs/OutputSettings"
+    }
+  },
+  "required": [
+    "profile_id",
+    "candidate_background",
+    "candidate_preferences",
+    "target_companies_and_domains",
+    "evaluation_and_scoring_rubric"
+  ],
+  "title": "PersonalizationProfile",
+  "type": "object"
+}

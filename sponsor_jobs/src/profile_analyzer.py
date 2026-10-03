@@ -21,20 +21,35 @@ DB_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "data", 
 OUTPUT_MD_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "data", "recommended_jobs.md"))
 OUTPUT_JSON_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "data", "recommended_jobs.json"))
 
-# Explicit Non-Target locations (filtered out unless remote)
+# Explicit Non-Target locations (filtered out unless remote or in accepted US target hubs)
 NON_TARGET_PATTERNS = [
     r"\b(united\s+states|usa)\b", r"\b(u\.s\b|us\b|u\.s\.)",
     r"\bindia\b", r"\bjapan\b", r"\bkorea\b",
     r"\bcanada\b", r"\bmexico\b", r"\bbrazil\b", r"\bsingapore\b",
-    r"\bchina\b", r"\bcalifornia\b", r"\bwashington\b", r"\bnew\s+york\b", r"\btexas\b",
+    r"\bchina\b", r"\bwashington\b", r"\btexas\b",
     r"\bvirginia\b", r"\bmaryland\b", r"\bcolorado\b", r"\boregon\b",
     r"\b(bengaluru|bangalore|hyderabad|pune|delhi|noida|gurgaon|gurugram|chennai|mumbai)\b",
-    r"\b(ann\s+arbor|chicago|blacksburg|fort\s+worth|austin|seattle|san\s+francisco|mountain\s+view)\b",
+    r"\b(ann\s+arbor|chicago|blacksburg|fort\s+worth|austin|seattle)\b",
     r"\bdelaware\b", r"\bpennsylvania\b", r"\btokyo\b", r"\bseoul\b",
     r"\bserbia\b", r"\bbelgrade\b"
 ]
 
-# Accepted target locations: Netherlands, UK, Australia, European Union, and Remote
+# High-priority US tech hubs: New York, San Francisco (Bay Area), Los Angeles
+US_TARGET_PATTERNS = [
+    # New York City & Metro
+    r"\bnew\s+york\b", r"\bnyc\b", r"\bny\b", r"\bmanhattan\b", r"\bbrooklyn\b", r"\bnew\s+york\s+city\b",
+    # San Francisco & Bay Area / Silicon Valley
+    r"\bsan\s+francisco\b", r"\bsf\b", r"\bbay\s+area\b", r"\bsilicon\s+valley\b",
+    r"\bmountain\s+view\b", r"\bpalo\s+alto\b", r"\bsunnyvale\b", r"\bsan\s+jose\b",
+    r"\bmenlo\s+park\b", r"\boakland\b", r"\bberkeley\b", r"\bsan\s+mateo\b", r"\bredwood\s+city\b",
+    r"\bsanta\s+clara\b", r"\bfoster\s+city\b",
+    # Los Angeles & Southern California
+    r"\blos\s+angeles\b", r"\bla\b", r"\bsanta\s+monica\b", r"\bculver\s+city\b",
+    r"\bpasadena\b", r"\birvine\b", r"\blong\s+beach\b", r"\bel\s+segundo\b",
+    r"\bhawthorne\b", r"\bcosta\s+mesa\b"
+]
+
+# Accepted target locations: Netherlands, UK, Australia, US (NYC, SF, LA), European Union, and Remote
 TARGET_LOCATION_KEYWORDS = [
     # Netherlands
     r"\bnetherlands\b", r"\bamsterdam\b", r"\bdelft\b", r"\beindhoven\b",
@@ -47,6 +62,9 @@ TARGET_LOCATION_KEYWORDS = [
     # Australia
     r"\baustralia\b", r"\bsydney\b", r"\bmelbourne\b", r"\bbrisbane\b", r"\bperth\b",
     r"\badelaide\b", r"\bcanberra\b", r"\bnsw\b", r"\bvictoria\b", r"\bqueensland\b",
+    # United States: New York, San Francisco (Bay Area), Los Angeles
+    *US_TARGET_PATTERNS,
+    r"\bcalifornia\b", r"\bca\b",
     # Europe & Remote
     r"\beurope\b", r"\beu\b", r"\bemea\b", r"\bgermany\b", r"\bberlin\b", r"\bmunich\b",
     r"\bfrance\b", r"\bparis\b", r"\bspain\b", r"\bmadrid\b", r"\bbarcelona\b",
@@ -107,24 +125,28 @@ def is_senior_role(title: str) -> bool:
 
 
 def is_target_location(location: str) -> bool:
-    """Check whether a location is strictly within Netherlands, UK, Australia, EU, or Target Remote."""
+    """Check whether a location is within Netherlands, UK, Australia, EU, Target US hubs (NYC, SF, LA), or Remote."""
     if not location or location.strip() == "":
         return True
         
     loc = location.lower().strip()
     
+    # Check if explicitly in one of our US target hubs (NYC, SF, LA)
+    if any(re.search(pat, loc) for pat in US_TARGET_PATTERNS):
+        return True
+
     has_non_target = any(re.search(pat, loc) for pat in NON_TARGET_PATTERNS)
     has_target = any(re.search(pat, loc) for pat in TARGET_LOCATION_KEYWORDS)
     
     if has_non_target:
-        # If a non-target country (e.g. India, USA, Singapore) is present, only accept if
-        # a primary target region (NL, UK, Australia, EU, EMEA, Worldwide) is explicitly named.
+        # If a non-target token (e.g. India, USA generic, Singapore) is present, only accept if
+        # a primary target region (NL, UK, Australia, EU, EMEA, Worldwide, or our US hubs) is explicitly named.
         is_explicit_target = any(re.search(pat, loc) for pat in [
             r"\bnetherlands\b", r"\bamsterdam\b", r"\bdelft\b", r"\beindhoven\b",
             r"\bunited\s+kingdom\b", r"\buk\b", r"\blondon\b",
             r"\baustralia\b", r"\bsydney\b", r"\bmelbourne\b",
             r"\beurope\b", r"\beu\b", r"\bemea\b", r"\bworldwide\b"
-        ])
+        ] + US_TARGET_PATTERNS)
         return is_explicit_target
         
     return has_target
@@ -143,6 +165,14 @@ def get_location_category(location: str) -> str:
         return "United Kingdom"
     if any(re.search(pat, loc) for pat in [r"\baustralia\b", r"\bsydney\b", r"\bmelbourne\b", r"\bbrisbane\b", r"\bperth\b", r"\badelaide\b", r"\bcanberra\b"]):
         return "Australia"
+    if any(re.search(pat, loc) for pat in [r"\bnew\s+york\b", r"\bnyc\b", r"\bmanhattan\b", r"\bbrooklyn\b", r"\bnew\s+york\s+city\b"]):
+        return "New York"
+    if any(re.search(pat, loc) for pat in [r"\bsan\s+francisco\b", r"\bsf\b", r"\bbay\s+area\b", r"\bsilicon\s+valley\b", r"\bmountain\s+view\b", r"\bpalo\s+alto\b", r"\bsunnyvale\b", r"\bsan\s+jose\b", r"\bmenlo\s+park\b", r"\boakland\b", r"\bberkeley\b", r"\bsan\s+mateo\b", r"\bredwood\s+city\b", r"\bsanta\s+clara\b", r"\bfoster\s+city\b"]):
+        return "San Francisco"
+    if any(re.search(pat, loc) for pat in [r"\blos\s+angeles\b", r"\bla\b", r"\bsanta\s+monica\b", r"\bculver\s+city\b", r"\bpasadena\b", r"\birvine\b", r"\blong\s+beach\b", r"\bel\s+segundo\b", r"\bhawthorne\b", r"\bcosta\s+mesa\b"]):
+        return "Los Angeles"
+    if any(re.search(pat, loc) for pat in [r"\bunited\s+states\b", r"\busa\b", r"\bu\.s\.", r"\bcalifornia\b"]):
+        return "United States"
     if "remote" in loc:
         return "Remote"
     return "Europe (Other)"
@@ -170,6 +200,18 @@ def score_job(title: str, location: str, description: str = "", allow_senior: bo
     elif region == "Australia":
         score += 20
         reasons.append("Australia Target (+20 pts)")
+    elif region == "New York":
+        score += 20
+        reasons.append("New York Target (+20 pts)")
+    elif region == "San Francisco":
+        score += 20
+        reasons.append("San Francisco Target (+20 pts)")
+    elif region == "Los Angeles":
+        score += 20
+        reasons.append("Los Angeles Target (+20 pts)")
+    elif region == "United States":
+        score += 18
+        reasons.append("United States Target (+18 pts)")
     elif "remote" in loc_lower or "europe" in loc_lower:
         score += 15
         reasons.append("EU / Remote (+15 pts)")
@@ -413,7 +455,9 @@ def extract_job_keywords(text: str, title: str = "", location: str = "") -> Dict
         for pat in [
             r"\bamsterdam\b", r"\bdelft\b", r"\beindhoven\b", r"\brotterdam\b", r"\butrecht\b",
             r"\bthe\s+hague\b", r"\bnetherlands\b", r"\blondon\b", r"\bunited\s+kingdom\b",
-            r"\bsydney\b", r"\bmelbourne\b", r"\baustralia\b", r"\bremote\b"
+            r"\bsydney\b", r"\bmelbourne\b", r"\baustralia\b",
+            r"\bnew\s+york\b", r"\bsan\s+francisco\b", r"\blos\s+angeles\b", r"\bcalifornia\b",
+            r"\bremote\b"
         ]:
             if re.search(pat, text, re.I):
                 detected_location = pat.replace(r"\b", "").replace(r"\s+", " ").title()
@@ -581,6 +625,8 @@ def detect_ats_platform(source: str = "", url: str = "", ats_type: Optional[str]
         return "Personio"
     if "bamboohr" in src or "bamboohr.com" in u or at == "bamboohr":
         return "BambooHR"
+    if "teamtailor" in src or "teamtailor.com" in u or at == "teamtailor":
+        return "Teamtailor"
     if "arbeitnow" in src or "arbeitnow.com" in u or "arbeitnow.co.uk" in u:
         return "Arbeitnow"
     if "linkedin" in src or "linkedin.com" in u:
@@ -617,6 +663,7 @@ def add_custom_job(
     # 1. Sponsor Matching against IND register
     sponsor_id = None
     kvk = "External / Manual"
+    ats_type = None
     try:
         from src.sponsor_matcher import SponsorMatcher
         matcher = SponsorMatcher(db_path)
@@ -624,6 +671,7 @@ def add_custom_job(
         if m:
             sponsor_id = m["id"]
             kvk = m.get("kvk") or "IND Recognised Sponsor"
+            ats_type = m.get("ats_type")
     except Exception as e:
         logging.warning(f"Could not check sponsor matcher: {e}")
 
@@ -653,8 +701,21 @@ def add_custom_job(
         now_str = cur.fetchone()[0]
 
     # Check if URL already exists
-    cur.execute("SELECT id FROM jobs WHERE url = ?", (url_str,))
+    cur.execute("SELECT id, sponsor_id FROM jobs WHERE url = ?", (url_str,))
     existing = cur.fetchone()
+
+    if existing:
+        job_id = existing[0]
+        if not sponsor_id and existing[1]:
+            sponsor_id = existing[1]
+    if sponsor_id and not ats_type:
+        try:
+            cur.execute("SELECT ats_type FROM sponsors WHERE id = ?", (sponsor_id,))
+            s_row = cur.fetchone()
+            if s_row and s_row[0]:
+                ats_type = s_row[0]
+        except Exception:
+            pass
 
     if existing:
         job_id = existing[0]
@@ -802,7 +863,7 @@ def analyze_all_jobs(db_path: str = DB_PATH) -> int:
     with open(OUTPUT_JSON_PATH, "w", encoding="utf-8") as f:
         json.dump(analyzed_jobs, f, indent=2)
         
-    logging.info(f"Analyzed {len(analyzed_jobs)} active non-senior jobs across NL, UK, AU, and EU. Saved to {OUTPUT_MD_PATH}")
+    logging.info(f"Analyzed {len(analyzed_jobs)} active non-senior jobs across NL, UK, AU, US (NYC/SF/LA), and EU. Saved to {OUTPUT_MD_PATH}")
     return len(analyzed_jobs)
 
 
@@ -828,7 +889,7 @@ def generate_markdown_report(jobs: List[Dict[str, Any]], output_path: str):
         f"**Active Non-Senior Roles Evaluated:** {len(jobs)} positions across verified sponsors & tech leaders.",
         f"**Applications Status:** 🎯 **{len(applied_jobs)} Active Applied** | ❌ **{len(rejected_jobs)} Rejected** | 🚫 **{len(uninterested_jobs)} Uninterested** | ⏳ **{max(0, remaining)} Remaining** to Review",
         f"**Newly Discovered:** 🆕 **{len(new_jobs)} New Roles** since last daily sync.",
-        f"**Geographical Scope:** 🇳🇱 Netherlands • 🇬🇧 United Kingdom • 🇦🇺 Australia • 🇪🇺 European Union • 🌐 Remote",
+        f"**Geographical Scope:** 🇳🇱 Netherlands • 🇬🇧 United Kingdom • 🇦🇺 Australia • 🇺🇸 United States (New York • San Francisco • Los Angeles) • 🇪🇺 European Union • 🌐 Remote",
         f"**Seniority Policy:** 🛡️ **Non-Senior Only** (Senior, Staff, Principal, Lead, and Director roles filtered out).",
         f"**Core Technology Focus:** 🐍 Python Specialist, AI / ML Engineering, Compound AI / RAG, Computer Vision & Perception, MLOps.",
         f"**Automatic Tracking:** Click **`[Apply ⚡]`** to automatically record application and open the employer's page.",

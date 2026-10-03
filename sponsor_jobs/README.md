@@ -21,7 +21,7 @@ It monitors all **12,927+ Dutch Recognised Sponsors** from the official [IND Pub
 4. **Automated Application Tracking**:
    - **Persistent Tracking**: Stores `applied`, `applied_at`, `status`, and `notes` in SQLite (never lost during daily scrapes).
    - **1-Click Auto-Tracking (`[Apply ⚡]`)**: Clicking the apply link in `recommended_jobs.md` automatically marks the job as applied in the database and redirects directly to the company application portal.
-   - **Interactive Web Dashboard (`python cli.py web`)**: Real-time filtering, 1-click apply, custom application notes, and status transitions (`Applied`, `Interviewing`, `Offered`, `Rejected`).
+   - **Interactive Web Dashboard (`python cli.py web`)**: Real-time filtering (Netherlands 🇳🇱, UK 🇬🇧, Australia 🇦🇺, US 🇺🇸 [New York, San Francisco, Los Angeles], EU 🇪🇺, Remote 🌐), 1-click apply, custom application notes, and status transitions (`Applied`, `Interviewing`, `Offered`, `Rejected`).
 5. **Automated Daily Updates**:
    - Runs a single pipeline that checks for IND changes, discovers new jobs, archives stale postings, and updates `data/recommended_jobs.md`.
 

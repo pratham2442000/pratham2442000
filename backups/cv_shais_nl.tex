@@ -1,0 +1,249 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage[dutch,english]{babel}
+\usepackage{microtype}
+\usepackage{charter}
+
+% Ensure that generated PDF is machine readable / ATS parsable
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+%---------- COLOR DEFINITIONS ----------
+\definecolor{cvblue}{HTML}{0E5484}
+\definecolor{black}{HTML}{130810}
+\definecolor{darkcolor}{HTML}{0F4539}
+\definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
+\definecolor{linkblue}{HTML}{1A5276}
+
+%---------- MARGINS ----------
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.6in}
+\addtolength{\textwidth}{1.2in}
+\addtolength{\topmargin}{-.8in}
+\addtolength{\textheight}{1.6in}
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+
+%---------- SECTION FORMATTING (CLEAN, ATS-SAFE) ----------
+\titleformat{\section}{
+  \vspace{-5pt}\scshape\raggedright\large\bfseries\color{airforceblue}
+}{}{0em}{}[\color{black}\titlerule \vspace{-4pt}]
+
+%---------- CUSTOM ATS-OPTIMIZED COMMANDS ----------
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-3pt}\item
+    \textbf{\large#1} \hfill \textbf{\normalsize#2}\\
+    \textit{\normalsize#3} \hfill \textit{\small#4}
+  \vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+  \vspace{-3pt}\item
+    \textbf{\large#1} \hfill \textbf{\normalsize#2}\\
+    \vspace{-7pt}
+}
+
+\newcommand{\resumeItem}[1]{
+  \item\normalsize{#1}
+}
+
+\renewcommand\labelitemi{\textbullet}
+\renewcommand\labelitemii{\textbullet}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}, topsep=0pt, itemsep=2.5pt]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.15in, topsep=0.5pt, itemsep=0.5pt, parsep=0pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
+
+% ==============================================================================
+%                           RESUME STARTS HERE
+% ==============================================================================
+\begin{document}
+
+%---------- HEADING & CONTACT INFO ----------
+\newcommand{\targetRole}{Biologie \& Medisch Laboratoriumonderzoek \textbar{} Life Science \& Technology \textbar{} Moleculaire Biologie}
+
+\begin{center}
+  \vspace{-12pt}
+  {\huge{Sha\"{\i}s Ayush Hemradj Ganpat}} \\[2pt]
+  {\textbf{\color{airforceblue}\targetRole}} \\[3pt]
+  \footnotesize{
+    Delft, Zuid-Holland, Nederland \ \textbullet \
+    +31 6 85141062 \ \textbullet \
+    \href{mailto:shaisganpat_2000@hotmail.com}{\color{linkblue}shaisganpat\_2000@hotmail.com} \ \textbullet \
+    \href{https://www.linkedin.com/in/shaisganpat/}{\color{linkblue}linkedin.com/in/shaisganpat}
+  }
+  \vspace{-8pt}
+\end{center}
+
+%----------- PROFIEL -----------
+\section{Profiel}
+\begin{itemize}[leftmargin=0in, label={}, topsep=0pt, itemsep=0pt]
+  \item\normalsize{
+    BML-student met een sterke wetenschappelijke basis in Life Science \& Technology (TU Delft / Universiteit Leiden) en praktijkervaring binnen de moleculaire biologie, medische microbiologie en data-analyse. Vaardig in laboratoriumtechnieken zoals PCR, primerontwerp, DNA-analyse en microbiologische kweken, gecombineerd met sterke didactische en organisatorische vaardigheden vanuit examentraining en studentenbestuur. Gemotiveerd om tijdens een afstudeerstage experimentele precisie en analytisch probleemoplossend vermogen in te zetten.
+  }
+\end{itemize}
+\vspace{-8pt}
+
+%----------- OPLEIDING -----------
+\section{Opleiding}
+\resumeSubHeadingListStart
+\resumeSubheading
+{Hogeschool Leiden}{Feb 2025 -- 2027 (Verwacht)}
+{BSc. Biologie en Medisch Laboratoriumonderzoek (BML)}{Leiden, Nederland}
+\resumeSubheading
+{Delft University of Technology (TU Delft) \& Universiteit Leiden}{Sep 2019 -- Feb 2025}
+{BSc. Life Science and Technology (Joint Degree)}{Delft / Leiden, Nederland}
+\resumeItemListStart
+\resumeItem{\textbf{Propedeuse behaald} (basis in genetica, biochemie, celbiologie en data-analyse in Python) en \textbf{Minor Lerarenopleiding Scheikunde} afgerond.}
+\resumeItemListEnd
+\vspace{-5pt}
+
+\resumeSubheading
+{Mr. Dr. J.C. de Miranda Lyceum}{Aug 2015 -- Jul 2018}
+{VWO Voorbereidend Wetenschappelijk Onderwijs (Profiel: Natuur \& Techniek)}{Paramaribo, Suriname}
+\resumeItemListStart
+\resumeItem{Examencijfers: Scheikunde (9), Biologie (9), Natuurkunde (8), Engels (8), Nederlands (8), Wiskunde A/B (7), Wiskunde D (7).}
+\resumeItemListEnd
+\resumeSubHeadingListEnd
+\vspace{-8pt}
+
+%----------- VAARDIGHEDEN -----------
+\section{Vaardigheden}
+\begin{itemize}[leftmargin=0in, label={}, topsep=0pt, itemsep=1.2pt]
+  \normalsize{\item{
+    \textbf{Laboratorium- \& Moleculaire Technieken:}{ PCR, primerontwerp, DNA/RNA-extractie, agarose-gelelektroforese, microbiële kweken, aseptisch werken, Gram-kleuring, optische microscopie, bioveiligheid \& Good Laboratory Practice (GLP)} \\
+    \textbf{Data-analyse \& Programmeren:}{ Python (Pandas, NumPy, Matplotlib, SciPy), dataverwerking, statistische modellering, wetenschappelijk rekenen, Microsoft Excel (geavanceerde data-analyse, draaitabellen)} \\
+    \textbf{Didactiek \& Onderwijs:}{ Examentraining scheikunde (havo/vwo), curriculumontwikkeling, gedifferentieerd lesgeven, didactische feedback, studentmentoraat, formatief toetsen} \\
+    \textbf{Bestuur \& Organisatie:}{ Studentenbeheer, faciliteitenbeheer, belangenbehartiging van bewoners, evenementenorganisatie, conflicthantering, multidisciplinair samenwerken} \\
+    \textbf{Talenkennis:}{ Nederlands (moedertaal / vloeiend), Engels (vloeiend), Sranan Tongo (vloeiend), Hindi (basiskennis)}
+  }}
+\end{itemize}
+\vspace{-8pt}
+
+%----------- LABORATORIUMERVARING -----------
+\section{Laboratorium- \& Onderzoekservaring}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{Praktijkonderwijs BML -- Hogeschool Leiden}{Feb 2025 -- Heden}
+{Laboratoriumonderzoeker in opleiding}{Leiden, Nederland}
+\resumeItemListStart
+\resumeItem{\textbf{Moleculaire Biologie \& Genetica:} Uitvoeren van practica gericht op genomische DNA-extractie, sequentie-specifiek primerontwerp en DNA-amplificatie via PCR, gevalideerd met behulp van agarose-gelelektroforese.}
+\resumeItem{\textbf{Medische Microbiologie:} Kweken, isoleren en karakteriseren van bacteriën; toepassen van aseptische technieken, entmethoden en Gram-kleuring conform GLP- en bioveiligheidsrichtlijnen.}
+\resumeItem{\textbf{Kwantitatieve Kwaliteitsborging:} Nauwkeurig documenteren van experimentele protocollen, interpreteren van spectrofotometrische metingen (Nanodrop) en troubleshooten van afwijkingen ter borging van reproduceerbaarheid.}
+\resumeItemListEnd
+\vspace{-5pt}
+
+\resumeSubheading
+{Anton de Kom Universiteit van Suriname (AdeKUS)}{Jul 2016 -- Aug 2016}
+{Student-assistent Praktijkcursus Microbiologie}{Paramaribo, Suriname}
+\resumeItemListStart
+\resumeItem{\textbf{Laboratoriumvoorbereiding:} Geselecteerd door academische staf op basis van topprestatie in 2015; bereiden van voedingsbodems (agar), steriliseren van apparatuur (autoclaaf) en inrichten van steriele werkstations.}
+\resumeItem{\textbf{Begeleiding van Cursisten:} Demonstreren van aseptische enttechnieken, isolatiestrepen en microscopische identificatie via Gram-kleuring aan een nieuwe studentengroep.}
+\resumeItemListEnd
+\vspace{-5pt}
+
+\resumeSubheading
+{Anton de Kom Universiteit van Suriname (AdeKUS)}{Jul 2015 -- Aug 2015}
+{Cursist Intensieve Cursus Microbiologie}{Paramaribo, Suriname}
+\resumeItemListStart
+\resumeItem{\textbf{Praktische \& Theoretische Training:} Cursus afgerond in medische en milieumicrobiologie, steriel werken, bacterieel metabolisme en pathogenendetectie.}
+\resumeItem{\textbf{Academische Erkenning:} Onderscheiden met het certificaat \textbf{``Most Motivated Student''} van het cohort wegens laboratoriumprecisie, actieve betrokkenheid en analytische werkhouding.}
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+\newpage
+
+%----------- DIDACTISCHE & ONDERWIJSERVARING -----------
+\section{Didactische \& Onderwijservaring}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{Lyceo}{Apr 2023 -- Heden}
+{Examentrainer Scheikunde \& Studiebegeleider}{Delft / Den Haag, Nederland}
+\resumeItemListStart
+\resumeItem{\textbf{Eindexamentraining:} Verzorgen van intensieve trainingen scheikunde voor examenklassen havo en vwo; complexe concepten zoals reactiekinetiek, chemisch evenwicht, thermodynamica en syntheses inzichtelijk maken.}
+\resumeItem{\textbf{Individuele Begeleiding:} Didactisch analyseren van knelpunten, samenstellen van gerichte oefensets en trainen van systematische examenstrategieën met meetbare cijferverbeteringen als gevolg.}
+\resumeItem{\textbf{Surveilleren \& Begeleiding:} Afnemen van gestandaardiseerde proefexamens, bewaken van examenprotocollen en bieden van vakinhoudelijke huiswerkbegeleiding bij bètavakken.}
+\resumeItemListEnd
+\vspace{-5pt}
+
+\resumeSubheading
+{Stanislascollege Westplantsoen}{Aug 2024 -- Jan 2025}
+{Onderwijsstage Scheikunde (Stageminor Didactiek)}{Delft, Nederland}
+\resumeItemListStart
+\resumeItem{\textbf{Klassikaal Lesgeven:} Zelfstandig ontwerpen en verzorgen van interactieve scheikundelessen voor middelbare scholieren als onderdeel van de TU Delft Lerarenopleiding.}
+\resumeItem{\textbf{Lesontwikkeling:} Ontwikkelen van didactisch lesmateriaal met interactieve demonstratieproeven en formatieve evaluaties ter versterking van scheikundige basisconcepten.}
+\resumeItem{\textbf{Didactische Professionalisering:} Lespraktijk geëvalueerd via lesobservaties door werkplekbegeleiders en zelfevaluatie, gericht op klassenmanagement en differentiatie.}
+\resumeItemListEnd
+\vspace{-5pt}
+
+\resumeSubheading
+{Martial Arts Academy}{Jan 2017 -- Jun 2019}
+{Taekwondotrainer \& Zwarte Band (1e Dan)}{Paramaribo / Delft}
+\resumeItemListStart
+\resumeItem{\textbf{Groepslessen \& Conditietraining:} Anderhalf jaar taekwondoles gegeven aan groepen jeugd en volwassenen met de focus op basistechnieken, sparren, conditie en discipline.}
+\resumeItem{\textbf{Mentorschap:} Jonge sporters voorbereid op bandexamens met nadruk op doorzettingsvermogen, respect en sportiviteit.}
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+\vspace{-8pt}
+
+%----------- BESTUUR & MAATSCHAPPELIJKE ERVARING -----------
+\section{Bestuur \& Maatschappelijke Ervaring}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{DUWO Studentenhuisvesting}{Aug 2021 -- Heden}
+{Resident Assistant \& Studentbeheerder (Hotchpot / Van Hasseltlaan / BalPol4)}{Delft, Nederland}
+\resumeItemListStart
+\resumeItem{\textbf{Huurderscontact \& Bewonersbeheer:} Primair operationeel aanspreekpunt voor 100+ Nederlandse en internationale studenten; behandelen van praktische vragen en bevorderen van het studentenwelzijn.}
+\resumeItem{\textbf{Beheer Gemeenschappelijke Ruimte:} Sinds 2024 verantwoordelijk voor het beheer van ontmoetingsruimte ``Hotchpot''; initiëren van sociale en netwerkactiviteiten om een hechte community op te bouwen.}
+\resumeItem{\textbf{Veiligheid \& Inspecties:} Periodieke controles op brandveiligheid en techniek uitvoeren, gebreken inventariseren en direct schakelen met DUWO Verhuur, Schoonmaak en Vastgoedservice.}
+\resumeItem{\textbf{Internationale Integratie:} Ontvangen van internationale studenten, geven van welkomstgesprekken en rondleidingen, en constructief bemiddelen bij bewonersgeschillen.}
+\resumeItemListEnd
+\vspace{-5pt}
+
+\resumeSubheading
+{WijWonen}{Apr 2025 -- Dec 2026}
+{Bestuurslid -- Commissaris Koepel}{Delft, Nederland}
+\resumeItemListStart
+\resumeItem{\textbf{Belangenbehartiging:} Vertegenwoordigen van aangesloten Delftse studentenbewonersorganisaties in overleg met DUWO, gemeentelijke instanties en studentenraden.}
+\resumeItem{\textbf{Beleidsafstemming:} Stimuleren van samenwerking tussen bewonerscommissies op het gebied van huurrechten, duurzaamheid en leefbaarheid.}
+\resumeItemListEnd
+\vspace{-5pt}
+
+\resumeSubheading
+{SUBEST Delft (Surinaamse Bèta-Studenten Delft)}{Sep 2020 -- Nov 2021}
+{Bestuurslid -- Commissaris Educatie}{Delft, Nederland}
+\resumeItemListStart
+\resumeItem{\textbf{Educatieve Programmering:} Coördineren van educatieve evenementen, bètagerichte workshops en tentamentrainingen voor Surinamese studenten aan de TU Delft en Universiteit Leiden.}
+\resumeItem{\textbf{Mentorproject:} Coördineren van de eerstejaarsbegeleiding ter bevordering van een succesvolle academische en sociale start in Nederland.}
+\resumeItem{\textbf{Onderwijscontact:} Onderhouden van formele contacten tussen studentleden, academische opleidingen en externe onderwijspartners.}
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+\vspace{-8pt}
+
+%----------- ONDERSCHEIDINGEN & CERTIFICATEN -----------
+\section{Onderscheidingen, Certificaten \& Nevenactiviteiten}
+\resumeItemListStart
+\resumeItem{\textbf{Propedeusediploma (Life Science \& Technology):} Uitgereikt door TU Delft en Universiteit Leiden na succesvolle afronding van het volledige eerstejaars bachelortraject.}
+\resumeItem{\textbf{Onderscheiding ``Most Motivated Student'':} Anton de Kom Universiteit van Suriname (AdeKUS) -- Toegekend tijdens de microbiologiecursus 2015 wegens uitstekende inzet en nauwkeurigheid.}
+\resumeItem{\textbf{Zwarte Band 1e Dan in Taekwondo:} World Taekwondo (2012 -- 2019) -- Resultaat van 7+ jaar intensieve training, discipline en leiderschap.}
+\resumeItemListEnd
+
+\end{document}

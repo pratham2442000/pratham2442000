@@ -1,0 +1,2581 @@
+schema_version: 2.0.0
+profile_id: pratham_johari
+created_at: '2026-09-30'
+updated_at: '2026-09-30'
+candidate_background:
+  personal_info:
+    name: Pratham Johari
+    email: pratham244200@gmail.com
+    location: Delft, Netherlands
+    linkedin: https://www.linkedin.com/in/prathamjohari
+    github: https://github.com/pratham2442000
+    tagline: AI & Software Engineer | MSc Data Science & AI @ TU Delft
+    career_objective: Bridge the gap between cutting-edge academic research and scalable,
+      production-ready AI infrastructure.
+    agent_tone_instructions: 'Tone: Confident, highly technical, impact-driven, and
+      forward-thinking. Show a ''tinkerer'' mindset—someone who loves building and
+      managing systems both professionally and personally. Emphasize ability to take
+      complex AI models (like RAG pipelines) out of research and deploy them reliably.
+      Highlight Linux, networking, and homelab experience. Keep cover letters concise
+      with 2-3 highly relevant projects matching the specific job requirements.'
+  education:
+  - institution: Delft University of Technology (TU Delft)
+    degree: Master of Science (MSc)
+    field_of_study: Data Science and Artificial Intelligence Technology
+    location: Delft, Netherlands
+    start_date: 2024-09
+    end_date: 2026-06
+    thesis_title: 'Scaling Laws for Compound AI Systems: More Compute, More Problems?
+      Rethinking Scaling Laws for Retrieval-Augmented Generation'
+    thesis_url: https://github.com/pratham2442000/MasterThesis
+    thesis_abstract: 'Formulated and empirically characterized inference/test-time
+      compute scaling laws in multi-stage RAG pipelines across candidate depth, query
+      breadth, and adaptive graph/pseudo-relevance allocation. Benchmarked sparse/dense
+      retrievers, neural cross-encoders, generative rerankers, and rank fusion algorithms
+      on the DelftBlue HPC cluster.
+
+      '
+    highlights:
+    - 'Focus: Deep Learning, Information Retrieval, Compound AI, MLOps, Distributed
+      Systems'
+    - 'TU Delft Institutional Repository UUID: f0406b81-8b50-47c9-a44b-5da89c59c916'
+  - institution: Delft University of Technology (TU Delft)
+    degree: Bachelor of Science (BSc)
+    field_of_study: Computer Science and Engineering
+    location: Delft, Netherlands
+    start_date: 2020-09
+    end_date: 2024-05
+    highlights:
+    - 'Core focus: Algorithms, Data Structures, Computer Architecture, Embedded Systems,
+      C++, Software Engineering'
+  verified_technical_skills:
+  - category: Python Mastery
+    weight: 18.0
+    skills:
+    - Python
+    - FastAPI
+    - Flask
+    - Django
+    - AsyncIO
+    - Pydantic
+    - PyTest
+    - Celery
+    patterns:
+    - \b(python|python3|fastapi|flask|django|asyncio|pydantic|pytest|celery)\b
+    aliases:
+      Python:
+      - python3
+      - py
+  - category: RAG / Compound AI / LLM
+    weight: 16.0
+    skills:
+    - Retrieval-Augmented Generation (RAG)
+    - Compound AI Systems
+    - PyTerrier
+    - LangChain
+    - LangGraph
+    - FAISS
+    - BM25
+    - TCT-ColBERT
+    - ColPali
+    - vLLM
+    - HuggingFace Transformers
+    - Rank Fusion (RRF, Borda, CombMAX)
+    - LLM-as-a-Judge
+    patterns:
+    - \b(rag|retrieval|llm|generative\s+ai|langchain|langgraph|transformers|colbert|colpali|vllm|faiss|context\s+retrieval|bm25)\b
+  - category: Perception / LIDAR / ROS
+    weight: 16.0
+    skills:
+    - Robot Operating System (ROS / ROS2)
+    - LIDAR Processing
+    - Point Cloud Processing
+    - YOLO
+    - Sensor Fusion
+    - OpenCV
+    - Autonomous Driving Systems
+    patterns:
+    - \b(ros|ros2|lidar|point\s+cloud|yolo|sensor\s+fusion|opencv|perception|pointcloud)\b
+  - category: PyTorch / Deep Learning
+    weight: 14.0
+    skills:
+    - PyTorch
+    - TensorFlow
+    - Scikit-Learn
+    - Deep Learning
+    - Model Training & Fine-tuning
+    - Weights & Biases (W&B)
+    - ONNX
+    patterns:
+    - \b(pytorch|tensorflow|deep\s+learning|model\s+training|deep\s+neural|weights\s*&\s*biases|w&b|onnx)\b
+  - category: MLOps / Kubernetes / Infra
+    weight: 14.0
+    skills:
+    - Docker
+    - Kubernetes
+    - SLURM (DelftBlue HPC)
+    - CI/CD
+    - Helm
+    - DVC
+    - GCP Cloud SQL
+    - Prometheus & Grafana
+    patterns:
+    - \b(docker|kubernetes|k8s|helm|ci/cd|slurm|hpc|prometheus|grafana|observability)\b
+  - category: C++ / High Performance
+    weight: 10.0
+    skills:
+    - C++
+    - Low Latency Systems
+    - Embedded Systems
+    - Concurrency & Multithreading
+    patterns:
+    - \b(c\+\+|embedded|low\s+latency|concurrency)\b
+  - category: Linux / Homelab / Systems
+    weight: 10.0
+    skills:
+    - Linux Server Administration
+    - Bash Scripting
+    - Tailscale (Mesh VPN)
+    - DNS Management
+    - Self-Hosting
+    patterns:
+    - \b(linux|bash|tailscale|networking|cloud\s+sql|microservices)\b
+  experience_summaries:
+  - company: Delft University of Technology (TU Delft)
+    title: Head Teaching Assistant & Research Assistant
+    location: Delft, Netherlands
+    start_date: 2024-09
+    end_date: Present
+    is_current: true
+    role_type: teaching / research
+    technologies:
+    - Python
+    - PyTorch
+    - Data Science
+    - Pedagogy
+    key_achievements:
+    - Bridged complex academic concepts with practical coding execution for graduate
+      AI students.
+    - Demonstrated leadership, technical communication, and deep mastery of core AI/Data
+      Science principles.
+  - company: Formula Student Team Delft
+    title: Autonomous Driving Software Engineer
+    location: Delft, Netherlands
+    start_date: 2023-09
+    end_date: 2024-08
+    is_current: false
+    role_type: engineering
+    technologies:
+    - C++
+    - ROS
+    - LIDAR
+    - Point Clouds
+    - Linux
+    key_achievements:
+    - Engineered and optimized real-time perception pipelines utilizing LIDAR and
+      ROS for autonomous racing vehicles.
+    - Developed mission-critical C++ software processing high-frequency sensor streams
+      under strict latency budgets.
+  - company: Interko
+    title: Software Development Intern
+    location: Netherlands
+    start_date: 2023-02
+    end_date: 2023-07
+    is_current: false
+    role_type: internship
+    technologies:
+    - Python
+    - SQL
+    - System Architecture
+    - Git
+    key_achievements:
+    - Contributed to scalable commercial systems across the complete software development
+      lifecycle.
+  - company: FN MathLogic
+    title: Machine Learning Intern
+    location: India / Remote
+    start_date: 2022-06
+    end_date: 2022-09
+    is_current: false
+    role_type: internship
+    technologies:
+    - Python
+    - Scikit-Learn
+    - Pandas
+    - EDA
+    key_achievements:
+    - Applied predictive machine learning models to production datasets, optimizing
+      feature engineering pipelines.
+  project_highlights:
+  - name: Master's Thesis — Scaling Laws for Compound AI Systems & RAG
+    category: AI Research & Information Retrieval
+    description: 'Formulated inference/test-time compute scaling laws in multi-stage
+      RAG pipelines across candidate depth, query breadth, and adaptive graph allocation.
+      Evaluated dense/sparse retrievers and generative rerankers across MS MARCO (8.8M)
+      and DPR-w100 (21M) on the DelftBlue HPC cluster.'
+    technologies:
+    - Python
+    - PyTorch
+    - PyTerrier
+    - ColBERT
+    - vLLM
+    - SLURM
+    - HPC
+    url: https://resolver.tudelft.nl/uuid:f0406b81-8b50-47c9-a44b-5da89c59c916
+    repo_url: https://github.com/pratham2442000/MasterThesis
+    impact_metrics:
+    - Quantified 15-17% Oracle Recall gap across 8.8M passage corpus
+    - Benchmarked 6 rank fusion algorithms (RRF, CombMAX, Borda)
+  - name: Scalable AI Deployments
+    category: MLOps & Cloud Infrastructure
+    description: Deployed complex machine learning models as scalable, highly available
+      web services utilizing containerization.
+    technologies:
+    - Docker
+    - Kubernetes
+    - FastAPI
+    - Prometheus
+    - CI/CD
+    impact_metrics:
+    - Sub-50ms inference latency endpoints with health check automation
+  - name: Autonomous Perception Pipeline
+    category: Robotics & Computer Vision
+    description: Built perception pipelines using LIDAR and ROS for autonomous racing
+      vehicles.
+    technologies:
+    - C++
+    - ROS
+    - LIDAR
+    - PCL
+    - Sensor Fusion
+    impact_metrics:
+    - Real-time obstacle clustering and cone detection at 30+ Hz
+  infrastructure_and_homelab:
+  - title: Personal Bare-Metal Linux Server
+    description: Administer and maintain bare-metal Linux servers for containerized
+      self-hosted workloads and development.
+    tools:
+    - Ubuntu Server
+    - Docker
+    - Portainer
+    - ZFS
+    - Bash
+  - title: Tailscale Zero-Trust Mesh Network
+    description: Configured encrypted mesh VPN for secure remote access and cross-device
+      communication.
+    tools:
+    - Tailscale
+    - WireGuard
+    - Subnet Routing
+  - title: Self-Hosted Network Services
+    description: Maintained Pi-hole network-wide DNS ad-blocking and Immich high-performance
+      media server.
+    tools:
+    - Pi-hole
+    - Immich
+    - PostgreSQL
+    - Redis
+candidate_preferences:
+  target_roles:
+  - title: Python Engineer / Specialist
+    weight: 46.0
+    patterns:
+    - \b(python\s+(engineer|developer|specialist|backend|programmer))\b
+    is_primary: true
+  - title: Machine Learning Engineer
+    weight: 45.0
+    patterns:
+    - \b(machine\s+learning|ml)\s+engineer\b
+    is_primary: true
+  - title: AI Engineer
+    weight: 45.0
+    patterns:
+    - \bai\s+engineer\b
+    is_primary: true
+  - title: AI Platform Engineer
+    weight: 45.0
+    patterns:
+    - \bai\s+platform\s+engineer\b
+    is_primary: true
+  - title: Perception Engineer
+    weight: 45.0
+    patterns:
+    - \bperception\s+engineer\b
+    is_primary: true
+  - title: Autonomous Driving / Systems Engineer
+    weight: 45.0
+    patterns:
+    - \bautonomous\s+(driving|systems|vehicle|navigation)\b
+    is_primary: true
+  - title: Computer Vision Engineer
+    weight: 42.0
+    patterns:
+    - \bcomputer\s+vision\b
+  - title: MLOps Engineer
+    weight: 42.0
+    patterns:
+    - \bmlops\b
+  - title: Deep Learning Engineer
+    weight: 42.0
+    patterns:
+    - \bdeep\s+learning\b
+  - title: Robotics Software Engineer
+    weight: 42.0
+    patterns:
+    - \brobotics\s+(software|engineer)\b
+  - title: Applied AI / ML Engineer
+    weight: 42.0
+    patterns:
+    - \bapplied\s+(ai|ml)\b
+  - title: AI / ML Research Engineer
+    weight: 40.0
+    patterns:
+    - \bresearch\s+engineer\b
+  - title: Data Scientist
+    weight: 35.0
+    patterns:
+    - \bdata\s+scientist\b
+  - title: Backend Engineer
+    weight: 32.0
+    patterns:
+    - \bbackend\s+(engineer|developer)\b
+  - title: Software Engineer
+    weight: 30.0
+    patterns:
+    - \bsoftware\s+(engineer|developer)\b
+  seniority:
+    accepted_levels:
+    - trainee
+    - working student
+    - junior
+    - graduate
+    - associate
+    - entry-level
+    - mid
+    disallowed_levels:
+    - intern
+    - internship
+    - senior
+    - sr
+    - lead
+    - principal
+    - staff
+    - director
+    - head of
+    - vp
+    - vice president
+    - chief
+    - manager
+    - management
+    - architect
+    - distinguished
+    - founding engineer
+    strict_exclusion: true
+    senior_exclusion_pattern: \b(senior|sr\.?|sr\s+|lead|principal|staff|director|head\s+of|vp|vice\s+president|chief|manager|management|architect|distinguished|founding\s+engineer)\b
+    max_experience_years: 4
+    entry_level_bonus: 20.0
+    entry_level_patterns:
+    - \b(trainee|working\s+student|junior|graduate|entry\s+level|associate)\b
+  locations:
+    tiers:
+    - name: Netherlands
+      weight: 25.0
+      patterns:
+      - \bnetherlands\b
+      - \bamsterdam\b
+      - \bdelft\b
+      - \beindhoven\b
+      - \brotterdam\b
+      - \butrecht\b
+      - \bthe\s+hague\b
+      - \bden\s+haag\b
+      - \bleiden\b
+      - \bgroningen\b
+      - \benschede\b
+      - \bbrabant\b
+      - \bholland\b
+    - name: United Kingdom
+      weight: 20.0
+      patterns:
+      - \bunited\s+kingdom\b
+      - \buk\b
+      - \blondon\b
+      - \bcambridge\b
+      - \boxford\b
+      - \bmanchester\b
+      - \bedinburgh\b
+      - \bbristol\b
+      - \bbirmingham\b
+      - \bleeds\b
+      - \bglasgow\b
+      - \bengland\b
+      - \bscotland\b
+      - \bwales\b
+    - name: Australia
+      weight: 20.0
+      patterns:
+      - \baustralia\b
+      - \bsydney\b
+      - \bmelbourne\b
+      - \bbrisbane\b
+      - \bperth\b
+      - \badelaide\b
+      - \bcanberra\b
+      - \bnsw\b
+      - \bvictoria\b
+      - \bqueensland\b
+    - name: New York
+      weight: 20.0
+      patterns:
+      - \bnew\s+york\b
+      - \bnyc\b
+      - \bmanhattan\b
+      - \bbrooklyn\b
+      - \bnew\s+york\s+city\b
+    - name: San Francisco
+      weight: 15.0
+      patterns:
+      - \bsan\s+francisco\b
+      - \bsf\b
+      - \bbay\s+area\b
+      - \bsilicon\s+valley\b
+      - \bmountain\s+view\b
+      - \bpalo\s+alto\b
+      - \bsunnyvale\b
+      - \bsan\s+jose\b
+      - \bmenlo\s+park\b
+      - \boakland\b
+      - \bberkeley\b
+      - \bsan\s+mateo\b
+      - \bredwood\s+city\b
+      - \bsanta\s+clara\b
+      - \bfoster\s+city\b
+    - name: Los Angeles
+      weight: 15.0
+      patterns:
+      - \blos\s+angeles\b
+      - \bla\b
+      - \bsanta\s+monica\b
+      - \bculver\s+city\b
+      - \bpasadena\b
+      - \birvine\b
+      - \blong\s+beach\b
+      - \bel\s+segundo\b
+      - \bhawthorne\b
+      - \bcosta\s+mesa\b
+    - name: United States
+      weight: 10.0
+      patterns:
+      - \bunited\s+states\b
+      - \busa\b
+      - \bu\.s\.
+      - \bcalifornia\b
+    - name: Europe & Remote
+      weight: 15.0
+      patterns:
+      - \bremote\b
+      - \beurope\b
+      - \beu\b
+      - \bemea\b
+      - \bgermany\b
+      - \bberlin\b
+      - \bmunich\b
+      - \bfrance\b
+      - \bparis\b
+      - \bspain\b
+      - \bmadrid\b
+      - \bbarcelona\b
+      - \bireland\b
+      - \bdublin\b
+      - \bsweden\b
+      - \bstockholm\b
+      - \bdenmark\b
+      - \bcopenhagen\b
+      - \bbelgium\b
+      - \bbrussels\b
+      - \bitaly\b
+      - \bmilan\b
+      - \baustria\b
+      - \bvienna\b
+      - \bswitzerland\b
+      - \bzurich\b
+      - \bpoland\b
+      - \bwarsaw\b
+      - \bportugal\b
+      - \blisbon\b
+      - \bfinland\b
+      - \bnorway\b
+    remote:
+      allow_remote: true
+      bonus_points: 15.0
+      remote_only: false
+      remote_patterns:
+      - \bremote\b
+      - \banywhere\b
+      - \bwork\s+from\s+home\b
+      - \bwfh\b
+    us_target_hubs:
+    - New York City & Metro
+    - San Francisco Bay Area / Silicon Valley
+    - Los Angeles & Southern California
+    us_hub_patterns:
+    - \b(new\s+york|nyc|manhattan|brooklyn)\b
+    - \b(san\s+francisco|sf|bay\s+area|silicon\s+valley|mountain\s+view|palo\s+alto|sunnyvale|san\s+jose|menlo\s+park|redwood\s+city|santa\s+clara)\b
+    - \b(los\s+angeles|santa\s+monica|culver\s+city|pasadena|irvine|long\s+beach)\b
+    excluded_locations:
+    - \b(united\s+states|usa|u\.s\b|us\b|u\.s\.)
+    - \bindia\b
+    - \bjapan\b
+    - \bkorea\b
+    - \bcanada\b
+    - \bmexico\b
+    - \bbrazil\b
+    - \bsingapore\b
+    - \bchina\b
+    - \b(bengaluru|bangalore|hyderabad|pune|delhi|noida|gurgaon|chennai|mumbai)\b
+    - \b(ann\s+arbor|chicago|blacksburg|fort\s+worth|austin|seattle|texas|virginia|maryland|colorado|oregon|delaware|pennsylvania)\b
+  sponsorship:
+    requires_sponsorship: true
+    current_status: Graduating MSc from TU Delft (Zoekjaar / Orientation Year Visa
+      eligible; requires IND Recognised Sponsor for HSM)
+    target_sponsor_registers:
+    - IND Public Register for Recognised Sponsors (Netherlands)
+    - UK Home Office Register of Licensed Sponsors
+    strict_sponsorship_only: false
+    sponsor_match_bonus: 25.0
+  work_setup:
+    work_modes:
+    - hybrid
+    - onsite
+    - remote
+    employment_types:
+    - full-time
+target_companies_and_domains:
+  company_tiers:
+    tier_1_dream:
+    - name: Anthropic
+      domain: https://www.anthropic.com
+      ats_type: greenhouse
+      ats_slug: anthropic
+      multiplier: 1.25
+      bonus_points: 15.0
+      reason: Frontier safety, compound AI scaling laws, and Claude research.
+    - name: Google DeepMind
+      domain: https://deepmind.google
+      ats_type: greenhouse
+      ats_slug: deepmind
+      multiplier: 1.25
+      bonus_points: 15.0
+      reason: Frontier AI research, foundation models, and reinforcement learning.
+    - name: OpenAI
+      domain: https://openai.com
+      ats_type: ashby
+      ats_slug: openai
+      multiplier: 1.25
+      bonus_points: 15.0
+      reason: Frontier foundation model laboratory, multimodal perception, and scaling laws.
+    - name: Helsing
+      domain: https://helsing.ai
+      ats_type: greenhouse
+      ats_slug: helsing
+      multiplier: 1.25
+      bonus_points: 15.0
+      reason: European AI defense scaleup, real-time sensor fusion, and high-stakes perception pipelines.
+    - name: Together AI
+      domain: https://www.together.ai
+      ats_type: greenhouse
+      ats_slug: togetherai
+      multiplier: 1.25
+      bonus_points: 15.0
+      reason: High-performance AI cloud, GPU inference scaling, and compound AI systems.
+    - name: Hudson River Trading
+      domain: https://www.hudsonrivertrading.com
+      ats_type: greenhouse
+      ats_slug: hudsonrivertrading
+      multiplier: 1.25
+      bonus_points: 15.0
+      reason: Top-tier quantitative trading and ultra-low latency algorithmic systems.
+    - name: Databricks
+      domain: https://www.databricks.com
+      ats_type: greenhouse
+      ats_slug: databricks
+      multiplier: 1.25
+      bonus_points: 15.0
+      reason: World leader in Lakehouse, AI Infrastructure, and open source LLM tooling.
+    - name: Wayve
+      domain: https://wayve.ai
+      ats_type: greenhouse
+      ats_slug: wayve
+      multiplier: 1.25
+      bonus_points: 15.0
+      reason: End-to-end embodied AI and autonomous driving in the UK.
+    - name: ASML
+      domain: https://www.asml.com
+      ats_type: workday
+      ats_slug: asml:wd3:careers
+      multiplier: 1.25
+      bonus_points: 15.0
+      reason: Global monopoly on EUV lithography systems (Veldhoven, NL).
+    - name: Rimac Technology
+      domain: https://www.rimac-technology.com
+      ats_type: greenhouse
+      ats_slug: rimacautomobili
+      multiplier: 1.2
+      bonus_points: 12.0
+      reason: High-performance EV and autonomous powertrain technology.
+    - name: Red Bull Racing / Technology
+      domain: https://www.redbullracing.com
+      ats_type: greenhouse
+      ats_slug: redbullracing
+      multiplier: 1.2
+      bonus_points: 12.0
+      reason: Formula 1 championship engineering and telemetry data systems.
+    tier_2_high_priority:
+    - name: Fizyr
+      domain: https://fizyr.com
+      ats_type: greenhouse
+      ats_slug: fizyr
+      multiplier: 1.15
+      bonus_points: 8.0
+      reason: Delft regional leader in automated computer vision and robotic picking.
+    - name: Rocsys
+      domain: https://www.rocsys.com
+      ats_type: greenhouse
+      ats_slug: rocsys
+      multiplier: 1.15
+      bonus_points: 8.0
+      reason: Rijswijk scaleup for autonomous robotic EV charging and computer vision.
+    - name: bol.com
+      domain: https://www.bol.com
+      ats_type: greenhouse
+      ats_slug: bolcomen
+      multiplier: 1.15
+      bonus_points: 8.0
+      reason: Leading Dutch e-commerce platform and retail AI/data engineering hub (Utrecht).
+    - name: Qualcomm AI Research
+      domain: https://www.qualcomm.com/research/artificial-intelligence
+      ats_type: workday
+      ats_slug: qualcomm:wd5:External
+      multiplier: 1.15
+      bonus_points: 8.0
+      reason: Amsterdam center for efficient deep learning, edge AI, and neural compression.
+    - name: Radix Trading
+      domain: https://www.radixtrading.com
+      ats_type: greenhouse
+      ats_slug: radixuniversity
+      multiplier: 1.15
+      bonus_points: 8.0
+      reason: High-frequency quantitative trading, low-latency architectures, and ML.
+    - name: Nearfield Instruments
+      domain: https://www.nearfieldinstruments.com
+      ats_type: greenhouse
+      ats_slug: nearfieldinstruments
+      multiplier: 1.15
+      bonus_points: 8.0
+      reason: Rotterdam semiconductor scaleup building high-throughput scanning probe metrology.
+    - name: Axelera AI
+      domain: https://www.axelera.ai
+      ats_type: ashby
+      ats_slug: axelera-ai
+      multiplier: 1.15
+      bonus_points: 8.0
+      reason: Dutch European deep-tech scaleup developing Metis edge AI platform & Titania chiplet architecture (Eindhoven/Amsterdam).
+    - name: Glean
+      domain: https://www.glean.com
+      ats_type: greenhouse
+      ats_slug: glean
+      multiplier: 1.15
+      bonus_points: 8.0
+      reason: Enterprise AI search, compound RAG systems, and knowledge graph engineering.
+    - name: G-Research
+      domain: https://www.gresearch.com
+      ats_type: workday
+      ats_slug: gresearch:wd103:G-Research
+      multiplier: 1.15
+      bonus_points: 8.0
+      reason: Leading quantitative research and machine learning platform in finance.
+    - name: XTX Markets
+      domain: https://www.xtxmarkets.com
+      ats_type: greenhouse
+      ats_slug: xtxmarketstechnologies
+      multiplier: 1.15
+      bonus_points: 8.0
+      reason: Leading algorithmic market maker, high-performance computing, and ML research.
+    - name: Adyen
+      domain: https://www.adyen.com
+      ats_type: greenhouse
+      ats_slug: adyen
+      multiplier: 1.15
+      bonus_points: 8.0
+      reason: Amsterdam tech flagship fintech infrastructure.
+    - name: Stripe
+      domain: https://stripe.com
+      ats_type: greenhouse
+      ats_slug: stripe
+      multiplier: 1.15
+      bonus_points: 8.0
+      reason: Gold standard developer payments platform.
+    - name: Cloudflare
+      domain: https://www.cloudflare.com
+      ats_type: greenhouse
+      ats_slug: cloudflare
+      multiplier: 1.15
+      bonus_points: 8.0
+      reason: Edge computing, Workers AI, and global internet backbone.
+    - name: Optiver
+      domain: https://www.optiver.com
+      ats_type: greenhouse
+      ats_slug: optiver
+      multiplier: 1.15
+      bonus_points: 8.0
+      reason: Amsterdam quant trading and high-performance algorithmic engineering.
+    - name: IMC Trading
+      domain: https://www.imc.com
+      ats_type: greenhouse
+      ats_slug: imc
+      multiplier: 1.15
+      bonus_points: 8.0
+      reason: Amsterdam algorithmic trading and market making.
+    - name: Miro
+      domain: https://miro.com
+      ats_type: greenhouse
+      ats_slug: miro
+      multiplier: 1.1
+      bonus_points: 6.0
+    - name: Canva
+      domain: https://www.canva.com
+      ats_type: greenhouse
+      ats_slug: canva
+      multiplier: 1.1
+      bonus_points: 6.0
+    tier_3_neutral:
+    - name: Lely
+      domain: https://www.lely.com
+      ats_type: custom
+      ats_slug: lely
+      multiplier: 1.05
+      bonus_points: 4.0
+      reason: Autonomous agricultural robotics and farm automation systems (Maassluis, NL).
+    - name: ASM International
+      domain: https://www.asm.com
+      ats_type: greenhouse
+      ats_slug: asminternational
+      multiplier: 1.05
+      bonus_points: 4.0
+      reason: Global leader in atomic layer deposition (ALD) and semiconductor wafer processing systems (Almere, NL).
+    - name: Bitvavo
+      domain: https://bitvavo.com
+      ats_type: greenhouse
+      ats_slug: bitvavo
+      multiplier: 1.05
+      bonus_points: 4.0
+      reason: European digital asset exchange and low-latency trading infrastructure (Amsterdam).
+    - name: Thermo Fisher Scientific
+      domain: https://www.thermofisher.com
+      ats_type: workday
+      ats_slug: thermofisher:wd1:External
+      multiplier: 1.05
+      bonus_points: 4.0
+      reason: Transmission electron microscopy and precision instrumentation center (Eindhoven, NL).
+    - name: Modal Labs
+      domain: https://modal.com
+      ats_type: ashby
+      ats_slug: modal-labs
+      multiplier: 1.05
+      bonus_points: 4.0
+      reason: Serverless GPU compute and cloud infrastructure for compound AI applications.
+    - name: Weaviate
+      domain: https://weaviate.io
+      ats_type: greenhouse
+      ats_slug: weaviate
+      multiplier: 1.05
+      bonus_points: 4.0
+      reason: Open-source AI-native vector database and neural search infrastructure.
+    - name: Qdrant
+      domain: https://qdrant.tech
+      ats_type: ashby
+      ats_slug: qdrant
+      multiplier: 1.05
+      bonus_points: 4.0
+      reason: High-performance vector similarity search engine and RAG storage.
+    - name: deepset
+      domain: https://www.deepset.ai
+      ats_type: custom
+      ats_slug: deepset
+      multiplier: 1.05
+      bonus_points: 4.0
+      reason: Creators of Haystack framework for compound AI and neural retrieval pipelines.
+    - name: Voyage AI
+      domain: https://www.voyageai.com
+      ats_type: ashby
+      ats_slug: voyageai
+      multiplier: 1.05
+      bonus_points: 4.0
+      reason: State-of-the-art embedding models and generative rerankers for RAG.
+    - name: Braintrust
+      domain: https://www.braintrust.dev
+      ats_type: ashby
+      ats_slug: braintrust
+      multiplier: 1.05
+      bonus_points: 4.0
+      reason: Enterprise evaluation, CI/CD observability, and benchmarking for compound AI.
+    excluded_companies:
+    - NonTechConsultingB.V.
+    curated_sponsors:
+    - keyword: axelera
+      name: Axelera AI
+      domain: https://www.axelera.ai
+      careers_url: https://jobs.ashbyhq.com/axelera-ai
+      ats_type: ashby
+      ats_slug: axelera-ai
+      multiplier: 1.15
+      bonus_points: 8.0
+      tier: Tier 2 High Priority
+      reason: European deep-tech scaleup developing Metis edge AI platform & Titania chiplet architecture (Eindhoven/Amsterdam).
+    - keyword: asm_international
+      name: ASM International
+      domain: https://www.asm.com
+      careers_url: https://job-boards.greenhouse.io/asminternational
+      ats_type: greenhouse
+      ats_slug: asminternational
+      multiplier: 1.05
+      bonus_points: 4.0
+      tier: Tier 3 Neutral
+      reason: Global leader in atomic layer deposition (ALD) and semiconductor wafer processing systems (Almere, NL).
+    - keyword: databricks
+      name: Databricks
+      domain: https://www.databricks.com
+      careers_url: https://www.databricks.com/company/careers
+      ats_type: greenhouse
+      ats_slug: databricks
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: messagebird
+      name: Bird (MessageBird)
+      domain: https://bird.com
+      careers_url: https://bird.com/careers
+      ats_type: greenhouse
+      ats_slug: bird
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: gitlab
+      name: GitLab
+      domain: https://about.gitlab.com
+      careers_url: https://about.gitlab.com/jobs
+      ats_type: greenhouse
+      ats_slug: gitlab
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: stripe
+      name: Stripe
+      domain: https://stripe.com
+      careers_url: https://stripe.com/jobs
+      ats_type: greenhouse
+      ats_slug: stripe
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: datadog
+      name: Datadog
+      domain: https://www.datadoghq.com
+      careers_url: https://careers.datadoghq.com
+      ats_type: greenhouse
+      ats_slug: datadog
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: cloudflare
+      name: Cloudflare
+      domain: https://www.cloudflare.com
+      careers_url: https://www.cloudflare.com/careers
+      ats_type: greenhouse
+      ats_slug: cloudflare
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: elastic
+      name: Elastic
+      domain: https://www.elastic.co
+      careers_url: https://www.elastic.co/careers
+      ats_type: greenhouse
+      ats_slug: elastic
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: reddit
+      name: Reddit
+      domain: https://www.reddit.com
+      careers_url: https://www.redditinc.com/careers
+      ats_type: greenhouse
+      ats_slug: reddit
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: nebius
+      name: Nebius AI
+      domain: https://nebius.com
+      careers_url: https://nebius.com/careers
+      ats_type: greenhouse
+      ats_slug: nebius
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: canonical
+      name: Canonical
+      domain: https://canonical.com
+      careers_url: https://canonical.com/careers
+      ats_type: greenhouse
+      ats_slug: canonical
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: figma
+      name: Figma
+      domain: https://www.figma.com
+      careers_url: https://www.figma.com/careers
+      ats_type: greenhouse
+      ats_slug: figma
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: adyen
+      name: Adyen
+      domain: https://www.adyen.com
+      careers_url: https://careers.adyen.com/vacancies
+      ats_type: greenhouse
+      ats_slug: adyen
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: jetbrains
+      name: JetBrains
+      domain: https://www.jetbrains.com
+      careers_url: https://www.jetbrains.com/careers
+      ats_type: greenhouse
+      ats_slug: jetbrains
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: braze
+      name: Braze
+      domain: https://www.braze.com
+      careers_url: https://www.braze.com/company/careers
+      ats_type: greenhouse
+      ats_slug: braze
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: crunchyroll
+      name: Crunchyroll
+      domain: https://www.crunchyroll.com
+      careers_url: https://www.crunchyroll.com/careers
+      ats_type: greenhouse
+      ats_slug: crunchyroll
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: anthropic
+      name: Anthropic
+      domain: https://www.anthropic.com
+      careers_url: https://www.anthropic.com/careers
+      ats_type: greenhouse
+      ats_slug: anthropic
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: scaleai
+      name: Scale AI
+      domain: https://scale.com
+      careers_url: https://scale.com/careers
+      ats_type: greenhouse
+      ats_slug: scaleai
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: wandb
+      name: Weights & Biases
+      domain: https://wandb.ai
+      careers_url: https://boards.greenhouse.io/wandb
+      ats_type: greenhouse
+      ats_slug: wandb
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: pinecone
+      name: Pinecone
+      domain: https://www.pinecone.io
+      careers_url: https://boards.greenhouse.io/pinecone
+      ats_type: greenhouse
+      ats_slug: pinecone
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: snowflake
+      name: Snowflake
+      domain: https://www.snowflake.com
+      careers_url: https://boards.greenhouse.io/snowflake
+      ats_type: greenhouse
+      ats_slug: snowflake
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: clickhouse
+      name: ClickHouse
+      domain: https://clickhouse.com
+      careers_url: https://boards.greenhouse.io/clickhouse
+      ats_type: greenhouse
+      ats_slug: clickhouse
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: docker
+      name: Docker
+      domain: https://www.docker.com
+      careers_url: https://boards.greenhouse.io/docker
+      ats_type: greenhouse
+      ats_slug: docker
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: hashicorp
+      name: HashiCorp
+      domain: https://www.hashicorp.com
+      careers_url: https://boards.greenhouse.io/hashicorp
+      ats_type: greenhouse
+      ats_slug: hashicorp
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: grafanalabs
+      name: Grafana Labs
+      domain: https://grafana.com
+      careers_url: https://boards.greenhouse.io/grafanalabs
+      ats_type: greenhouse
+      ats_slug: grafanalabs
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: temporal
+      name: Temporal
+      domain: https://temporal.io
+      careers_url: https://boards.greenhouse.io/temporal
+      ats_type: greenhouse
+      ats_slug: temporal
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: redis
+      name: Redis
+      domain: https://redis.io
+      careers_url: https://boards.greenhouse.io/redis
+      ats_type: greenhouse
+      ats_slug: redis
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: neo4j
+      name: Neo4j
+      domain: https://neo4j.com
+      careers_url: https://boards.greenhouse.io/neo4j
+      ats_type: greenhouse
+      ats_slug: neo4j
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: github
+      name: GitHub
+      domain: https://github.com
+      careers_url: https://boards.greenhouse.io/github
+      ats_type: greenhouse
+      ats_slug: github
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: miro
+      name: Miro
+      domain: https://miro.com
+      careers_url: https://boards.greenhouse.io/miro
+      ats_type: greenhouse
+      ats_slug: miro
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: picnic
+      name: Picnic Technologies
+      domain: https://picnic.app
+      careers_url: https://boards.greenhouse.io/picnic
+      ats_type: greenhouse
+      ats_slug: picnic
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: canva
+      name: Canva
+      domain: https://www.canva.com
+      careers_url: https://boards.greenhouse.io/canva
+      ats_type: greenhouse
+      ats_slug: canva
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: safetyculture
+      name: SafetyCulture
+      domain: https://safetyculture.com
+      careers_url: https://boards.greenhouse.io/safetyculture
+      ats_type: greenhouse
+      ats_slug: safetyculture
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: cultureamp
+      name: Culture Amp
+      domain: https://www.cultureamp.com
+      careers_url: https://boards.greenhouse.io/cultureamp
+      ats_type: greenhouse
+      ats_slug: cultureamp
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: employmenthero
+      name: Employment Hero
+      domain: https://employmenthero.com
+      careers_url: https://boards.greenhouse.io/employmenthero
+      ats_type: greenhouse
+      ats_slug: employmenthero
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: wayve
+      name: Wayve (Autonomous AI)
+      domain: https://wayve.ai
+      careers_url: https://boards.greenhouse.io/wayve
+      ats_type: greenhouse
+      ats_slug: wayve
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: oxa
+      name: Oxa Autonomy
+      domain: https://oxa.tech
+      careers_url: https://boards.greenhouse.io/oxa
+      ats_type: greenhouse
+      ats_slug: oxa
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: revolut
+      name: Revolut
+      domain: https://www.revolut.com
+      careers_url: https://boards.greenhouse.io/revolut
+      ats_type: greenhouse
+      ats_slug: revolut
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: monzo
+      name: Monzo
+      domain: https://monzo.com
+      careers_url: https://boards.greenhouse.io/monzo
+      ats_type: greenhouse
+      ats_slug: monzo
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: wise
+      name: Wise
+      domain: https://wise.com
+      careers_url: https://boards.greenhouse.io/wise
+      ats_type: greenhouse
+      ats_slug: wise
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: deliveroo
+      name: Deliveroo
+      domain: https://deliveroo.co.uk
+      careers_url: https://boards.greenhouse.io/deliveroo
+      ats_type: greenhouse
+      ats_slug: deliveroo
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: starling
+      name: Starling Bank
+      domain: https://www.starlingbank.com
+      careers_url: https://boards.greenhouse.io/starlingbank
+      ats_type: greenhouse
+      ats_slug: starlingbank
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: checkout
+      name: Checkout.com
+      domain: https://www.checkout.com
+      careers_url: https://boards.greenhouse.io/checkout
+      ats_type: greenhouse
+      ats_slug: checkout
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: gocardless
+      name: GoCardless
+      domain: https://gocardless.com
+      careers_url: https://boards.greenhouse.io/gocardless
+      ats_type: greenhouse
+      ats_slug: gocardless
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: deepmind
+      name: Google DeepMind
+      domain: https://deepmind.google
+      careers_url: https://boards.greenhouse.io/deepmind
+      ats_type: greenhouse
+      ats_slug: deepmind
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: improbable
+      name: Improbable
+      domain: https://improbable.io
+      careers_url: https://boards.greenhouse.io/improbable
+      ats_type: greenhouse
+      ats_slug: improbable
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: imc
+      name: IMC Trading
+      domain: https://www.imc.com
+      careers_url: https://careers.imc.com
+      ats_type: greenhouse
+      ats_slug: imc
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: flow traders
+      name: Flow Traders
+      domain: https://www.flowtraders.com
+      careers_url: https://www.flowtraders.com/careers
+      ats_type: greenhouse
+      ats_slug: flowtraders
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: optiver
+      name: Optiver
+      domain: https://www.optiver.com
+      careers_url: https://boards.greenhouse.io/optiver
+      ats_type: greenhouse
+      ats_slug: optiver
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: jumptrading
+      name: Jump Trading
+      domain: https://www.jumptrading.com
+      careers_url: https://boards.greenhouse.io/jumptrading
+      ats_type: greenhouse
+      ats_slug: jumptrading
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: janestreet
+      name: Jane Street
+      domain: https://www.janestreet.com
+      careers_url: https://boards.greenhouse.io/janestreet
+      ats_type: greenhouse
+      ats_slug: janestreet
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: citadel
+      name: Citadel
+      domain: https://www.citadel.com
+      careers_url: https://boards.greenhouse.io/citadel
+      ats_type: greenhouse
+      ats_slug: citadel
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: mavensecurities
+      name: Maven Securities
+      domain: https://www.mavensecurities.com
+      careers_url: https://boards.greenhouse.io/mavensecurities
+      ats_type: greenhouse
+      ats_slug: mavensecurities
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: sig
+      name: Susquehanna (SIG)
+      domain: https://sig.com
+      careers_url: https://boards.greenhouse.io/sig
+      ats_type: greenhouse
+      ats_slug: sig
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: squarepoint
+      name: Squarepoint Capital
+      domain: https://www.squarepoint-capital.com
+      careers_url: https://boards.greenhouse.io/squarepointcapital
+      ats_type: greenhouse
+      ats_slug: squarepointcapital
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: drw
+      name: DRW
+      domain: https://drw.com
+      careers_url: https://boards.greenhouse.io/drw
+      ats_type: greenhouse
+      ats_slug: drw
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: rimac
+      name: Rimac Technology
+      domain: https://www.rimac-technology.com
+      careers_url: https://boards.greenhouse.io/rimacautomobili
+      ats_type: greenhouse
+      ats_slug: rimacautomobili
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: appliedintuition
+      name: Applied Intuition
+      domain: https://www.appliedintuition.com
+      careers_url: https://boards.greenhouse.io/appliedintuition
+      ats_type: greenhouse
+      ats_slug: appliedintuition
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: skydio
+      name: Skydio
+      domain: https://www.skydio.com
+      careers_url: https://boards.greenhouse.io/skydio
+      ats_type: greenhouse
+      ats_slug: skydio
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: torc
+      name: Torc Robotics
+      domain: https://torc.ai
+      careers_url: https://boards.greenhouse.io/torcrobotics
+      ats_type: greenhouse
+      ats_slug: torcrobotics
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: redbullracing
+      name: Red Bull Technology / Racing
+      domain: https://www.redbullracing.com
+      careers_url: https://boards.greenhouse.io/redbullracing
+      ats_type: greenhouse
+      ats_slug: redbullracing
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: mercedesf1
+      name: Mercedes-AMG Petronas F1 Team
+      domain: https://www.mercedesamgf1.com
+      careers_url: https://boards.greenhouse.io/mercedesamgpetronasf1
+      ats_type: greenhouse
+      ats_slug: mercedesamgpetronasf1
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: mclaren
+      name: McLaren Racing
+      domain: https://www.mclaren.com
+      careers_url: https://boards.greenhouse.io/mclaren
+      ats_type: greenhouse
+      ats_slug: mclaren
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: williamsf1
+      name: Williams Racing
+      domain: https://www.williamsf1.com
+      careers_url: https://boards.greenhouse.io/williamsracing
+      ats_type: greenhouse
+      ats_slug: williamsracing
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: mollie
+      name: Mollie
+      domain: https://www.mollie.com
+      careers_url: https://jobs.mollie.com
+      ats_type: lever
+      ats_slug: mollie
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: palantir
+      name: Palantir Technologies
+      domain: https://www.palantir.com
+      careers_url: https://www.palantir.com/careers
+      ats_type: lever
+      ats_slug: palantir
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: spotify
+      name: Spotify
+      domain: https://www.spotify.com
+      careers_url: https://www.lifeatspotify.com
+      ats_type: lever
+      ats_slug: spotify
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: atlassian
+      name: Atlassian
+      domain: https://www.atlassian.com
+      careers_url: https://jobs.lever.co/atlassian
+      ats_type: lever
+      ats_slug: atlassian
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: deepl
+      name: DeepL
+      domain: https://www.deepl.com
+      careers_url: https://jobs.lever.co/deepl
+      ats_type: lever
+      ats_slug: deepl
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: mistral
+      name: Mistral AI
+      domain: https://mistral.ai
+      careers_url: https://jobs.lever.co/mistral
+      ats_type: lever
+      ats_slug: mistral
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: einride
+      name: Einride
+      domain: https://www.einride.tech
+      careers_url: https://jobs.lever.co/einride
+      ats_type: lever
+      ats_slug: einride
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: wintermute
+      name: Wintermute
+      domain: https://www.wintermute.com
+      careers_url: https://jobs.lever.co/wintermute-trading
+      ats_type: lever
+      ats_slug: wintermute-trading
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: wetransfer
+      name: WeTransfer
+      domain: https://wetransfer.com
+      careers_url: https://jobs.lever.co/wetransfer
+      ats_type: lever
+      ats_slug: wetransfer
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: swapfiets
+      name: Swapfiets
+      domain: https://swapfiets.com
+      careers_url: https://jobs.lever.co/swapfiets
+      ats_type: lever
+      ats_slug: swapfiets
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: vandebron
+      name: Vandebron
+      domain: https://vandebron.nl
+      careers_url: https://jobs.lever.co/vandebron
+      ats_type: lever
+      ats_slug: vandebron
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: openai
+      name: OpenAI
+      domain: https://openai.com
+      careers_url: https://openai.com/careers
+      ats_type: ashby
+      ats_slug: openai
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: cohere
+      name: Cohere
+      domain: https://cohere.com
+      careers_url: https://cohere.com/careers
+      ats_type: ashby
+      ats_slug: cohere
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: perplexity
+      name: Perplexity AI
+      domain: https://www.perplexity.ai
+      careers_url: https://www.perplexity.ai/careers
+      ats_type: ashby
+      ats_slug: perplexity
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: elevenlabs
+      name: ElevenLabs
+      domain: https://elevenlabs.io
+      careers_url: https://jobs.ashbyhq.com/elevenlabs
+      ats_type: ashby
+      ats_slug: elevenlabs
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: notion
+      name: Notion
+      domain: https://www.notion.so
+      careers_url: https://www.notion.so/careers
+      ats_type: ashby
+      ats_slug: notion
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: cursor
+      name: Cursor / Anysphere
+      domain: https://www.cursor.com
+      careers_url: https://www.cursor.com/careers
+      ats_type: ashby
+      ats_slug: cursor
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: ramp
+      name: Ramp
+      domain: https://ramp.com
+      careers_url: https://ramp.com/careers
+      ats_type: ashby
+      ats_slug: ramp
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: replit
+      name: Replit
+      domain: https://replit.com
+      careers_url: https://replit.com/careers
+      ats_type: ashby
+      ats_slug: replit
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: sentry
+      name: Sentry
+      domain: https://sentry.io
+      careers_url: https://sentry.io/careers
+      ats_type: ashby
+      ats_slug: sentry
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: linear
+      name: Linear
+      domain: https://linear.app
+      careers_url: https://linear.app/careers
+      ats_type: ashby
+      ats_slug: linear
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: weaviate
+      name: Weaviate
+      domain: https://weaviate.io
+      careers_url: https://weaviate.io/company/careers
+      ats_type: ashby
+      ats_slug: weaviate
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: qdrant
+      name: Qdrant
+      domain: https://qdrant.tech
+      careers_url: https://jobs.ashbyhq.com/qdrant
+      ats_type: ashby
+      ats_slug: qdrant
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: langchain
+      name: LangChain
+      domain: https://www.langchain.com
+      careers_url: https://jobs.ashbyhq.com/langchain
+      ats_type: ashby
+      ats_slug: langchain
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: posthog
+      name: PostHog
+      domain: https://posthog.com
+      careers_url: https://jobs.ashbyhq.com/posthog
+      ats_type: ashby
+      ats_slug: posthog
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: vercel
+      name: Vercel
+      domain: https://vercel.com
+      careers_url: https://jobs.ashbyhq.com/vercel
+      ats_type: ashby
+      ats_slug: vercel
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: supabase
+      name: Supabase
+      domain: https://supabase.com
+      careers_url: https://jobs.ashbyhq.com/supabase
+      ats_type: ashby
+      ats_slug: supabase
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: runway
+      name: Runway
+      domain: https://runwayml.com
+      careers_url: https://jobs.ashbyhq.com/runwayml
+      ats_type: ashby
+      ats_slug: runwayml
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: synthesia
+      name: Synthesia
+      domain: https://www.synthesia.io
+      careers_url: https://jobs.ashbyhq.com/synthesia
+      ats_type: ashby
+      ats_slug: synthesia
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: waymo
+      name: Waymo
+      domain: https://waymo.com
+      careers_url: https://boards.greenhouse.io/waymo
+      ats_type: greenhouse
+      ats_slug: waymo
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: zoox
+      name: Zoox (Autonomous Vehicles)
+      domain: https://zoox.com
+      careers_url: https://jobs.lever.co/zoox
+      ats_type: lever
+      ats_slug: zoox
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: verkada
+      name: Verkada
+      domain: https://www.verkada.com
+      careers_url: https://boards.greenhouse.io/verkada
+      ats_type: greenhouse
+      ats_slug: verkada
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: samsara
+      name: Samsara
+      domain: https://www.samsara.com
+      careers_url: https://boards.greenhouse.io/samsara
+      ats_type: greenhouse
+      ats_slug: samsara
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: airbnb
+      name: Airbnb
+      domain: https://www.airbnb.com
+      careers_url: https://boards.greenhouse.io/airbnb
+      ats_type: greenhouse
+      ats_slug: airbnb
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: pinterest
+      name: Pinterest
+      domain: https://www.pinterest.com
+      careers_url: https://boards.greenhouse.io/pinterest
+      ats_type: greenhouse
+      ats_slug: pinterest
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: discord
+      name: Discord
+      domain: https://discord.com
+      careers_url: https://boards.greenhouse.io/discord
+      ats_type: greenhouse
+      ats_slug: discord
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: coinbase
+      name: Coinbase
+      domain: https://www.coinbase.com
+      careers_url: https://boards.greenhouse.io/coinbase
+      ats_type: greenhouse
+      ats_slug: coinbase
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: robinhood
+      name: Robinhood
+      domain: https://robinhood.com
+      careers_url: https://boards.greenhouse.io/robinhood
+      ats_type: greenhouse
+      ats_slug: robinhood
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: instacart
+      name: Instacart
+      domain: https://www.instacart.com
+      careers_url: https://boards.greenhouse.io/instacart
+      ats_type: greenhouse
+      ats_slug: instacart
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: lyft
+      name: Lyft
+      domain: https://www.lyft.com
+      careers_url: https://boards.greenhouse.io/lyft
+      ats_type: greenhouse
+      ats_slug: lyft
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: character
+      name: Character.ai
+      domain: https://character.ai
+      careers_url: https://jobs.ashbyhq.com/character
+      ats_type: ashby
+      ats_slug: character
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: mongodb
+      name: MongoDB
+      domain: https://www.mongodb.com
+      careers_url: https://boards.greenhouse.io/mongodb
+      ats_type: greenhouse
+      ats_slug: mongodb
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: cockroachlabs
+      name: Cockroach Labs
+      domain: https://www.cockroachlabs.com
+      careers_url: https://boards.greenhouse.io/cockroachlabs
+      ats_type: greenhouse
+      ats_slug: cockroachlabs
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: squarespace
+      name: Squarespace
+      domain: https://www.squarespace.com
+      careers_url: https://boards.greenhouse.io/squarespace
+      ats_type: greenhouse
+      ats_slug: squarespace
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: flatironhealth
+      name: Flatiron Health
+      domain: https://flatiron.com
+      careers_url: https://boards.greenhouse.io/flatironhealth
+      ats_type: greenhouse
+      ats_slug: flatironhealth
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: celonis
+      name: Celonis
+      domain: https://www.celonis.com
+      careers_url: https://boards.greenhouse.io/celonis
+      ats_type: greenhouse
+      ats_slug: celonis
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: betterment
+      name: Betterment
+      domain: https://www.betterment.com
+      careers_url: https://boards.greenhouse.io/betterment
+      ats_type: greenhouse
+      ats_slug: betterment
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: oscar
+      name: Oscar Health
+      domain: https://www.hioscar.com
+      careers_url: https://boards.greenhouse.io/oscar
+      ats_type: greenhouse
+      ats_slug: oscar
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: spacex
+      name: SpaceX
+      domain: https://www.spacex.com
+      careers_url: https://boards.greenhouse.io/spacex
+      ats_type: greenhouse
+      ats_slug: spacex
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: anduril
+      name: Anduril Industries
+      domain: https://www.anduril.com
+      careers_url: https://boards.greenhouse.io/andurilindustries
+      ats_type: greenhouse
+      ats_slug: andurilindustries
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: riotgames
+      name: Riot Games
+      domain: https://www.riotgames.com
+      careers_url: https://boards.greenhouse.io/riotgames
+      ats_type: greenhouse
+      ats_slug: riotgames
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: relativity
+      name: Relativity Space
+      domain: https://www.relativityspace.com
+      careers_url: https://boards.greenhouse.io/relativity
+      ats_type: greenhouse
+      ats_slug: relativity
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: scopely
+      name: Scopely
+      domain: https://www.scopely.com
+      careers_url: https://boards.greenhouse.io/scopely
+      ats_type: greenhouse
+      ats_slug: scopely
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: motional
+      name: Motional (Autonomous Vehicles)
+      domain: https://motional.com
+      careers_url: https://boards.greenhouse.io/motional
+      ats_type: greenhouse
+      ats_slug: motional
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: bunq
+      name: bunq
+      domain: https://www.bunq.com
+      careers_url: https://www.bunq.com/jobs
+      ats_type: recruitee
+      ats_slug: bunq
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: channable
+      name: Channable
+      domain: https://www.channable.com
+      careers_url: https://www.channable.com/careers
+      ats_type: recruitee
+      ats_slug: channable
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: channelengine
+      name: ChannelEngine
+      domain: https://www.channelengine.com
+      careers_url: https://www.channelengine.com/careers
+      ats_type: recruitee
+      ats_slug: channelengine
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: da vinci
+      name: Da Vinci Derivatives
+      domain: https://davinciderivatives.com
+      careers_url: https://davinciderivatives.com/careers
+      ats_type: recruitee
+      ats_slug: davinci-derivatives
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: helloprint
+      name: HelloPrint
+      domain: https://www.helloprint.com
+      careers_url: https://jobs.helloprint.com
+      ats_type: recruitee
+      ats_slug: helloprint
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: fairphone
+      name: Fairphone
+      domain: https://www.fairphone.com
+      careers_url: https://fairphone.recruitee.com
+      ats_type: recruitee
+      ats_slug: fairphone
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: pair finance
+      name: PAIR Finance
+      domain: https://www.pairfinance.com
+      careers_url: https://www.pairfinance.com/careers
+      ats_type: personio
+      ats_slug: pair
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: lepaya
+      name: Lepaya
+      domain: https://www.lepaya.com
+      careers_url: https://www.lepaya.com/careers
+      ats_type: personio
+      ats_slug: lepaya
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: personio
+      name: Personio
+      domain: https://www.personio.com
+      careers_url: https://www.personio.com/careers
+      ats_type: personio
+      ats_slug: personio
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: embotech
+      name: Embotech
+      domain: https://www.embotech.com
+      careers_url: https://embotech.jobs.personio.de
+      ats_type: personio
+      ats_slug: embotech
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: huggingface
+      name: Hugging Face
+      domain: https://huggingface.co
+      careers_url: https://apply.workable.com/huggingface
+      ats_type: workable
+      ats_slug: huggingface
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: backbase
+      name: Backbase
+      domain: https://www.backbase.com
+      careers_url: https://careers.backbase.com
+      ats_type: smartrecruiters
+      ats_slug: backbase
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: nxp
+      name: NXP Semiconductors
+      domain: https://www.nxp.com
+      careers_url: https://nxp.wd3.myworkdayjobs.com/careers
+      ats_type: workday
+      ats_slug: nxp:wd3:careers
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: asml
+      name: ASML
+      domain: https://www.asml.com
+      careers_url: https://asml.wd3.myworkdayjobs.com/careers
+      ats_type: workday
+      ats_slug: asml:wd3:careers
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: tomtom
+      name: TomTom
+      domain: https://www.tomtom.com
+      careers_url: https://www.tomtom.com/careers
+      ats_type: custom
+      ats_slug: ''
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: uber
+      name: Uber Netherlands
+      domain: https://www.uber.com
+      careers_url: https://www.uber.com/careers
+      ats_type: custom
+      ats_slug: ''
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: booking
+      name: Booking.com
+      domain: https://www.booking.com
+      careers_url: https://careers.booking.com
+      ats_type: custom
+      ats_slug: ''
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: demcon
+      name: Demcon
+      domain: https://demcon.com
+      careers_url: https://werkenbijdemcon.nl
+      ats_type: custom
+      ats_slug: ''
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: prodrive
+      name: Prodrive Technologies
+      domain: https://prodrive-technologies.com
+      careers_url: https://careers.prodrive-technologies.com
+      ats_type: custom
+      ats_slug: ''
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: sioux
+      name: Sioux Technologies
+      domain: https://www.sioux.eu
+      careers_url: https://jobs.sioux.eu
+      ats_type: custom
+      ats_slug: ''
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: vanderlande
+      name: Vanderlande
+      domain: https://www.vanderlande.com
+      careers_url: https://careers.vanderlande.com
+      ats_type: custom
+      ats_slug: ''
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: tno
+      name: TNO
+      domain: https://www.tno.nl
+      careers_url: https://www.tno.nl/en/careers
+      ats_type: custom
+      ats_slug: ''
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: delft university of technology
+      name: TU Delft
+      domain: https://www.tudelft.nl
+      careers_url: https://www.tudelft.nl/en/about-tu-delft/working-at-tu-delft/vacancies
+      ats_type: custom
+      ats_slug: ''
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: tu delft
+      name: TU Delft
+      domain: https://www.tudelft.nl
+      careers_url: https://www.tudelft.nl/en/about-tu-delft/working-at-tu-delft/vacancies
+      ats_type: custom
+      ats_slug: ''
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: topdesk
+      name: TOPdesk
+      domain: https://www.topdesk.com
+      careers_url: https://careers.topdesk.com
+      ats_type: custom
+      ats_slug: ''
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: coolblue
+      name: Coolblue
+      domain: https://www.coolblue.nl
+      careers_url: https://careersatcoolblue.com
+      ats_type: custom
+      ats_slug: ''
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: glean
+      name: Glean
+      domain: https://www.glean.com
+      careers_url: https://www.glean.com/careers
+      ats_type: greenhouse
+      ats_slug: glean
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: togetherai
+      name: Together AI
+      domain: https://www.together.ai
+      careers_url: https://job-boards.greenhouse.io/togetherai
+      ats_type: greenhouse
+      ats_slug: togetherai
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: modal
+      name: Modal Labs
+      domain: https://modal.com
+      careers_url: https://jobs.ashbyhq.com/modal-labs
+      ats_type: ashby
+      ats_slug: modal-labs
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: braintrust
+      name: Braintrust
+      domain: https://www.braintrust.dev
+      careers_url: https://jobs.ashbyhq.com/braintrust
+      ats_type: ashby
+      ats_slug: braintrust
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: voyageai
+      name: Voyage AI
+      domain: https://www.voyageai.com
+      careers_url: https://jobs.ashbyhq.com/voyageai
+      ats_type: ashby
+      ats_slug: voyageai
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: algolia
+      name: Algolia
+      domain: https://www.algolia.com
+      careers_url: https://job-boards.greenhouse.io/algolia
+      ats_type: greenhouse
+      ats_slug: algolia
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: anyscale
+      name: Anyscale
+      domain: https://www.anyscale.com
+      careers_url: https://boards.greenhouse.io/anyscale
+      ats_type: greenhouse
+      ats_slug: anyscale
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: chroma
+      name: Chroma
+      domain: https://www.trychroma.com
+      careers_url: https://jobs.ashbyhq.com/chroma
+      ats_type: ashby
+      ats_slug: chroma
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: writer
+      name: Writer
+      domain: https://writer.com
+      careers_url: https://boards.greenhouse.io/writer
+      ats_type: greenhouse
+      ats_slug: writer
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: deepset
+      name: deepset
+      domain: https://www.deepset.ai
+      careers_url: https://deepset.jobs.personio.de
+      ats_type: personio
+      ats_slug: deepset
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: helsing
+      name: Helsing
+      domain: https://helsing.ai
+      careers_url: https://job-boards.greenhouse.io/helsing
+      ats_type: greenhouse
+      ats_slug: helsing
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: fizyr
+      name: Fizyr
+      domain: https://fizyr.com
+      careers_url: https://fizyr.com/careers
+      ats_type: custom
+      ats_slug: fizyr
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: rocsys
+      name: Rocsys
+      domain: https://www.rocsys.com
+      careers_url: https://www.rocsys.com/company#talents
+      ats_type: custom
+      ats_slug: rocsys
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: nearfield
+      name: Nearfield Instruments
+      domain: https://www.nearfieldinstruments.com
+      careers_url: https://careers.nearfieldinstruments.com
+      ats_type: recruitee
+      ats_slug: nearfieldinstruments
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: lely
+      name: Lely
+      domain: https://www.lely.com
+      careers_url: https://www.werkenbijlely.nl/en
+      ats_type: smartrecruiters
+      ats_slug: lely
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: waabi
+      name: Waabi
+      domain: https://waabi.ai
+      careers_url: https://boards.greenhouse.io/waabi
+      ats_type: greenhouse
+      ats_slug: waabi
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: figure
+      name: Figure AI
+      domain: https://www.figure.ai
+      careers_url: https://jobs.ashbyhq.com/figure
+      ats_type: ashby
+      ats_slug: figure
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: zipline
+      name: Zipline
+      domain: https://flyzipline.com
+      careers_url: https://boards.greenhouse.io/zipline
+      ats_type: greenhouse
+      ats_slug: zipline
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: anybotics
+      name: ANYbotics
+      domain: https://www.anybotics.com
+      careers_url: https://anybotics.jobs.personio.com
+      ats_type: personio
+      ats_slug: anybotics
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: hrt
+      name: Hudson River Trading
+      domain: https://www.hudsonrivertrading.com
+      careers_url: https://job-boards.greenhouse.io/wehrtyou
+      ats_type: greenhouse
+      ats_slug: wehrtyou
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: radix
+      name: Radix Trading
+      domain: https://www.radixtrading.com
+      careers_url: https://job-boards.greenhouse.io/radixuniversity
+      ats_type: greenhouse
+      ats_slug: radixuniversity
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: radix_experienced
+      name: Radix Trading (Experienced)
+      domain: https://www.radixtrading.com
+      careers_url: https://job-boards.greenhouse.io/radixexperienced
+      ats_type: greenhouse
+      ats_slug: radixexperienced
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: gresearch
+      name: G-Research
+      domain: https://www.gresearch.com
+      careers_url: https://gresearch.wd103.myworkdayjobs.com/G-Research
+      ats_type: workday
+      ats_slug: gresearch:wd103:G-Research
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: xtx
+      name: XTX Markets
+      domain: https://www.xtxmarkets.com
+      careers_url: https://job-boards.greenhouse.io/xtxmarketstechnologies
+      ats_type: greenhouse
+      ats_slug: xtxmarketstechnologies
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: twosigma
+      name: Two Sigma
+      domain: https://www.twosigma.com
+      careers_url: https://boards.greenhouse.io/twosigma
+      ats_type: greenhouse
+      ats_slug: twosigma
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: fiverings
+      name: Five Rings
+      domain: https://fiverings.com
+      careers_url: https://boards.greenhouse.io/fiverings
+      ats_type: greenhouse
+      ats_slug: fiverings
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: akuna
+      name: Akuna Capital
+      domain: https://akunacapital.com
+      careers_url: https://boards.greenhouse.io/akunacapital
+      ats_type: greenhouse
+      ats_slug: akunacapital
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: alloptions
+      name: All Options
+      domain: https://alloptions.nl
+      careers_url: https://alloptions.nl/careers
+      ats_type: custom
+      ats_slug: alloptions
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: bol
+      name: bol.com
+      domain: https://www.bol.com
+      careers_url: https://job-boards.greenhouse.io/bolcomen
+      ats_type: greenhouse
+      ats_slug: bolcomen
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: qualcomm_ai
+      name: Qualcomm AI Research
+      domain: https://www.qualcomm.com/research/artificial-intelligence
+      careers_url: https://qualcomm.wd5.myworkdayjobs.com/External
+      ats_type: workday
+      ats_slug: qualcomm:wd5:External
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: thermofisher
+      name: Thermo Fisher Scientific
+      domain: https://www.thermofisher.com
+      careers_url: https://thermofisher.wd1.myworkdayjobs.com/External
+      ats_type: workday
+      ats_slug: thermofisher:wd1:External
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+    - keyword: bitvavo
+      name: Bitvavo
+      domain: https://bitvavo.com
+      careers_url: https://careers.bitvavo.com
+      ats_type: recruitee
+      ats_slug: bitvavo
+      multiplier: 1.0
+      bonus_points: 0.0
+      tier: Curated Sponsor
+  industry_preferences:
+    preferred_domains:
+    - name: AI & Compound AI Systems
+      weight: 15.0
+      patterns:
+      - \b(rag|retrieval|compound\s+ai|genai|llm|foundation\s+models)\b
+    - name: Autonomous Driving & Robotics
+      weight: 15.0
+      patterns:
+      - \b(autonomous|lidar|ros|robotics|perception|sensor\s+fusion|self-driving)\b
+    - name: Motorsport & High Performance
+      weight: 15.0
+      patterns:
+      - \b(formula\s+1|f1|motorsport|racing)\b
+    - name: Quantitative Trading & Low Latency
+      weight: 12.0
+      patterns:
+      - \b(trading|quant|market\s+making|hft|algorithmic\s+trading)\b
+    - name: Developer Tools & Cloud Infrastructure
+      weight: 10.0
+      patterns:
+      - \b(developer\s+tools|infrastructure|platform\s+engineering|cloud\s+native)\b
+    excluded_domains:
+    - name: Gambling & Sports Betting
+      weight: -30.0
+      patterns:
+      - \b(casino|gambling|betting|sportsbook|poker)\b
+    - name: Pure Marketing & Sales Agencies
+      weight: -40.0
+      patterns:
+      - \b(seo\s+agency|lead\s+generation|advertising\s+sales)\b
+  company_size_preference:
+  - scaleup
+  - enterprise
+  - midsize
+  - startup
+  tech_stack_alignment:
+    preferred_stacks:
+    - Python
+    - PyTorch
+    - C++
+    - Docker
+    - Kubernetes
+    - FastAPI
+    - Linux
+    anti_patterns:
+    - PHP
+    - Wordpress
+    - Ruby on Rails
+    - Salesforce Apex
+    anti_pattern_penalty: -20.0
+    anti_pattern_regexes:
+    - \b(php|wordpress|joomla|drupal|ruby\s+on\s+rails|apex|magento)\b
+evaluation_and_scoring_rubric:
+  base_score: 15.0
+  min_match_threshold: 40.0
+  max_score: 99.0
+  component_weights:
+    role_title_match: 0.35
+    skills_match: 0.3
+    location_match: 0.2
+    company_and_domain: 0.15
+  penalties:
+  - name: Frontend / Mobile Specialization
+    deduction: -25.0
+    pattern: \b(frontend|front-end|react\s+native|ios|android|swift|flutter)\b
+    reason: Domain mismatch (Frontend/Mobile focus deducted 25 pts)
+  - name: Non-Technical / Administrative
+    deduction: -50.0
+    pattern: \b(sales|marketing|recruiter|hr|talent|accountant|legal|counsel)\b
+    reason: Non-technical domain penalty (deducted 50 pts)
+  cover_letter_templates:
+  - template_id: motorsport_f1
+    title: 10. FORMULA 1 & MOTORSPORT
+    priority: 100
+    trigger_patterns:
+    - \b(f1|formula\s+1|motorsport|racing|race\s+car)\b
+    letter_file_reference: letter_bodies.tex:10
+    talking_points:
+    - Formula Student Team Delft Autonomous Driving Engineer
+    - Real-time LIDAR perception under tight compute limits
+    - High-performance telemetry data pipelines
+  - template_id: high_tech_embedded
+    title: 9. HIGH-TECH & EMBEDDED SYSTEMS
+    priority: 90
+    trigger_patterns:
+    - \b(embedded|semiconductor|firmware|hardware|c\+\+|mechatronics)\b
+    letter_file_reference: letter_bodies.tex:9
+    talking_points:
+    - Real-time C++ systems and sensor integration
+    - Computer architecture and low-level Linux administration
+  - template_id: computer_vision_perception
+    title: 8. COMPUTER VISION & PERCEPTION
+    priority: 80
+    trigger_patterns:
+    - \b(perception|lidar|autonomous|computer\s+vision|robotics|sensor\s+fusion)\b
+    letter_file_reference: letter_bodies.tex:8
+    talking_points:
+    - Formula Student autonomous perception pipeline
+    - Point cloud clustering, YOLO object detection, 30+ Hz inference
+  - template_id: ai_engineer_builder
+    title: 7. AI ENGINEER (0-to-1 Builder)
+    priority: 70
+    trigger_patterns:
+    - \b(ai\s+engineer|forward\s+deployed|applied\s+ai|compound\s+ai|genai|llm\s+engineer)\b
+    letter_file_reference: letter_bodies.tex:7
+    talking_points:
+    - Master's thesis on Compound AI systems and RAG scaling laws
+    - Deploying multi-stage LLM pipelines into production
+  - template_id: mlops_platform
+    title: 6. MLOPS & PLATFORM ENGINEER
+    priority: 60
+    trigger_patterns:
+    - \b(mlops|devops|platform|kubernetes|docker|infrastructure|observability)\b
+    letter_file_reference: letter_bodies.tex:6
+    talking_points:
+    - Bare-metal Linux homelab, Tailscale mesh networking
+    - Kubernetes, Docker, SLURM HPC orchestration
+  - template_id: software_engineer_backend
+    title: 5. SOFTWARE ENGINEER (Backend/Core)
+    priority: 50
+    trigger_patterns:
+    - \b(software\s+engineer|backend|core|systems\s+engineer|python\s+developer|python\s+engineer)\b
+    letter_file_reference: letter_bodies.tex:5
+    talking_points:
+    - Production Python/FastAPI and C++ backends
+    - Robust API design, asynchronous processing, and SQL data modeling
+  - template_id: data_scientist
+    title: 4. DATA SCIENTIST
+    priority: 40
+    trigger_patterns:
+    - \b(data\s+scientist|analytics|data\s+analyst)\b
+    letter_file_reference: letter_bodies.tex:4
+    talking_points:
+    - Statistical modeling and exploratory data analysis
+    - Empirical benchmarking across large datasets
+  - template_id: machine_learning_engineer
+    title: 3. MACHINE LEARNING ENGINEER
+    priority: 30
+    trigger_patterns:
+    - \b(machine\s+learning|ml\s+engineer|deep\s+learning)\b
+    letter_file_reference: letter_bodies.tex:3
+    talking_points:
+    - PyTorch model training, fine-tuning, and ONNX export
+    - Vector retrieval and evaluation on DelftBlue HPC
+  - template_id: ai_ml_researcher
+    title: 2. AI & ML RESEARCHER
+    priority: 20
+    trigger_patterns:
+    - \b(research|phd|scientist|nlp|rag|colbert|colpali|retrieval)\b
+    letter_file_reference: letter_bodies.tex:2
+    talking_points:
+    - TU Delft Master's Thesis on inference compute scaling laws
+    - Benchmarking neural cross-encoders, generative rerankers, and rank fusion
+  default_cover_letter: 1. GENERIC / OPEN APPLICATION
+  enable_company_multipliers: false
+  enable_domain_bonuses: false
+output_settings:
+  reports_dir: v2/reports
+  markdown_filename: recommended_jobs.md
+  json_filename: recommended_jobs.json
+  sqlite_db_path: v2/data/sponsors.db

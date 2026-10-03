@@ -1,0 +1,249 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage[english]{babel}
+\usepackage{microtype}
+\usepackage{charter}
+
+% Ensure that generated PDF is machine readable / ATS parsable
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+%---------- COLOR DEFINITIONS ----------
+\definecolor{cvblue}{HTML}{0E5484}
+\definecolor{black}{HTML}{130810}
+\definecolor{darkcolor}{HTML}{0F4539}
+\definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
+\definecolor{linkblue}{HTML}{1A5276}
+
+%---------- MARGINS ----------
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.6in}
+\addtolength{\textwidth}{1.2in}
+\addtolength{\topmargin}{-.8in}
+\addtolength{\textheight}{1.6in}
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+
+%---------- SECTION FORMATTING (CLEAN, ATS-SAFE) ----------
+\titleformat{\section}{
+  \vspace{-5pt}\scshape\raggedright\large\bfseries\color{airforceblue}
+}{}{0em}{}[\color{black}\titlerule \vspace{-4pt}]
+
+%---------- CUSTOM ATS-OPTIMIZED COMMANDS ----------
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-3pt}\item
+    \textbf{\large#1} \hfill \textbf{\normalsize#2}\\
+    \textit{\normalsize#3} \hfill \textit{\small#4}
+  \vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+  \vspace{-3pt}\item
+    \textbf{\large#1} \hfill \textbf{\normalsize#2}\\
+    \vspace{-7pt}
+}
+
+\newcommand{\resumeItem}[1]{
+  \item\normalsize{#1}
+}
+
+\renewcommand\labelitemi{\textbullet}
+\renewcommand\labelitemii{\textbullet}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}, topsep=0pt, itemsep=2.5pt]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.15in, topsep=0.5pt, itemsep=0.5pt, parsep=0pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
+
+% ==============================================================================
+%                           RESUME STARTS HERE
+% ==============================================================================
+\begin{document}
+
+%---------- HEADING & CONTACT INFO ----------
+\newcommand{\targetRole}{Biomedical Laboratory Sciences \textbar{} Life Science \& Technology \textbar{} Molecular Biology}
+
+\begin{center}
+  \vspace{-12pt}
+  {\huge{Sha\"{\i}s Ayush Hemradj Ganpat}} \\[2pt]
+  {\textbf{\color{airforceblue}\targetRole}} \\[3pt]
+  \footnotesize{
+    Delft, South Holland, Netherlands \ \textbullet \
+    +31 6 85141062 \ \textbullet \
+    \href{mailto:shaisganpat_2000@hotmail.com}{\color{linkblue}shaisganpat\_2000@hotmail.com} \ \textbullet \
+    \href{https://www.linkedin.com/in/shaisganpat/}{\color{linkblue}linkedin.com/in/shaisganpat}
+  }
+  \vspace{-8pt}
+\end{center}
+
+%----------- PROFILE / SUMMARY -----------
+\section{Profile}
+\begin{itemize}[leftmargin=0in, label={}, topsep=0pt, itemsep=0pt]
+  \item\normalsize{
+    Biomedical Laboratory Sciences (BML) student with a strong scientific foundation in Life Science \& Technology (TU Delft / Leiden University) and practical laboratory experience in molecular biology, medical microbiology, and data analysis. Proficient in experimental workflows including PCR, primer design, DNA extraction, and microbial culturing. Actively seeking a graduation research internship to apply experimental rigor, molecular methodologies, and analytical problem-solving.
+  }
+\end{itemize}
+\vspace{-8pt}
+
+%----------- EDUCATION -----------
+\section{Education}
+\resumeSubHeadingListStart
+\resumeSubheading
+{Hogeschool Leiden (Leiden University of Applied Sciences)}{Feb 2025 -- 2027 (Expected)}
+{BSc. Biology and Medical Laboratory Research (BML)}{Leiden, Netherlands}
+\resumeSubheading
+{Delft University of Technology (TU Delft) \& Leiden University}{Sep 2019 -- Feb 2025}
+{BSc. Life Science and Technology (Joint Degree)}{Delft / Leiden, Netherlands}
+\resumeItemListStart
+\resumeItem{Completed \textbf{Propedeuse} (First-year degree in genetics, biochemistry, cell biology, and scientific Python) and \textbf{Educational Minor in Chemistry Didactics}.}
+\resumeItemListEnd
+\vspace{-5pt}
+
+\resumeSubheading
+{Mr. Dr. J.C. de Miranda Lyceum}{Aug 2015 -- Jul 2018}
+{VWO Pre-University (Profile: Nature \& Technology)}{Paramaribo, Suriname}
+\resumeItemListStart
+\resumeItem{Graduation Examination Results: Chemistry (9/10), Biology (9/10), Physics (8/10), English (8/10), Dutch (8/10).}
+\resumeItemListEnd
+\resumeSubHeadingListEnd
+\vspace{-8pt}
+
+%----------- SKILLS -----------
+\section{Skills}
+\begin{itemize}[leftmargin=0in, label={}, topsep=0pt, itemsep=1.2pt]
+  \normalsize{\item{
+    \textbf{Laboratory \& Molecular Techniques:}{ PCR, Primer Design, DNA/RNA Extraction, Agarose Gel Electrophoresis, Microbial Culturing, Aseptic Technique, Gram Staining, Optical Microscopy, Biosafety \& Good Laboratory Practice (GLP)} \\
+    \textbf{Data Analysis \& Programming:}{ Python (Pandas, NumPy, Matplotlib, SciPy), Data Cleaning \& Preprocessing, Statistical Modeling, Scientific Computing, Microsoft Excel (Advanced Data Analysis, Pivot Tables)} \\
+    \textbf{Teaching \& Didactics:}{ Secondary Chemistry Exam Training (HAVO/VWO), Curriculum Delivery, Differentiated Instruction, Diagnostic Feedback, Student Mentorship, Formative Assessment} \\
+    \textbf{Leadership \& Operations:}{ Resident Community Governance, Facility Management, Stakeholder Representation, Event Planning \& Execution, Conflict Mediation, Cross-Functional Team Leadership} \\
+    \textbf{Languages:}{ Dutch (Native / Fluent), English (Professional Working Proficiency), Sranan Tongo (Fluent), Hindi (Elementary)}
+  }}
+\end{itemize}
+\vspace{-8pt}
+
+%----------- LABORATORY & RESEARCH EXPERIENCE -----------
+\section{Laboratory \& Research Experience}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{Practical Laboratory Training (BML) -- Hogeschool Leiden}{Feb 2025 -- Present}
+{Laboratory Student Researcher}{Leiden, Netherlands}
+\resumeItemListStart
+\resumeItem{\textbf{Molecular Biology \& Genetics:} Conduct practical investigations involving genomic DNA extraction, sequence-specific primer design, and target DNA amplification via PCR validated by agarose gel electrophoresis.}
+\resumeItem{\textbf{Medical Microbiology:} Perform aseptic streak plating, microbial culture isolation, bacterial characterization, and Gram staining in accordance with Good Laboratory Practice (GLP) and biosafety protocols.}
+\resumeItem{\textbf{Quantitative Quality Control:} Systematically document experimental workflows, evaluate spectrophotometric measurements (Nanodrop), and troubleshoot assay anomalies to ensure high experimental reproducibility.}
+\resumeItemListEnd
+\vspace{-5pt}
+
+\resumeSubheading
+{Anton de Kom University of Suriname (AdeKUS)}{Jul 2016 -- Aug 2016}
+{Student Assistant -- Microbiology Practical Course}{Paramaribo, Suriname}
+\resumeItemListStart
+\resumeItem{\textbf{Laboratory Preparation \& Support:} Appointed by academic faculty following top cohort performance; prepared sterile nutrient agar media, sterilized equipment, and calibrated lab setups for incoming students.}
+\resumeItem{\textbf{Experimental Demonstration:} Guided and mentored student cohorts through aseptic inoculation techniques, bacterial streak plating, and Gram staining identification under optical microscopy.}
+\resumeItemListEnd
+\vspace{-5pt}
+
+\resumeSubheading
+{Anton de Kom University of Suriname (AdeKUS)}{Jul 2015 -- Aug 2015}
+{Microbiology Course Scholar}{Paramaribo, Suriname}
+\resumeItemListStart
+\resumeItem{\textbf{Intensive Practical Training:} Completed theoretical and practical coursework in environmental and medical microbiology, sterile workflows, bacterial metabolism, and pathogen identification.}
+\resumeItem{\textbf{Academic Distinction:} Awarded \textbf{``Most Motivated Student''} of the course cohort in recognition of laboratory precision, active engagement, and analytical diligence.}
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+\newpage
+
+%----------- TEACHING & EDUCATIONAL EXPERIENCE -----------
+\section{Teaching \& Educational Experience}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{Lyceo}{Apr 2023 -- Present}
+{Chemistry Exam Trainer \& Academic Tutor}{Delft / The Hague, Netherlands}
+\resumeItemListStart
+\resumeItem{\textbf{Final Exam Preparation:} Deliver intensive chemistry exam preparation for senior HAVO and VWO classes, simplifying complex topics such as organic synthesis, chemical equilibrium, thermodynamics, and reaction kinetics.}
+\resumeItem{\textbf{Individualized Pedagogical Coaching:} Identify conceptual bottlenecks, develop tailored practice sets, and instruct students on systematic exam strategies, driving measurable grade improvements.}
+\resumeItem{\textbf{Academic Guidance:} Invigilate standardized trial examinations, uphold test integrity, and provide incidental STEM academic support and homework tutoring.}
+\resumeItemListEnd
+\vspace{-5pt}
+
+\resumeSubheading
+{Stanislascollege Westplantsoen}{Aug 2024 -- Jan 2025}
+{Chemistry Teaching Intern (Onderwijsstage / Stageminor)}{Delft, Netherlands}
+\resumeItemListStart
+\resumeItem{\textbf{Secondary Classroom Teaching:} Designed and delivered interactive chemistry lesson plans for secondary school cohorts under the TU Delft Educational Minor curriculum.}
+\resumeItem{\textbf{Curriculum Integration:} Developed engaging teaching materials incorporating live classroom experiments and formative assessments to reinforce core chemical principles.}
+\resumeItem{\textbf{Pedagogical Development:} Evaluated instructional methodologies through mentor observations and structured self-evaluations, refining didactic skills and differentiated learning techniques.}
+\resumeItemListEnd
+\vspace{-5pt}
+
+\resumeSubheading
+{Martial Arts Academy}{Jan 2017 -- Jun 2019}
+{Taekwondo Instructor \& Black Belt (1st Dan)}{Paramaribo / Delft}
+\resumeItemListStart
+\resumeItem{\textbf{Instruction \& Coaching:} Taught martial arts fundamentals, technical sparring, physical conditioning, and mental discipline to youth and adult student groups over 1.5 years.}
+\resumeItem{\textbf{Mentorship:} Prepared junior athletes for grading examinations, fostering confidence, perseverance, and teamwork.}
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+\vspace{-8pt}
+
+%----------- LEADERSHIP & COMMUNITY MANAGEMENT -----------
+\section{Leadership \& Community Management}
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{DUWO Student Housing}{Aug 2021 -- Present}
+{Resident Assistant \& Student Manager (Hotchpot / Van Hasseltlaan / BalPol4)}{Delft, Netherlands}
+\resumeItemListStart
+\resumeItem{\textbf{Resident Liaison \& Community Management:} Serve as key on-site representative and primary contact for 100+ Dutch and international residents across multiple student complexes, resolving daily inquiries and social concerns.}
+\resumeItem{\textbf{Facility \& Common Space Operations:} Direct management and scheduling of the ``Hotchpot'' communal space (since 2024); organize social and networking initiatives to foster an inclusive community.}
+\resumeItem{\textbf{Safety \& Compliance Audits:} Conduct regular fire-safety inspections, document maintenance defects, and coordinate directly with DUWO divisions including Leasing, Cleaning, and Property Services (Vastgoedservice).}
+\resumeItem{\textbf{International Student Integration:} Onboard incoming international students via welcome sessions, orientation tours, and practical guidance, while mediating tenant disputes constructively.}
+\resumeItemListEnd
+\vspace{-5pt}
+
+\resumeSubheading
+{WijWonen}{Apr 2025 -- Dec 2026}
+{Board Member -- Commissioner of Umbrella Affairs (Commissaris Koepel)}{Delft, Netherlands}
+\resumeItemListStart
+\resumeItem{\textbf{Tenant Representation:} Represent the shared interests of affiliated student tenant organizations across Delft, interfacing with housing corporations, municipal entities, and student boards.}
+\resumeItem{\textbf{Policy Alignment:} Facilitate inter-board communication and collaborative policy development to advance student living conditions, rental rights, and community standards.}
+\resumeItemListEnd
+\vspace{-5pt}
+
+\resumeSubheading
+{SUBEST Delft (Surinamese Beta Students Association)}{Sep 2020 -- Nov 2021}
+{Board Member -- Commissioner of Education (Commissaris Educatie)}{Delft, Netherlands}
+\resumeItemListStart
+\resumeItem{\textbf{Educational Operations:} Organized academic support initiatives, STEM workshops, and study sessions for Surinamese science and engineering students enrolled at TU Delft and Leiden University.}
+\resumeItem{\textbf{Mentorship Coordination:} Spearheaded the first-year student mentorship initiative to facilitate academic adaptation and cultural integration into Dutch university life.}
+\resumeItem{\textbf{Institutional Representation:} Maintained key liaison relationships between student members, university academic departments, and external educational bodies.}
+\resumeItemListEnd
+
+\resumeSubHeadingListEnd
+\vspace{-8pt}
+
+%----------- HONORS & CERTIFICATIONS -----------
+\section{Honors, Certifications \& Extracurriculars}
+\resumeItemListStart
+\resumeItem{\textbf{Propedeuse Diploma (Life Science \& Technology):} Awarded by TU Delft and Leiden University for successful completion of the full first-year academic program.}
+\resumeItem{\textbf{``Most Motivated Student'' Distinction:} Anton de Kom University of Suriname (AdeKUS) -- Awarded in the 2015 Microbiology Course cohort for outstanding lab precision and diligence.}
+\resumeItem{\textbf{1st Dan Black Belt in Taekwondo:} World Taekwondo (2012 -- 2019) -- Achieved through 7+ years of rigorous athletic training, discipline, and instructional leadership.}
+\resumeItemListEnd
+
+\end{document}

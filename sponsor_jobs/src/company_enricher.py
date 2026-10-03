@@ -123,6 +123,37 @@ CURATED_SPONSORS_CONFIG = {
     "runway": ("Runway", "https://runwayml.com", "https://jobs.ashbyhq.com/runwayml", "ashby", "runwayml"),
     "synthesia": ("Synthesia", "https://www.synthesia.io", "https://jobs.ashbyhq.com/synthesia", "ashby", "synthesia"),
 
+    # --- Greenhouse & Lever: San Francisco & Silicon Valley Tech Leaders ---
+    "waymo": ("Waymo", "https://waymo.com", "https://boards.greenhouse.io/waymo", "greenhouse", "waymo"),
+    "zoox": ("Zoox (Autonomous Vehicles)", "https://zoox.com", "https://jobs.lever.co/zoox", "lever", "zoox"),
+    "verkada": ("Verkada", "https://www.verkada.com", "https://boards.greenhouse.io/verkada", "greenhouse", "verkada"),
+    "samsara": ("Samsara", "https://www.samsara.com", "https://boards.greenhouse.io/samsara", "greenhouse", "samsara"),
+    "airbnb": ("Airbnb", "https://www.airbnb.com", "https://boards.greenhouse.io/airbnb", "greenhouse", "airbnb"),
+    "pinterest": ("Pinterest", "https://www.pinterest.com", "https://boards.greenhouse.io/pinterest", "greenhouse", "pinterest"),
+    "discord": ("Discord", "https://discord.com", "https://boards.greenhouse.io/discord", "greenhouse", "discord"),
+    "coinbase": ("Coinbase", "https://www.coinbase.com", "https://boards.greenhouse.io/coinbase", "greenhouse", "coinbase"),
+    "robinhood": ("Robinhood", "https://robinhood.com", "https://boards.greenhouse.io/robinhood", "greenhouse", "robinhood"),
+    "instacart": ("Instacart", "https://www.instacart.com", "https://boards.greenhouse.io/instacart", "greenhouse", "instacart"),
+    "lyft": ("Lyft", "https://www.lyft.com", "https://boards.greenhouse.io/lyft", "greenhouse", "lyft"),
+    "character": ("Character.ai", "https://character.ai", "https://jobs.ashbyhq.com/character", "ashby", "character"),
+
+    # --- Greenhouse: New York City Tech, Data & Fintech ---
+    "mongodb": ("MongoDB", "https://www.mongodb.com", "https://boards.greenhouse.io/mongodb", "greenhouse", "mongodb"),
+    "cockroachlabs": ("Cockroach Labs", "https://www.cockroachlabs.com", "https://boards.greenhouse.io/cockroachlabs", "greenhouse", "cockroachlabs"),
+    "squarespace": ("Squarespace", "https://www.squarespace.com", "https://boards.greenhouse.io/squarespace", "greenhouse", "squarespace"),
+    "flatironhealth": ("Flatiron Health", "https://flatiron.com", "https://boards.greenhouse.io/flatironhealth", "greenhouse", "flatironhealth"),
+    "celonis": ("Celonis", "https://www.celonis.com", "https://boards.greenhouse.io/celonis", "greenhouse", "celonis"),
+    "betterment": ("Betterment", "https://www.betterment.com", "https://boards.greenhouse.io/betterment", "greenhouse", "betterment"),
+    "oscar": ("Oscar Health", "https://www.hioscar.com", "https://boards.greenhouse.io/oscar", "greenhouse", "oscar"),
+
+    # --- Greenhouse: Los Angeles & Southern California (Aerospace, Defense AI, Gaming, AV) ---
+    "spacex": ("SpaceX", "https://www.spacex.com", "https://boards.greenhouse.io/spacex", "greenhouse", "spacex"),
+    "anduril": ("Anduril Industries", "https://www.anduril.com", "https://boards.greenhouse.io/andurilindustries", "greenhouse", "andurilindustries"),
+    "riotgames": ("Riot Games", "https://www.riotgames.com", "https://boards.greenhouse.io/riotgames", "greenhouse", "riotgames"),
+    "relativity": ("Relativity Space", "https://www.relativityspace.com", "https://boards.greenhouse.io/relativity", "greenhouse", "relativity"),
+    "scopely": ("Scopely", "https://www.scopely.com", "https://boards.greenhouse.io/scopely", "greenhouse", "scopely"),
+    "motional": ("Motional (Autonomous Vehicles)", "https://motional.com", "https://boards.greenhouse.io/motional", "greenhouse", "motional"),
+
     # --- Recruitee ---
     "bunq": ("bunq", "https://www.bunq.com", "https://www.bunq.com/jobs", "recruitee", "bunq"),
     "channable": ("Channable", "https://www.channable.com", "https://www.channable.com/careers", "recruitee", "channable"),
